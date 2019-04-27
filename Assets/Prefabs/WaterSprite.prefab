@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6253513304199601952}
   - component: {fileID: 5471214638089323771}
   - component: {fileID: 5930045702503952447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7234473756691101668}
   - component: {fileID: 7234473756691101669}
   - component: {fileID: 4846822833541603610}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
