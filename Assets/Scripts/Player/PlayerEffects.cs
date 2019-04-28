@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerEffects : MonoBehaviour
 {
+    public SpriteRenderer sprite;
+
     GameObject cam;
+    
     void Start()
     {
         cam = GameObject.Find("Main Camera");
@@ -22,10 +25,10 @@ public class PlayerEffects : MonoBehaviour
             _t += Time.deltaTime;
             if(_t >= 2 * frequency)
                 _t -= 2 * frequency;
-            GetComponentInChildren<SpriteRenderer>().enabled = (_t >= frequency);
+            sprite.enabled = (_t >= frequency);
             yield return 0;
         }
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        sprite.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     public void Hurt()
