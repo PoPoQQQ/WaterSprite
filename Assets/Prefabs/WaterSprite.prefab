@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 2082758220768674804}
   - component: {fileID: 6253513304199601952}
   - component: {fileID: 5471214638089323771}
-  - component: {fileID: 5930045702503952447}
+  - component: {fileID: 5129286761863795167}
+  - component: {fileID: 4864689205657623086}
+  - component: {fileID: 3169966441422430032}
   m_Layer: 8
   m_Name: WaterSprite
   m_TagString: Player
@@ -72,7 +74,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5930045702503952447
+--- !u!114 &5129286761863795167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,10 +83,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 318052971299261293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095a49f82fd846d49be8980f5bec84b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 02b8b4880ed0b9d4491e4879ef0960e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+--- !u!114 &4864689205657623086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318052971299261293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5550798749709994fac91694edcd464d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3169966441422430032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318052971299261293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883a9afa7d3da0448b0e6cd1a129ea6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5093830568461000544
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +180,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7234473756691101668}
   - component: {fileID: 7234473756691101669}
-  - component: {fileID: 4846822833541603610}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -225,15 +249,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4846822833541603610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7234473756691101670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883a9afa7d3da0448b0e6cd1a129ea6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
