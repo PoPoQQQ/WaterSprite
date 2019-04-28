@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 2082758220768674804}
   - component: {fileID: 6253513304199601952}
   - component: {fileID: 5471214638089323771}
-  - component: {fileID: 5930045702503952447}
+  - component: {fileID: 5105491475233842358}
+  - component: {fileID: 5129286761863795167}
+  - component: {fileID: 4864689205657623086}
+  - component: {fileID: 3169966441422430032}
   m_Layer: 8
   m_Name: WaterSprite
   m_TagString: Player
@@ -72,7 +75,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5930045702503952447
+--- !u!114 &5105491475233842358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,10 +84,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 318052971299261293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095a49f82fd846d49be8980f5bec84b5, type: 3}
+  m_Script: {fileID: 11500000, guid: e4a42b43944bf144289a1666427dd493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  moveSpeed: 40
+--- !u!114 &5129286761863795167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318052971299261293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b8b4880ed0b9d4491e4879ef0960e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4864689205657623086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318052971299261293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5550798749709994fac91694edcd464d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3169966441422430032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318052971299261293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883a9afa7d3da0448b0e6cd1a129ea6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5093830568461000544
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7234473756691101668}
   - component: {fileID: 7234473756691101669}
-  - component: {fileID: 4846822833541603610}
+  - component: {fileID: 354509459961329651}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -171,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7234473756691101670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.431, z: 0}
+  m_LocalPosition: {x: -0.078, y: 0.586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2082758220768674804}
@@ -214,26 +253,34 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7a573eb88db116447ac5a7d915ebdc9e, type: 3}
+  m_Sprite: {fileID: 4863872163212997133, guid: 7637cd95856cf1d4bab7e1094d6aa471,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 1.0666667, y: 1.0666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4846822833541603610
-MonoBehaviour:
+--- !u!95 &354509459961329651
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7234473756691101670}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883a9afa7d3da0448b0e6cd1a129ea6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3721d643ab4e88c4d89608d5054b61cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

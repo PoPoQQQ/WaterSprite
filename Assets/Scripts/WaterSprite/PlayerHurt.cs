@@ -2,29 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterSpriteBehavior : MonoBehaviour
+public class PlayerHurt : MonoBehaviour
 {
-	public float speed = 1f;
-
     GameObject camera;
 
-    // Start is called before the first frame update
     void Start()
     {
         camera = GameObject.Find("Main Camera");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    	Vector2 dir = Vector2.zero;
-    	if(Input.GetKey(KeyCode.W)) dir += Vector2.up;
-    	if(Input.GetKey(KeyCode.S)) dir += Vector2.down;
-    	if(Input.GetKey(KeyCode.A)) dir += Vector2.left;
-    	if(Input.GetKey(KeyCode.D)) dir += Vector2.right;
-        if (dir.magnitude > 1F)
-            dir.Normalize();
-        GetComponent<Rigidbody2D>().AddForce(dir * speed);
     }
 
     IEnumerator FlashCoroutine()
@@ -48,7 +32,7 @@ public class WaterSpriteBehavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-    	if(other.gameObject.name == "Enemy")
+    	if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
     	{
             camera.GetComponent<CameraShake>().Shake();
     		Vector2 dir = (Vector2)(transform.position - other.gameObject.transform.position);
