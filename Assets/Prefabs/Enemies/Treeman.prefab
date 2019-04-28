@@ -99,6 +99,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7952521416474167100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4769509632023605724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2149a16564635d44a946392844daa8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5069154064254565041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,8 +183,29 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 1.02
       objectReference: {fileID: 0}
+    - target: {fileID: 1973225928512938578, guid: 736a79b4fc86f354897fe7a56e8afbde,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282300772055865828, guid: 736a79b4fc86f354897fe7a56e8afbde,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282300772055865828, guid: 736a79b4fc86f354897fe7a56e8afbde,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736a79b4fc86f354897fe7a56e8afbde, type: 3}
+--- !u!1 &4769509632023605724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 318052971299261293, guid: 736a79b4fc86f354897fe7a56e8afbde,
+    type: 3}
+  m_PrefabInstance: {fileID: 5069154064254565041}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6538717939702430021 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2082758220768674804, guid: 736a79b4fc86f354897fe7a56e8afbde,
