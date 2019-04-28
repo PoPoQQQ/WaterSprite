@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerHurt : MonoBehaviour
 {
-    GameObject camera;
+    GameObject cam;
 
     void Start()
     {
-        camera = GameObject.Find("Main Camera");
+        cam = GameObject.Find("Main Camera");
     }
 
     IEnumerator FlashCoroutine()
@@ -29,15 +29,19 @@ public class PlayerHurt : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
-
+    public void Hurt()
+    {
+        cam.GetComponent<CameraShake>().Shake();
+        StartCoroutine(FlashCoroutine());
+    }
     void OnCollisionEnter2D(Collision2D other)
     {
     	if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
     	{
-            camera.GetComponent<CameraShake>().Shake();
+            cam.GetComponent<CameraShake>().Shake();
     		Vector2 dir = (Vector2)(transform.position - other.gameObject.transform.position);
     		dir.Normalize();
-    		GetComponent<Rigidbody2D>().AddForce(dir * 1200);
+    		GetComponent<Rigidbody2D>().AddForce(dir * 24, ForceMode2D.Impulse);
             StartCoroutine(FlashCoroutine());
     	}
     }
