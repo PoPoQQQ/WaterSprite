@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHurt : MonoBehaviour
+public class PlayerEffects : MonoBehaviour
 {
     GameObject cam;
-
     void Start()
     {
         cam = GameObject.Find("Main Camera");
@@ -33,16 +32,5 @@ public class PlayerHurt : MonoBehaviour
     {
         cam.GetComponent<CameraShake>().Shake();
         StartCoroutine(FlashCoroutine());
-    }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-    	if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-    	{
-            cam.GetComponent<CameraShake>().Shake();
-    		Vector2 dir = (Vector2)(transform.position - other.gameObject.transform.position);
-    		dir.Normalize();
-    		GetComponent<Rigidbody2D>().AddForce(dir * 24, ForceMode2D.Impulse);
-            StartCoroutine(FlashCoroutine());
-    	}
     }
 }
