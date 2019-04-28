@@ -395,7 +395,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -486,6 +486,10 @@ MonoBehaviour:
   dayOrNight: 0
   dayCnt: 1
   score: 0
+  MapXUpperbound: 17
+  MapXLowerbound: -17
+  MapYUpperbound: 18
+  MapYLowerbound: -18
 --- !u!4 &589660115
 Transform:
   m_ObjectHideFlags: 0
