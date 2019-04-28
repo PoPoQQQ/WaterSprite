@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMoving : MonoBehaviour
 {
-    float speed = 40;
-
     void Update()
     {
     	Vector2 dir = Vector2.zero;
@@ -15,6 +13,7 @@ public class PlayerMoving : MonoBehaviour
     	if(Input.GetKey(KeyCode.D)) dir += Vector2.right;
         if (dir.magnitude > 1F)
             dir.Normalize();
+        float speed = GetComponent<Player>().moveSpeed;
         GetComponent<Rigidbody2D>().AddForce(dir * speed);
     }
 }
