@@ -6,10 +6,12 @@ public class WaterSpriteBehavior : MonoBehaviour
 {
 	public float speed = 1f;
 
+    GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        camera = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class WaterSpriteBehavior : MonoBehaviour
     {
     	if(other.gameObject.name == "Enemy")
     	{
+            camera.GetComponent<CameraShake>().Shake();
     		Vector2 dir = (Vector2)(transform.position - other.gameObject.transform.position);
     		dir.Normalize();
     		GetComponent<Rigidbody2D>().AddForce(dir * 1200);
