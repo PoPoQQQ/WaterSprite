@@ -6,8 +6,9 @@ public class Plant : MonoBehaviour
 { 
     public enum Type { None, Water, Buff, Ultimate, Withered};
     public Type type = Type.None;
-    public int age = 0;
+    public int age = 0; // age == 0 means it's a seed.
     public int fruit = 0;
+    public bool watered = false;
 
     public void SetAnimationVariables()
     {
@@ -32,6 +33,8 @@ public class Plant : MonoBehaviour
     {
         if (type == Type.Withered || type == Type.None)
             return;
+        if (!watered)
+            return;
         age++;
         if (age > 3)
         {
@@ -55,6 +58,16 @@ public class Plant : MonoBehaviour
         type = seedType;
         age = 0;
         fruit = 0;
+        SetAnimationVariables();
+    }
+
+    public void Water()
+    {
+        if (watered)
+            return;
+        if (type == Type.None)
+            return;
+        watered = true;
         SetAnimationVariables();
     }
 

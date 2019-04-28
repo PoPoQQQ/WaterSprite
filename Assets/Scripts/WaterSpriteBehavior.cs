@@ -20,6 +20,8 @@ public class WaterSpriteBehavior : MonoBehaviour
     	if(Input.GetKey(KeyCode.S)) dir += Vector2.down;
     	if(Input.GetKey(KeyCode.A)) dir += Vector2.left;
     	if(Input.GetKey(KeyCode.D)) dir += Vector2.right;
+        if (dir.magnitude > 1F)
+            dir.Normalize();
         GetComponent<Rigidbody2D>().AddForce(dir * speed);
     }
 
