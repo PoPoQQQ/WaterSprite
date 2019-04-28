@@ -8,7 +8,6 @@ public class DirectionAdjustion : MonoBehaviour
 
     public void Adjust(float degree)
     {
-    	Debug.Log(degree);
     	if(-90 <= degree && degree < 90)
     		spriteCenter.transform.eulerAngles = new Vector3(0, 0, degree);
     	else
