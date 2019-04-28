@@ -5,6 +5,12 @@ using UnityEngine;
 public class PlayerDirection : MonoBehaviour
 {
     public float alpha = 15f;
+    Animator animator;
+
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     void Update()
     {
@@ -18,6 +24,7 @@ public class PlayerDirection : MonoBehaviour
 
         if(dir == Vector2.zero)
         	return;
+        /*
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         if(angle < 0)
         	angle += 360;
@@ -29,5 +36,8 @@ public class PlayerDirection : MonoBehaviour
         	GetComponentInChildren<Animator>().SetInteger("Direction", 4);
         else
         	GetComponentInChildren<Animator>().SetInteger("Direction", 2);
+        */
+        animator.SetFloat("X", dir.x);
+        animator.SetFloat("Y", dir.y);
     }
 }
