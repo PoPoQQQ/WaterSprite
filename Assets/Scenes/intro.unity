@@ -211,13 +211,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162556634}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -277,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 676, y: 460}
+  m_AnchoredPosition: {x: 0.000061035, y: 9.1775}
+  m_SizeDelta: {x: 800, y: 468.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &228153848
 MonoBehaviour:
@@ -331,6 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   col: {r: 0, g: 0, b: 0, a: 0}
+  dayIcon: {fileID: 0}
+  nightIcon: {fileID: 0}
 --- !u!1 &293817104
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,10 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a5ec5324ede7d438e028e3a4257728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sentences:
-  - 123123123e
-  - 123123123123213
-  - 123123123123123123123
+  sentences: []
   dialogue: {fileID: 656387653}
   nextButton: {fileID: 1618753978}
   dialogueOver: 0
@@ -431,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -502,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &583461121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -519,8 +518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000015259}
-  m_SizeDelta: {x: 676, y: 460}
+  m_AnchoredPosition: {x: 0.000061035, y: 9.175}
+  m_SizeDelta: {x: 800, y: 468.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583461122
 MonoBehaviour:
@@ -536,6 +535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 0}
   col: {r: 0, g: 0, b: 0, a: 0}
+  dayIcon: {fileID: 0}
+  nightIcon: {fileID: 0}
 --- !u!114 &583461123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +755,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -976,7 +977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1784504504
 RectTransform:
   m_ObjectHideFlags: 0
@@ -995,8 +996,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 676, y: 460}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784504505
 MonoBehaviour:
