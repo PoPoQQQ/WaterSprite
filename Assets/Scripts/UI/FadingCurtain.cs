@@ -17,19 +17,19 @@ public class FadingCurtain : MonoBehaviour
         image.color = col;
     }
 
-    public void exchange(float sec)
+    public void exchange(float sec, bool night)
     {
-        StartCoroutine(exchangeIe(sec));
+        StartCoroutine(exchangeIe(sec,night));
     }
 
 
 
-    IEnumerator exchangeIe(float sec)
+    IEnumerator exchangeIe(float sec, bool night)
     {
         yield return StartCoroutine(fadingReverse(70));
+        Camera.main.GetComponent<MonoBehaviour>().enabled = night;
         yield return new WaitForSeconds(sec);
         yield return StartCoroutine(fading(70));
-        
     } 
 
 
