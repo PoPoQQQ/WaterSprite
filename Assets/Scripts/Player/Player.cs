@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         PM = GetComponent<PlayerMoving>();
         PE = GetComponent<PlayerEffects>();
+        bar = FindObjectOfType<HPBar>();
     }
 
     // Update is called once per frame
