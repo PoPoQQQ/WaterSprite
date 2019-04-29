@@ -8,6 +8,8 @@ public class FadingCurtain : MonoBehaviour
 
     public Image image;
     public Color col;
+    public GameObject dayIcon;
+    public GameObject nightIcon;
 
     void Awake()
     {
@@ -28,6 +30,8 @@ public class FadingCurtain : MonoBehaviour
     {
         yield return StartCoroutine(fadingReverse(70));
         Camera.main.GetComponent<MonoBehaviour>().enabled = night;
+        dayIcon.SetActive(!night);
+        nightIcon.SetActive(night);
         yield return new WaitForSeconds(sec);
         yield return StartCoroutine(fading(70));
     } 

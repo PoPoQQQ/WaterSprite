@@ -199,12 +199,6 @@ PrefabInstance:
       objectReference: {fileID: 1083649750}
     - target: {fileID: 5953444080182775745, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
         type: 3}
-      propertyPath: tmp
-      value: 
-      objectReference: {fileID: 21300000, guid: 86ddaf804348fc04d9692bab99fc0073,
-        type: 3}
-    - target: {fileID: 5953444080182775745, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
-        type: 3}
       propertyPath: ending
       value: 
       objectReference: {fileID: 1547088676}
@@ -213,11 +207,6 @@ PrefabInstance:
       propertyPath: curtain
       value: 
       objectReference: {fileID: 108013351}
-    - target: {fileID: 5953444080182775745, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
-        type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3246717468187267112, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
         type: 3}
       propertyPath: scrollBar
@@ -898,11 +887,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map
-      objectReference: {fileID: 0}
-    - target: {fileID: 6236440606679608211, guid: 18fb9ebe801744449ac5c2c77450507a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6236440606679608212, guid: 18fb9ebe801744449ac5c2c77450507a,
         type: 3}
