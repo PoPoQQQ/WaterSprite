@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     PlayerMoving PM;
     PlayerEffects PE;
 
+    public HPBar bar;
+    
+
     void GameOver()
     {
         Debug.Log("GameOver!");
@@ -72,6 +75,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bar.updateHealth(health);
     }
 }
