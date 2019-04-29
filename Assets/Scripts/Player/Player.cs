@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int csmBuffCnt = 0;
     public HPBar bar;
     public GameObject shadow;
+    public GameObject splash;
     
     public float PlayerDamageRate()
     {
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("Dead", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
         shadow.SetActive(false);
+        splash.SetActive(true);
         PM.enabled = false;
     }
 
