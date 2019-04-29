@@ -123,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4218942400461449697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8360883756098006025}
@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e9692a8e0793904794f250753c8b118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burstPrefab: {fileID: 318052971299261293, guid: 0b55fbf4dcfcf4344a003d6449a862ae,
+    type: 3}
 --- !u!114 &5655224723356832319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,17 +249,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5471214638089323771, guid: 0dc2cf02a79656540afeae44acea927a,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5015333006353984558, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 913d6d72ef38aa14eac260353047ef64,
         type: 3}
+    - target: {fileID: 5471214638089323771, guid: 0dc2cf02a79656540afeae44acea927a,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dc2cf02a79656540afeae44acea927a, type: 3}
 --- !u!1 &6222997492996326210 stripped

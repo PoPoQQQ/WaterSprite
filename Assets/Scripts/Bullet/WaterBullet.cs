@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaterBullet : MonoBehaviour
 {
+	public GameObject burstPrefab;
+
     float damage = 1F;
 
 
@@ -28,6 +30,8 @@ public class WaterBullet : MonoBehaviour
                 ec.Damage(damage);
         }
 
+        GameObject burst = GameObject.Instantiate(burstPrefab, transform.position, Quaternion.identity);
+        Destroy(burst, 0.5f);
         Destroy(gameObject);
     }
 }
