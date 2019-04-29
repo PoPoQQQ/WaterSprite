@@ -23,6 +23,7 @@ public class Ghost : MonoBehaviour
         {
             moving = true;
             ResetVec();
+            UpdateDirection();
             phase = 0;
             body.drag = 1F;
             yield return new WaitForSeconds(2F);
