@@ -8,9 +8,11 @@ public class PlantInteractTrigger : MonoBehaviour
     GameObject highLightedPlant= null, hp = null;
     public float maxRad = 2F;
     float minRad;
+    GameSystem GS;
     // Start is called before the first frame update
     void Start()
     {
+        GS = FindObjectOfType<GameSystem>();
         plants = GameObject.FindGameObjectsWithTag("Plant");
     }
 
@@ -19,13 +21,16 @@ public class PlantInteractTrigger : MonoBehaviour
     {
         hp = null;
         minRad = maxRad;
-        foreach(var i in plants)
+        if (GS.dayOrNight == GameSystem.DayOrNight.Day)
         {
-            float d = ((Vector2)(i.transform.position - transform.position)).magnitude;
-            if(d < minRad)
+            foreach (var i in plants)
             {
-                hp = i;
-                minRad = d;
+                float d = ((Vector2)(i.transform.position - transform.position)).magnitude;
+                if (d < minRad)
+                {
+                    hp = i;
+                    minRad = d;
+                }
             }
         }
         if(hp != highLightedPlant)

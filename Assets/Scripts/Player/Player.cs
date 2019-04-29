@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
     public Sprite[] splashSprites;
     public Image ending;
     public GameObject curtain;
-
+    GameSystem GS;
     public Text endingtext;
-    
+
     public float PlayerDamageRate()
     {
         return 1F + 0.5F * atkBuffCnt;
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
 
     public void Damage(float damage, Vector2 KnockBack)
     {
+        damage *= 0.9F + 0.1F * GS.dayCnt;
         health -= damage;
         body.AddForce(KnockBack, ForceMode2D.Impulse);
         PE.Hurt();
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GS = FindObjectOfType<GameSystem>();
         body = GetComponent<Rigidbody2D>();
         PM = GetComponent<PlayerMoving>();
         PE = GetComponent<PlayerEffects>();

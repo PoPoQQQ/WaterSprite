@@ -10,9 +10,11 @@ public class PlayerAttack : MonoBehaviour
     public GameObject bulletPrefab, bombPrefab;
     float lastShootTime = -1123F, lastBombTime = -1234F;
     Player pl;
+    GameSystem GS;
 
     void Start()
     {
+        GS = FindObjectOfType<GameSystem>();
         pl = GetComponent<Player>();
     }
 
@@ -28,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
         dir.Normalize();
 
         GameObject bullet = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = dir * 8F;
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * 12F;
         bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
         pl.CostHealth(shootCost * pl.BulletConsumeRate());
@@ -56,6 +58,8 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GS.dayOrNight == GameSystem.DayOrNight.Day)
+            return;
         if (Input.GetMouseButton(0))
             TryShoot();
         if (Input.GetMouseButton(1))
