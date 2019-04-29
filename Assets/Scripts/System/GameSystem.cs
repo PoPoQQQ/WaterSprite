@@ -46,6 +46,5 @@ public class GameSystem : MonoBehaviour
             NightStart();
         if (Input.GetKeyDown(KeyCode.O))
             DayStart();
-
     }
 }
