@@ -42,7 +42,7 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.I))
             NightStart();
         if (Input.GetKeyDown(KeyCode.O))
             DayStart();
