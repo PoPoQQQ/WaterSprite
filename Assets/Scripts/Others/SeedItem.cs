@@ -22,6 +22,7 @@ public class SeedItem : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        StartCoroutine(SeedItemCoroutine());
         startPos = transform.position;
     }
     public static void Generate(Vector3 pos, Plant.Type type)
@@ -30,6 +31,20 @@ public class SeedItem : MonoBehaviour
             return;
         GameObject prefab = Resources.Load<GameObject>("Prefab/SeedItem");
         GameObject obj = GameObject.Instantiate(prefab, pos, Quaternion.identity);
+        Sprite s = null;
+        switch(type)
+        {
+            case Plant.Type.Water:
+                s = Resources.Load<Sprite>("Seeds/seed1");
+                break;
+            case Plant.Type.Attack:
+                s = Resources.Load<Sprite>("Seeds/seed2");
+                break;
+            case Plant.Type.Consume:
+                s = Resources.Load<Sprite>("Seeds/seed3");
+                break;
+        }
+        obj.GetComponent<SpriteRenderer>().sprite = s;
         obj.GetComponent<SeedItem>().seedType = type;
     }
     // Update is called once per frame

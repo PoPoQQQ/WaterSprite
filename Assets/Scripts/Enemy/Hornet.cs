@@ -93,7 +93,7 @@ public class Hornet : MonoBehaviour
     private void OnDestroy()
     {
         float r = Random.Range(0F, 1F);
-        if(r<=0.2F)
+        if(r<= 0.3F)
             SeedItem.Generate(transform.position, Plant.Type.Attack);
     }
     void Update()
