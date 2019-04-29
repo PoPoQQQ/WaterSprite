@@ -10,11 +10,14 @@ public class TreeMan : MonoBehaviour
     float speed = 600F;
     int vecCnt = 0;
 
+    Animator animator;
+
     IEnumerator ChangeVecCoroutine()
     {
         yield return new WaitForSeconds(Random.Range(0F, 2F));
         while(true)
         {
+            UpdateDirection();
             SetVec();
             yield return new WaitForSeconds(0.6F);
 
@@ -48,6 +51,7 @@ public class TreeMan : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         StartCoroutine(ChangeVecCoroutine());
     }
 
@@ -56,7 +60,13 @@ public class TreeMan : MonoBehaviour
         body.AddForce(vec);
     }
 
-    // Update is called once per frame
+    void UpdateDirection()
+    {
+        Vector2 dir = player.transform.position - transform.position;
+        animator.SetFloat("X", dir.x);
+        animator.SetFloat("Y", dir.y);
+    }
+
     void Update()
     {
         
