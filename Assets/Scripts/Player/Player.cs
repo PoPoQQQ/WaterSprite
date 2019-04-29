@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     void ChangeMaxState(int _maxState)
     {
         maxState = _maxState;
+        bar.updateHealth(_maxState*100, health);
     }
     void ChangeState(int _state)
     {
@@ -72,6 +73,8 @@ public class Player : MonoBehaviour
     public void AddHealth(float h)
     {
         health += h;
+        if (health > 300)
+            health = 300;
         Check();
     }
     // Start is called before the first frame update

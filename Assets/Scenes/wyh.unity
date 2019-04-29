@@ -1688,6 +1688,14 @@ MonoBehaviour:
   age: 0
   fruit: 0
   watered: 0
+  sprout: {fileID: 0}
+  waterfruit: {fileID: 0}
+  waterpluck: {fileID: 0}
+  attackfruit: {fileID: 0}
+  attackpluck: {fileID: 0}
+  consumefruit: {fileID: 0}
+  consumepluck: {fileID: 0}
+  wither: {fileID: 0}
 --- !u!58 &1623547057
 CircleCollider2D:
   m_ObjectHideFlags: 0
