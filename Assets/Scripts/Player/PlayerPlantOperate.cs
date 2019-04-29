@@ -7,6 +7,7 @@ public class PlayerPlantOperate : MonoBehaviour
     public Dictionary<Plant.Type, int> seedCnt;
     public float waterCost = 30F;
     public float waterRecovery = 30F;
+    public ScrollBar scrollBar;
     Player pl;
     Plant HLP() => PlantUIController.highlightedPlant;
 
@@ -60,10 +61,14 @@ public class PlayerPlantOperate : MonoBehaviour
 
             case Plant.Type.Attack:
                 pl.atkBuffCnt++;
+                scrollBar.SetATK(pl.atkBuffCnt);
+                scrollBar.ShowScroll();
                 break;
 
             case Plant.Type.Consume:
                 pl.csmBuffCnt++;
+                scrollBar.SetCOST(pl.csmBuffCnt);
+                scrollBar.ShowScroll();
                 break;
         }
     }

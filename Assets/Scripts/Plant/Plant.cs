@@ -39,6 +39,7 @@ public class Plant : MonoBehaviour
         }
         if(type == Type.Withered)
         {
+            wither.SetActive(true);
             return;
         }
         if(type == Type.Water)
