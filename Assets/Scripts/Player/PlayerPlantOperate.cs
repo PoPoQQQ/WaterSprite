@@ -66,7 +66,7 @@ public class PlayerPlantOperate : MonoBehaviour
 
             case Plant.Type.Consume:
                 pl.csmBuffCnt++;
-                scrollBar.SetCOST(pl.atkBuffCnt);
+                scrollBar.SetCOST(pl.csmBuffCnt);
                 scrollBar.ShowScroll();
                 break;
         }
