@@ -39,7 +39,7 @@ public class SplitedGhost : MonoBehaviour
     private void OnDestroy()
     {
         float r = Random.Range(0F, 1F);
-        if (r <= 0.05F)
+        if (r <= 0.1F)
             SeedItem.Generate(transform.position, Plant.Type.Consume);
     }
     void UpdateDirection()
