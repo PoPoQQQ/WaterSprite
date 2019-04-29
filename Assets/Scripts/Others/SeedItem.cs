@@ -6,6 +6,7 @@ public class SeedItem : MonoBehaviour
 {
     public Plant.Type seedType;
     public GameObject player;
+    static GameObject prefab;
     Vector3 startPos;
     float phase = 0F;
     IEnumerator SeedItemCoroutine()
@@ -13,7 +14,6 @@ public class SeedItem : MonoBehaviour
         yield return new WaitForSeconds(1F);
         DOTween.To(() => phase, x => phase = x, 1F, 0.5F);
         yield return new WaitForSeconds(0.5F);
-        yield return new WaitForSeconds(1F);
         player.GetComponent<PlayerPlantOperate>().AddSeed(seedType);
         Destroy(gameObject);
     }
@@ -29,7 +29,8 @@ public class SeedItem : MonoBehaviour
     {
         if (FindObjectOfType<PlayerPlantOperate>().seedCnt[type] >= 99)
             return;
-        GameObject prefab = Resources.Load<GameObject>("Prefab/SeedItem");
+        if(prefab == null)
+            prefab = Resources.Load<GameObject>("Prefab/SeedItem");
         GameObject obj = GameObject.Instantiate(prefab, pos, Quaternion.identity);
         Sprite s = null;
         switch(type)

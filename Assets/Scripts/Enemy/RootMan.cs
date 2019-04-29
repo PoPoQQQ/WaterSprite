@@ -60,6 +60,8 @@ public class RootMan : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (GetComponent<EnemyController>().health > 0)
+            return;
         if (Random.Range(0F, 1F) <= 0.2F)
             SeedItem.Generate(transform.position, Plant.Type.Water);
     }

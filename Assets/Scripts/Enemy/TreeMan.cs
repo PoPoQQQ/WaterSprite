@@ -63,6 +63,8 @@ public class TreeMan : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (GetComponent<EnemyController>().health > 0)
+            return;
         if (GS.dayCnt == 1)
         {
             if (Random.Range(0F, 1F) <= 0.5F)
