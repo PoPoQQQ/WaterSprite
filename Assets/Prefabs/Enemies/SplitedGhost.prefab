@@ -99,7 +99,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5158719966491052677
+--- !u!114 &8088989326549251248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,10 +108,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8232091193471336670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38e2a35fec397d40a5163e1f7f5e0f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5faf18896f460c0438d3d283c3efe6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SplitedGost: {fileID: 0}
+  angle: 0
 --- !u!1001 &7840589750840861871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +203,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LinearDrag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: collideKnockBack
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: health
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5663667078644130299, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
