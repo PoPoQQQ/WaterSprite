@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    float damage = 1F;
-
-
+    public float damage = 5F;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +19,14 @@ public class WaterBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
-            var ec = collision.gameObject.GetComponent<EnemyController>();
-            if (ec)
-                ec.Damage(damage);
+            var pl = collision.gameObject.GetComponent<Player>();
+            if (pl)
+                pl.Damage(damage);
         }
 
+        Debug.Log("Collide!");
         Destroy(gameObject);
     }
 }
