@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: W0
+  m_Name: A2
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -4807771224990051122, guid: 7637cd95856cf1d4bab7e1094d6aa471,
+      value: {fileID: 4514662478508431794, guid: 7a367753034c13c47a57d8fb724d4338,
         type: 3}
     - time: 0.1
-      value: {fileID: 3254977065947363974, guid: 7637cd95856cf1d4bab7e1094d6aa471,
+      value: {fileID: 4776750540587111996, guid: 7a367753034c13c47a57d8fb724d4338,
         type: 3}
     - time: 0.2
-      value: {fileID: 2979329318131706014, guid: 7637cd95856cf1d4bab7e1094d6aa471,
+      value: {fileID: 7644223547665806966, guid: 7a367753034c13c47a57d8fb724d4338,
         type: 3}
     - time: 0.3
-      value: {fileID: 73421018959813489, guid: 7637cd95856cf1d4bab7e1094d6aa471, type: 3}
+      value: {fileID: 4419811290175239470, guid: 7a367753034c13c47a57d8fb724d4338,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -49,10 +50,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -4807771224990051122, guid: 7637cd95856cf1d4bab7e1094d6aa471, type: 3}
-    - {fileID: 3254977065947363974, guid: 7637cd95856cf1d4bab7e1094d6aa471, type: 3}
-    - {fileID: 2979329318131706014, guid: 7637cd95856cf1d4bab7e1094d6aa471, type: 3}
-    - {fileID: 73421018959813489, guid: 7637cd95856cf1d4bab7e1094d6aa471, type: 3}
+    - {fileID: 4514662478508431794, guid: 7a367753034c13c47a57d8fb724d4338, type: 3}
+    - {fileID: 4776750540587111996, guid: 7a367753034c13c47a57d8fb724d4338, type: 3}
+    - {fileID: 7644223547665806966, guid: 7a367753034c13c47a57d8fb724d4338, type: 3}
+    - {fileID: 4419811290175239470, guid: 7a367753034c13c47a57d8fb724d4338, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

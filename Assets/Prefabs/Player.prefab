@@ -132,6 +132,18 @@ MonoBehaviour:
     type: 3}
   bombPrefab: {fileID: 6222997492996326210, guid: 5bbfabfdf2a6a224996d440a451c2a86,
     type: 3}
+--- !u!114 &5507566176351283948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487303034973714236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a41525934365d4dbdcde73428fd980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9127569985150274083
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     void ChangeState(int _state)
     {
         state = _state;
+        GetComponentInChildren<Animator>().SetInteger("Form", _state);
     }
 
     void Check()
