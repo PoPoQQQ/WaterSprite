@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
         PM = GetComponent<PlayerMoving>();
         PE = GetComponent<PlayerEffects>();
         bar = FindObjectOfType<HPBar>();
+        bar.updateHealth(health);
     }
 
     // Update is called once per frame

@@ -17,13 +17,20 @@ public class FadingCurtain : MonoBehaviour
         image.color = col;
     }
 
-    void setFading(bool active, int step)
+    public void exchange(float sec)
     {
-        if(active)
-            StartCoroutine(fadingReverse(step));
-        else
-            StartCoroutine(fading(step));
+        StartCoroutine(exchangeIe(sec));
     }
+
+
+
+    IEnumerator exchangeIe(float sec)
+    {
+        yield return StartCoroutine(fadingReverse(70));
+        yield return new WaitForSeconds(sec);
+        yield return StartCoroutine(fading(70));
+        
+    } 
 
 
     IEnumerator fading(int step)
@@ -54,10 +61,10 @@ public class FadingCurtain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("o"))
+        /* if(Input.GetKeyDown("o"))
             setFading(false, 70);
         if(Input.GetKeyDown("p"))
-            setFading(true, 70);
+            setFading(true, 70);*/
         
     }
 }

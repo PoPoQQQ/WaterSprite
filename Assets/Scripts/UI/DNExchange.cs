@@ -8,6 +8,7 @@ public class DNExchange : MonoBehaviour
     // Start is called before the first frame update
     public GameObject dayIcon;
     public GameObject nightIcon;
+    public FadingCurtain curtain;
 
     public Text dayCount;
 
@@ -19,6 +20,7 @@ public class DNExchange : MonoBehaviour
 
     public void setNightIcon()
     {
+        curtain.exchange(.1f);
         dayIcon.SetActive(false);
         nightIcon.SetActive(true);
     }
