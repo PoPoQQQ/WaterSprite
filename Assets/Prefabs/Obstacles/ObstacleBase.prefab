@@ -24,6 +24,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleBase
       objectReference: {fileID: 0}
+    - target: {fileID: 318052971299261293, guid: 0dc2cf02a79656540afeae44acea927a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,6 +93,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053275265296994023, guid: 0dc2cf02a79656540afeae44acea927a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5471214638089323771, guid: 0dc2cf02a79656540afeae44acea927a, type: 3}
