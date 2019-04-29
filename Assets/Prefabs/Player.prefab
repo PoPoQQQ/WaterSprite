@@ -84,7 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5550798749709994fac91694edcd464d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 3582716033571368454}
 --- !u!114 &5953444080182775745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 40
   health: 50
+  bar: {fileID: 0}
 --- !u!114 &6282304653736456877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 0.5
+  bombSpeed: 5
   offsetY: 1
+  shootCost: 0.5
+  bombCost: 5
   bulletPrefab: {fileID: 6222997492996326210, guid: b51ceb03feee9294ab71bcb9f6996edb,
+    type: 3}
+  bombPrefab: {fileID: 6222997492996326210, guid: 5bbfabfdf2a6a224996d440a451c2a86,
     type: 3}
 --- !u!1 &9127569985150274083
 GameObject:

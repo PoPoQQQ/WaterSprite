@@ -9,8 +9,7 @@ public class WaterBullet : MonoBehaviour
     IEnumerator AddColliderCoroutine()
     {
         yield return new WaitForSeconds(0.1F);
-        var c = gameObject.AddComponent<CapsuleCollider2D>();
-        c.size = new Vector2(0.8F, 0.35F);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
     }
 
     // Start is called before the first frame update
