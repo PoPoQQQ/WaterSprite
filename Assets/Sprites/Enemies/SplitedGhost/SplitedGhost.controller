@@ -11,7 +11,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6161010376702752754}
-    m_Position: {x: 355.29626, y: 106.31958, z: 0}
+    m_Position: {x: 350, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ghost
+  m_Name: SplitedGhost
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ghost
+  m_Name: SplitedGhost
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: X
@@ -91,7 +91,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 851ae07f4898bce4ea21d2f67fcf0eff, type: 2}
+    m_Motion: {fileID: 7400000, guid: 02d3f5cb73733fa48971637f5dc3868a, type: 2}
     m_Threshold: 0
     m_Position: {x: -1, y: 1}
     m_TimeScale: 1
@@ -99,7 +99,7 @@ BlendTree:
     m_DirectBlendParameter: Direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 307070553abd45c49ab731616cdc1f94, type: 2}
+    m_Motion: {fileID: 7400000, guid: 7cf1ed210cbb0ce45a7525c847df1081, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: -1, y: -1}
     m_TimeScale: 1
@@ -107,7 +107,7 @@ BlendTree:
     m_DirectBlendParameter: Direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 38dc44d3c9a50264b87920b51d2b2b0a, type: 2}
+    m_Motion: {fileID: 7400000, guid: 908b71eee5021bb499e797530c13d473, type: 2}
     m_Threshold: 0.6666667
     m_Position: {x: 1, y: -1}
     m_TimeScale: 1
@@ -115,7 +115,7 @@ BlendTree:
     m_DirectBlendParameter: Direction
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 487a6d7601322c84aaead4419112387b, type: 2}
+    m_Motion: {fileID: 7400000, guid: 57a08b0d4d037b1459efd81a0cc3b6ab, type: 2}
     m_Threshold: 1
     m_Position: {x: 1, y: 1}
     m_TimeScale: 1

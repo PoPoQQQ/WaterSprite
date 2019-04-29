@@ -17,6 +17,7 @@ public class SplitedGhost : MonoBehaviour
     {
         while (true)
         {
+            UpdateDirection();
             endPos = (Vector2)player.transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 2F;
             transform.DOMove(endPos, 2F);
             angle += 0.5F *Mathf.PI;
