@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38e2a35fec397d40a5163e1f7f5e0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SplitedGost: {fileID: 0}
+  sg: {fileID: 8232091193471336670, guid: 4b14392536132c24587e704db5c48f0d, type: 3}
 --- !u!1001 &7840589750840861871
 PrefabInstance:
   m_ObjectHideFlags: 0

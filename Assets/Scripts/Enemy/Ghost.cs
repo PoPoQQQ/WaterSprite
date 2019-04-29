@@ -8,8 +8,8 @@ public class Ghost : MonoBehaviour
     Vector2 dPos;
     Rigidbody2D body;
     GameObject player;
-    public GameObject SplitedGost;
-    float speed = 500F;
+    public GameObject sg;
+    float speed = 700F;
     float phase,angle;
     float gamma, theta;
     bool moving = false;
@@ -29,7 +29,7 @@ public class Ghost : MonoBehaviour
 
             moving = false;
             body.drag = 10F;
-            yield return new WaitForSeconds(0.5F);
+            yield return new WaitForSeconds(0.1F);
 
         }
     }
@@ -52,11 +52,25 @@ public class Ghost : MonoBehaviour
         UpdateVec();
         body.AddForce(vec * speed);
     }
+
+    void Split()
+    {
+        for(int i = 0;i<4;i++)
+        {
+            float a = 0.5F * i * Mathf.PI;
+            var o = GameObject.Instantiate(sg, transform.position + new Vector3(Mathf.Cos(a), Mathf.Sin(a)) * 0.5F, Quaternion.identity);
+            o.GetComponent<SplitedGhost>().angle = a;
+        }
+        Destroy(gameObject);
+    }
+
     void ResetVec()
     {
         dPos = player.transform.position - transform.position;
+        if (dPos.magnitude <= 3F)
+            Split();
         angle = Mathf.Atan2(dPos.y, dPos.x);
-        float randAngle = Random.Range(0.005F, 0.007F);
+        float randAngle = Random.Range(0.5F, 0.7F);
         if (moveCnt % 2 == 1)
             randAngle = -randAngle;
         moveCnt++;
@@ -66,8 +80,8 @@ public class Ghost : MonoBehaviour
     {
         if (moving)
         {
-            gamma = Mathf.Max(0F, Mathf.PI * (phase-0.3F));
-            if (moveCnt % 2 == 0)
+            gamma = Mathf.Max(0F, Mathf.PI * (phase-0.5F));
+            if (moveCnt % 2 == 1)
                 gamma = -gamma;
             theta = angle + gamma;
             vec = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta));
