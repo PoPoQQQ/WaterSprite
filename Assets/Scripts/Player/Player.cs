@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     Rigidbody2D body;
     PlayerMoving PM;
     PlayerEffects PE;
+
+    public HPBar bar;
     
 
     void GameOver()
@@ -73,6 +75,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bar.updateHealth(health);
     }
 }
