@@ -51,9 +51,10 @@ public class PlayerPlantOperate : MonoBehaviour
         if (HLP().fruit <= 0)
             return;
         Debug.Log("Collect!");
-        Debug.Log(HLP().type);
+        Plant.Type type = HLP().type;
+        Debug.Log(type);
         HLP().Collect();
-        switch(HLP().type)
+        switch(type)
         {
             case Plant.Type.Water:
                 pl.AddHealth(waterRecovery);
