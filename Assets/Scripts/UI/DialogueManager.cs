@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueManager : MonoBehaviour
@@ -23,25 +24,26 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         dialogues = new Queue<string>();
-        dialogueOver = false;
-        end = false;
+        dialogueOver = true;
+        end = true;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach(string sentence in sentences)
+        /* foreach(string sentence in sentences)
             dialogues.Enqueue(sentence);
         showsentence = showText(dialogues.Dequeue());
-        StartCoroutine(showsentence);
+        StartCoroutine(showsentence);*/
+        showCover();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        /* if(Input.GetKeyDown(KeyCode.Space))
         {
             if(!dialogueOver)
             {
@@ -56,7 +58,7 @@ public class DialogueManager : MonoBehaviour
                 showCover();
                 end = true;
             }
-        }
+        }*/
         
         
     }
@@ -80,6 +82,11 @@ public class DialogueManager : MonoBehaviour
             dialogue.text += letter;
             yield return null;
         }
+    }
+
+    public void load()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
 
