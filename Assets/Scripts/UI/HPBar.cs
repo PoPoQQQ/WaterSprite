@@ -35,7 +35,7 @@ public class HPBar : MonoBehaviour
     {
         bar1.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
         bar2.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
-        number.text = (string)((int)currentHealth + " / " + (int)fullHealth);
+        number.text = (string)(Mathf.Ceil(currentHealth) + " / " + (int)fullHealth);
     }
 
     

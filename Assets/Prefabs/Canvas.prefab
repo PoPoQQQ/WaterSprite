@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayIcon: {fileID: 1062075981}
   nightIcon: {fileID: 917533144}
+  curtain: {fileID: 2028475146}
   dayCount: {fileID: 599238824}
 --- !u!1 &917533144
 GameObject:
@@ -697,7 +698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2028475145
 RectTransform:
   m_ObjectHideFlags: 0
