@@ -208,6 +208,11 @@ PrefabInstance:
       propertyPath: ending
       value: 
       objectReference: {fileID: 1547088676}
+    - target: {fileID: 5953444080182775745, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
+        type: 3}
+      propertyPath: curtain
+      value: 
+      objectReference: {fileID: 108013351}
     - target: {fileID: 3246717468187267112, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
         type: 3}
       propertyPath: scrollBar
@@ -296,6 +301,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fe20571ca3bd34dad0ebe980536506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &108013351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2028475144, guid: 42adc353d89c7854ca3e92258db805f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1453959439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195177785
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +465,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
