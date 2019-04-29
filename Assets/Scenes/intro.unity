@@ -150,17 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sentences:
-  - qweqweqweqweqweqwee
-  - '123123321
-
-    123123
-
-    1233'
-  - 'werewr
-
-    qweqwewqeqwe
-
-    aasd'
+  - 
+  - 
+  - 
   dialogue: {fileID: 656387653}
   nextButton: {fileID: 1618753978}
   dialogueOver: 0
