@@ -28,11 +28,18 @@ public class Hornet : MonoBehaviour
         ResetVec();
     }
 
+    void UpdateDirection()
+    {
+        animator.SetFloat("X", dPos.x);
+        animator.SetFloat("Y", dPos.y);
+    }
+
     private void FixedUpdate()
     {
         UpdateVRate();
         body.AddForce(vec * vRate);
     }
+
     void ResetVec()
     {
         dPos = player.transform.position - transform.position;
@@ -65,7 +72,9 @@ public class Hornet : MonoBehaviour
             {
                 upward = false;
                 if (((Vector2)(player.transform.position - transform.position)).magnitude <= 4.5F)
+                {
                     Shoot();
+                }
             }
         }
         else
@@ -74,16 +83,11 @@ public class Hornet : MonoBehaviour
             if (vRate < 0)
             {
                 upward = true;
+                UpdateDirection();
                 ResetVec();
             }
         }
 
-    }
-
-    void UpdateDirection()
-    {
-        animator.SetFloat("X", dPos.x);
-        animator.SetFloat("Y", dPos.y);
     }
 
     void Update()
