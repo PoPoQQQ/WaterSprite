@@ -14,14 +14,14 @@ public class DNExchange : MonoBehaviour
 
     public void setDayIcon()
     {
-        curtain.exchange(.1f, true);
+        curtain.exchange(.1f, false);
         dayIcon.SetActive(true);
         nightIcon.SetActive(false);
     }
 
     public void setNightIcon()
     {
-        curtain.exchange(.1f, false);
+        curtain.exchange(.1f, true);
         dayIcon.SetActive(false);
         nightIcon.SetActive(true);
     }

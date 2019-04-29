@@ -9,7 +9,7 @@ public class Plant : MonoBehaviour
     public int age = 0; // age == 0 means it's a seed.
     public int fruit = 0;
     public bool watered = false;
-
+    
     public GameObject soil, wateredsoil, sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck, wither;
 
     public void SetAnimationVariables()
@@ -70,6 +70,13 @@ public class Plant : MonoBehaviour
 
     }
 
+    int MaxAge()
+    {
+        if (type == Type.Attack || type == Type.Consume)
+            return 1;
+        return 3;
+    }
+
     public void Remove()
     {
         age = 0;
@@ -94,7 +101,7 @@ public class Plant : MonoBehaviour
         if (!watered)
             return;
         age++;
-        if (age > 3)
+        if (age > MaxAge())
         {
             Wither();
             return;
@@ -106,6 +113,11 @@ public class Plant : MonoBehaviour
     public void Collect()
     {
         fruit = 0;
+        if (age == MaxAge())
+        {
+            Wither();
+            return;
+        }
         SetAnimationVariables();
     }
 

@@ -23,16 +23,16 @@ public class GameSystem : MonoBehaviour
     public GameObject treeMan, rootMan, hornet, ghost,nxtEnemy;
     int CalcWaveCnt()
     {
-        if (dayCnt <= 3)
+        if (dayCnt <= 4)
             return 2;
 
-        if (dayCnt <= 10)
+        if (dayCnt <= 11)
             return 3;
         return 4;
     }
     int CalcEnmCnt(int wave)
     {
-        return (int)(1.0F + Mathf.Sqrt((float)dayCnt) + 0.6F * wave);
+        return (int)(0.4F + Mathf.Sqrt((float)dayCnt) + 0.6F * wave);
     }
 
     GameObject RandEnemy()
@@ -82,9 +82,8 @@ public class GameSystem : MonoBehaviour
             }
             while(EnemyController.enemyCnt >0)
                 yield return new WaitForSeconds(1F);
-            yield return new WaitForSeconds(2F);
+            yield return new WaitForSeconds(1.5F);
         }
-        yield return new WaitForSeconds(2F);
         DayStart();
     }
     void SwitchBGM(AudioSource o, AudioSource i)
@@ -122,6 +121,7 @@ public class GameSystem : MonoBehaviour
         dayOrNight = DayOrNight.Night;
         SwitchBGM(morning, night);
         dayNightManager.setNightIcon();
+        StartCoroutine(NightCoroutine());
     }
     // Update is called once per frame
     void Update()

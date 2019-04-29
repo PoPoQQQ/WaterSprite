@@ -35,14 +35,15 @@ public class SplitedGhost : MonoBehaviour
         StartCoroutine(ChangeVecCoroutine());
     }
 
-
+    static int dropCnt = 0;
     private void OnDestroy()
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
         float r = Random.Range(0F, 1F);
-        if (r <= 0.1F)
+        if (r <= 0.1F || dropCnt == 0)
             SeedItem.Generate(transform.position, Plant.Type.Consume);
+        dropCnt++; 
     }
     void UpdateDirection()
     {

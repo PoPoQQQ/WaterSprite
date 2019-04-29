@@ -90,13 +90,15 @@ public class Hornet : MonoBehaviour
 
     }
 
+    static int dropCnt = 0;
     private void OnDestroy()
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
         float r = Random.Range(0F, 1F);
-        if(r<= 0.3F)
+        if(r<= 0.3F || dropCnt == 0)
             SeedItem.Generate(transform.position, Plant.Type.Attack);
+        dropCnt++;
     }
     void Update()
     {

@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
-  health: 50
+  health: 100
   state: 1
   maxState: 1
   atkBuffCnt: 0
@@ -95,6 +95,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 438feb04befcac84fa437bf4103dd3d7, type: 3}
   - {fileID: 21300000, guid: 86ddaf804348fc04d9692bab99fc0073, type: 3}
   - {fileID: 21300000, guid: a2a9c74a4581c154f86a0904358fb243, type: 3}
+  ending: {fileID: 0}
+  curtain: {fileID: 0}
 --- !u!114 &6282304653736456877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,12 +240,12 @@ PrefabInstance:
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.02
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
