@@ -19,6 +19,8 @@ public class GameSystem : MonoBehaviour
     public AudioSource morning;
     public AudioSource night;
 
+    public DNExchange dayNightManager;
+
     void SwitchBGM(AudioSource o, AudioSource i)
     {
         o.DOFade(0, 3f);
@@ -32,19 +34,22 @@ public class GameSystem : MonoBehaviour
         plants = FindObjectsOfType<Plant>();
     }
 
-    void DayStart()
+    public void DayStart()
     {
+        dayNightManager.setDayIcon();
         if (dayOrNight == DayOrNight.Day)
             return;
         dayCnt++;
+        dayNightManager.setDayCnt(dayCnt);
         dayOrNight = DayOrNight.Day;
         foreach (var i in plants)
             i.Refresh();
         SwitchBGM(night, morning);
     }
 
-    void NightStart()
+    public void NightStart()
     {
+        dayNightManager.setNightIcon();
         if (dayOrNight == DayOrNight.Night)
             return;
         dayOrNight = DayOrNight.Night;
