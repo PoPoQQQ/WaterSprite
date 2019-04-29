@@ -15,10 +15,9 @@ public class PlayerPlantOperate : MonoBehaviour
     void Start()
     {
         seedCnt = new Dictionary<Plant.Type, int>();
-        seedCnt.Add(Plant.Type.Water, 0);
-        seedCnt.Add(Plant.Type.Attack, 0);
-        seedCnt.Add(Plant.Type.Consume, 0);
-        seedCnt[Plant.Type.Water]++;
+        seedCnt.Add(Plant.Type.Water, 1);
+        seedCnt.Add(Plant.Type.Attack, 1);
+        seedCnt.Add(Plant.Type.Consume, 1);
         pl = GetComponent<Player>();
     }
     public void TryPlant(Plant.Type seedType)
