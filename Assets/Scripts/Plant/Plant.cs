@@ -12,7 +12,7 @@ public class Plant : MonoBehaviour
 
     public void SetAnimationVariables()
     {
-
+        
     }
     public void Remove()
     {

@@ -22,7 +22,6 @@ public class PlantInteractTrigger : MonoBehaviour
         foreach(var i in plants)
         {
             float d = ((Vector2)(i.transform.position - transform.position)).magnitude;
-            Debug.Log(d);
             if(d < minRad)
             {
                 hp = i;
@@ -35,6 +34,7 @@ public class PlantInteractTrigger : MonoBehaviour
                 highLightedPlant.GetComponent<PlantUIController>().DisableHighlight();
             if (hp)
                 hp.GetComponent<PlantUIController>().EnableHighlight();
+            highLightedPlant = hp;
         }
     }
 
