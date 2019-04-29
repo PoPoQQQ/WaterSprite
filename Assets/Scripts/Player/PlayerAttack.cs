@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
 
     void TryShoot()
     {
-        if(Time.time >= lastShootTime + attackSpeed && pl.health >=shootCost)
+        if(Time.time >= lastShootTime + attackSpeed && pl.health > shootCost)
             Shoot();
     }
     void Shoot()
@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
     void TryBomb()
     {
-        if (Time.time >= lastBombTime + bombSpeed && pl.health >= bombCost)
+        if (Time.time >= lastBombTime + bombSpeed && pl.health > bombCost)
             Bomb();
     }
     void Bomb()

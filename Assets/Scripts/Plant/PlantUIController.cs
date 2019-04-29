@@ -12,19 +12,26 @@ public class PlantUIController : MonoBehaviour
     bool isHighlighted = false;
     GameObject UITop, UIBottom;
 
+    static bool UIEnabled = false;
     void UIEnable()
     {
+        if (UIEnabled)
+            return;
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 0F, 0.6F);
         UIBottom.transform.DOMoveY(canvasY + 0F, 0.6F);
+        UIEnabled = true;
     }
 
     void UIDisable()
     {
+        if (!UIEnabled)
+            return;
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 500F, 0.6F);
         UIBottom.transform.DOMoveY(canvasY - 500F, 0.6F);
         uiSelectStatus = UISelectStatus.None;
+        UIEnabled = false;
     }
 
     public void EnableHighlight()

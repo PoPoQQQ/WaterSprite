@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     void Check()
     {
+    	bar.updateHealth(health);
         if (health <= 0F)
             GameOver();
         else
@@ -76,6 +77,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bar.updateHealth(health);
+        
     }
 }
