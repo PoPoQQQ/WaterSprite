@@ -21,6 +21,16 @@ public class GameSystem : MonoBehaviour
         DOTween.Init();
     }
 
+    void DayStart()
+    {
+        dayCnt++;
+        dayOrNight = DayOrNight.Day;
+    }
+
+    void NightStart()
+    {
+        dayOrNight = DayOrNight.Night;
+    }
     // Update is called once per frame
     void Update()
     {
