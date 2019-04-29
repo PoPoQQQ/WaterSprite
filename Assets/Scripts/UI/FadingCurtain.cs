@@ -56,7 +56,7 @@ public class FadingCurtain : MonoBehaviour
         {
             col.a = ((float)(step-i))/((float)step);
             image.color = col;
-            yield return null;
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -67,7 +67,7 @@ public class FadingCurtain : MonoBehaviour
             col.a = ((float)i)/((float)step);
             image.color = col;
             //Debug.Log(col.a);
-            yield return null;
+            yield return new WaitForSeconds(0.01f);
         }
     }
     // Start is called before the first frame update

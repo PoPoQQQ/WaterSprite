@@ -217,7 +217,8 @@ PrefabInstance:
       propertyPath: scrollBar
       value: 
       objectReference: {fileID: 1879694595}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5507566176351283948, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5, type: 3}
 --- !u!114 &77528841 stripped
 MonoBehaviour:
@@ -826,6 +827,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 589660114}
+    - target: {fileID: 2028475145, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028475145, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.599976
+      objectReference: {fileID: 0}
     - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
       propertyPath: player
       value: 
