@@ -669,6 +669,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &720683265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5079746085004996309, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &845495707 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 957823415, guid: 42adc353d89c7854ca3e92258db805f2,
@@ -693,6 +699,18 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1160231401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4321694760878187884, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1215057611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5474940913258359522, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1453959439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,6 +845,22 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1989919911}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: barrierDoor
+      value: 
+      objectReference: {fileID: 1215057611}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: close
+      value: 
+      objectReference: {fileID: 1160231401}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: open
+      value: 
+      objectReference: {fileID: 720683265}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
 --- !u!224 &1467952253 stripped
@@ -983,6 +1017,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followingSpeed: 5
+--- !u!1 &1989919911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6487303034973714236, guid: 7b6ff2e1f6ed5c5419bc596f552cc9f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 38310445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6236440607713001512
 PrefabInstance:
   m_ObjectHideFlags: 0

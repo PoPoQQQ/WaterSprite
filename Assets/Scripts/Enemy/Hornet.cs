@@ -96,9 +96,16 @@ public class Hornet : MonoBehaviour
         if (GetComponent<EnemyController>().health > 0)
             return;
         float r = Random.Range(0F, 1F);
-        if(r<= 0.3F || dropCnt == 0)
+        float p = 0.2F;
+        if (dropCnt == 0)
+            p = 1F;
+        if (dropCnt <= 2)
+            p = 0.3F;
+        if(r <= p)
+        {
             SeedItem.Generate(transform.position, Plant.Type.Attack);
-        dropCnt++;
+            dropCnt++;
+        }
     }
     void Update()
     {
