@@ -1,38 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class RootMan : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
+    Vector2 dPos;
     Rigidbody2D body;
     GameObject player;
-    float speed = 300F;
-
+    float speed = 500F;
+    float theta = 0F, maxDelta;
+    bool upward = false;
     Animator animator;
 
-    IEnumerator ChangeVecCoroutine()
-    {
-        yield return new WaitForSeconds(Random.Range(0F, 2F));
-        while(true)
-        {
-            UpdateDirection();
-            SetVec();
-            yield return 0;
-        }
-    }
 
-    void SetVec()
-    {
-        if (!player)
-        {
-            vec = Vector2.zero;
-            return;
-        }
-        Vector2 dPos = player.transform.position - transform.position;
-        dPos.Normalize();
-        vec = dPos * speed;
-    }
 
 
     // Start is called before the first frame update
@@ -41,19 +23,45 @@ public class RootMan : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        StartCoroutine(ChangeVecCoroutine());
+
+        theta = Random.Range(-0.5F * Mathf.PI, 0.5F * Mathf.PI);
+        upward = Random.Range(0F, 1F) < 0.5F;
+          
     }
 
     private void FixedUpdate()
     {
+        dPos = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(dPos.y, dPos.x);
+        angle += theta;
+        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
+        UpdateDirection();
+        UpdateTheta();
         body.AddForce(vec);
+    }
+
+    void UpdateTheta()
+    {
+        maxDelta = Mathf.Min(Mathf.PI * 0.5F, dPos.magnitude * 1.0F);
+        if(upward)
+        {
+            theta += Time.fixedDeltaTime * 3F;
+            if (theta > maxDelta)
+                upward = false;
+        }
+        else
+        {
+            theta -= Time.fixedDeltaTime * 3F;
+            if (theta < -maxDelta)
+                upward = true;
+        }
+
     }
 
     void UpdateDirection()
     {
-        Vector2 dir = player.transform.position - transform.position;
-        animator.SetFloat("X", dir.x);
-        animator.SetFloat("Y", dir.y);
+        animator.SetFloat("X", dPos.x);
+        animator.SetFloat("Y", dPos.y);
     }
 
     void Update()

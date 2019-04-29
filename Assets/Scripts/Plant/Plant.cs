@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 { 
-    public enum Type { None, Water, Buff, Ultimate, Withered};
+    public enum Type { None, Water, Attack, Consume, Withered};
     public Type type = Type.None;
     public int age = 0; // age == 0 means it's a seed.
     public int fruit = 0;
     public bool watered = false;
 
+    public GameObject sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck;
+
     public void SetAnimationVariables()
     {
         
     }
+
     public void Remove()
     {
         age = 0;
