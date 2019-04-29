@@ -10,10 +10,12 @@ public class Plant : MonoBehaviour
     public int fruit = 0;
     public bool watered = false;
 
-    public GameObject sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck, wither;
+    public GameObject soil, wateredsoil, sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck, wither;
 
     public void SetAnimationVariables()
     {
+        soil.SetActive(true);
+        wateredsoil.SetActive(false);
         sprout.SetActive(false);
         waterfruit.SetActive(false);
         waterpluck.SetActive(false);
@@ -28,6 +30,11 @@ public class Plant : MonoBehaviour
         if(age == 0)
         {
             sprout.SetActive(true);
+            if(watered)
+            {
+                soil.SetActive(false);
+                wateredsoil.SetActive(true);
+            }
             return;
         }
         if(type == Type.Withered)
