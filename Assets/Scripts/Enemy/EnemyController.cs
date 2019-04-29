@@ -7,11 +7,16 @@ public class EnemyController : MonoBehaviour
     public float health = 10F;
     public float collideDamage = 5F;
     public float collideKnockBack = 24F;
+    public static int enemyCnt = 0;
     Player player;
+    GameSystem GS;
     // Start is called before the first frame update
     void Start()
     {
+        GS = FindObjectOfType<GameSystem>();
         player = FindObjectOfType<Player>();
+        health *= Mathf.Max(1.0F, 0.5F + 0.1F * GS.dayCnt);
+        enemyCnt++;
     }
 
     // Update is called once per frame
@@ -55,5 +60,9 @@ public class EnemyController : MonoBehaviour
             var p = collision.gameObject.GetComponent<Player>();
             p.Damage(collideDamage, (Vector2)(p.transform.position - transform.position).normalized * collideKnockBack);
         }
+    }
+    private void OnDestroy()
+    {
+        enemyCnt--;
     }
 }
