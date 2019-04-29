@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class HPBar : MonoBehaviour
     public GameObject bar2;
     public GameObject allBar;
     public GameObject frontImage;
+
+    public Text number;
 
     float fullHealth;
     float currentHealth;
@@ -32,6 +35,7 @@ public class HPBar : MonoBehaviour
     {
         bar1.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
         bar2.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
+        number.text = (string)((int)currentHealth + " / " + (int)fullHealth);
     }
 
     
@@ -50,7 +54,7 @@ public class HPBar : MonoBehaviour
             allBar.GetComponent<RectTransform>().localScale = new Vector3(currentScale, 1.0f, 1.0f);
             frontWidth += delta;
             frontImage.GetComponent<RectTransform>().sizeDelta = new Vector2(frontWidth,frontHeight);
-            updateNew();
+            
             
         }
         else{
@@ -58,6 +62,7 @@ public class HPBar : MonoBehaviour
         }
         currentHealth = current;
         fullHealth = health;
+        updateNew();
     }
 
     public void updateHealth(float current) => updateHealth(fullHealth, current);
@@ -88,7 +93,13 @@ public class HPBar : MonoBehaviour
 
     void transFormScaleChange(GameObject bar, float change)
     {
+        
         bar.GetComponent<RectTransform>().localScale = new Vector3( bar.GetComponent<RectTransform>().localScale.x + change, 1, 1);
+    }
+
+    void Update()
+    {
+        
     }
 
 }
