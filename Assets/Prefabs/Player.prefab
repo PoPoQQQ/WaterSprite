@@ -39,6 +39,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterCost: 30
   waterRecovery: 30
+  scrollBar: {fileID: 0}
 --- !u!114 &5088028085173583087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +83,18 @@ MonoBehaviour:
   atkBuffCnt: 0
   csmBuffCnt: 0
   bar: {fileID: 0}
+  shadow: {fileID: 752093488573100726}
+  splash: {fileID: 0}
+  splashSprites:
+  - {fileID: 21300000, guid: b5c2a3833cd54c44b885f73a57c0476d, type: 3}
+  - {fileID: 21300000, guid: 403d174bcbe38c742a88eeb919b67241, type: 3}
+  - {fileID: 21300000, guid: 87a4942c637a3fa408fbf1ac542a41fa, type: 3}
+  - {fileID: 21300000, guid: 63ca286062bc82f4ebef98e90a15e0a7, type: 3}
+  - {fileID: 21300000, guid: 6e36d81c3d0fc2b448229b0ce1f8d55c, type: 3}
+  - {fileID: 21300000, guid: e9915041fe83e2548a0996815725e03e, type: 3}
+  - {fileID: 21300000, guid: 438feb04befcac84fa437bf4103dd3d7, type: 3}
+  - {fileID: 21300000, guid: 86ddaf804348fc04d9692bab99fc0073, type: 3}
+  - {fileID: 21300000, guid: a2a9c74a4581c154f86a0904358fb243, type: 3}
 --- !u!114 &6282304653736456877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +321,12 @@ GameObject:
 --- !u!4 &4794369128831270821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6804504468741635153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &752093488573100726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6053275265296994023, guid: 0dc2cf02a79656540afeae44acea927a,
     type: 3}
   m_PrefabInstance: {fileID: 6804504468741635153}
   m_PrefabAsset: {fileID: 0}

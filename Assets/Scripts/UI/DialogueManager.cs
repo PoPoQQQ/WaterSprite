@@ -16,11 +16,15 @@ public class DialogueManager : MonoBehaviour
     IEnumerator showsentence;
 
     public bool dialogueOver;
+    public FadingCurtain cover;
+    public FadingCurtain startMenu;
 
+    bool end;
     void Awake()
     {
         dialogues = new Queue<string>();
         dialogueOver = false;
+        end = false;
     }
 
 
@@ -31,30 +35,40 @@ public class DialogueManager : MonoBehaviour
             dialogues.Enqueue(sentence);
         showsentence = showText(dialogues.Dequeue());
         StartCoroutine(showsentence);
-        /* foreach (string sentence in sentences)
-        {
-            IEnumerator showsentence = showText(sentence);
-            yield return StartCoroutine(showsentence);
-            if(GetKeyDown(KeyCode.Space))
-            {
-                StopCoroutine(showsentence);
-            }
-        }*/
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !dialogueOver)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            string sentence = dialogues.Dequeue();
-            showsentence = showText(sentence);
-            StartCoroutine(showsentence);
-            if(dialogues.Count == 0)
-            dialogueOver = true;
+            if(!dialogueOver)
+            {
+                string sentence = dialogues.Dequeue();
+                showsentence = showText(sentence);
+                StartCoroutine(showsentence);
+                if(dialogues.Count == 0)
+                dialogueOver = true;
+            }
+            else if(dialogueOver && !end)
+            {
+                showCover();
+                end = true;
+            }
         }
         
+        
+    }
+
+    void showCover()
+    {
+        //yield return new WaitForSeconds(2.0f);
+        cover.gameObject.SetActive(true);
+        StartCoroutine(cover.fadingReverse(80));
+        startMenu.gameObject.SetActive(true);
+        StartCoroutine(startMenu.fadingReverse(80));
+
     }
 
 

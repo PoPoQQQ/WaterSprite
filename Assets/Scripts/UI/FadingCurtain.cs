@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class FadingCurtain : MonoBehaviour
 {
 
-    Image image;
-    Color col;
+    public Image image;
+    public Color col;
 
     void Awake()
     {
@@ -17,23 +17,23 @@ public class FadingCurtain : MonoBehaviour
         image.color = col;
     }
 
-    public void exchange(float sec)
+    public void exchange(float sec, bool night)
     {
-        StartCoroutine(exchangeIe(sec));
+        StartCoroutine(exchangeIe(sec,night));
     }
 
 
 
-    IEnumerator exchangeIe(float sec)
+    IEnumerator exchangeIe(float sec, bool night)
     {
         yield return StartCoroutine(fadingReverse(70));
+        Camera.main.GetComponent<MonoBehaviour>().enabled = night;
         yield return new WaitForSeconds(sec);
         yield return StartCoroutine(fading(70));
-        
     } 
 
 
-    IEnumerator fading(int step)
+    public IEnumerator fading(int step)
     {
         for(int i=1;i<=step;i++)
         {
@@ -43,12 +43,13 @@ public class FadingCurtain : MonoBehaviour
         }
     }
 
-    IEnumerator fadingReverse(int step)
+    public IEnumerator fadingReverse(int step)
     {
         for(int i=1;i<=step;i++)
         {
             col.a = ((float)i)/((float)step);
             image.color = col;
+            //Debug.Log(col.a);
             yield return null;
         }
     }

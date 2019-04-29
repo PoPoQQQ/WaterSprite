@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class Player : MonoBehaviour
     public int atkBuffCnt = 0;
     public int csmBuffCnt = 0;
     public HPBar bar;
+    public GameObject shadow;
+    public Image splash;
+    public Sprite[] splashSprites;
+    public Image ending;
     
     public float PlayerDamageRate()
     {
@@ -29,10 +35,29 @@ public class Player : MonoBehaviour
         return Mathf.Pow(0.7F, csmBuffCnt);
     }
 
+    IEnumerator PlaySplash()
+    {
+        int index = 0;
+        while(true)
+        {
+            splash.sprite = splashSprites[index++];
+            if(index == splashSprites.Length)
+                break;
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(1f);
+        ending.DOColor(new Color(1, 1, 1, 1), 3f);
+    }
+
 
     void GameOver()
     {
         Debug.Log("GameOver!");
+        GetComponentInChildren<Animator>().SetBool("Dead", true);
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        shadow.SetActive(false);
+        StartCoroutine(PlaySplash());
+        PM.enabled = false;
     }
 
     void ChangeMaxState(int _maxState)
