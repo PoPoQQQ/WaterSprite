@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
 
     void TryShoot()
     {
-        if(Time.time >= lastShootTime + attackSpeed && pl.health > shootCost)
+        if(Time.time >= lastShootTime + attackSpeed && pl.health > shootCost * pl.BulletConsumeRate())
             Shoot();
     }
     void Shoot()
@@ -31,12 +31,12 @@ public class PlayerAttack : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = dir * 8F;
         bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
-        pl.CostHealth(shootCost);
+        pl.CostHealth(shootCost * pl.BulletConsumeRate());
     }
 
     void TryBomb()
     {
-        if (Time.time >= lastBombTime + bombSpeed && pl.health > bombCost)
+        if (Time.time >= lastBombTime + bombSpeed && pl.health > bombCost * pl.BombConsumeRate())
             Bomb();
     }
     void Bomb()
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         bomb.startPos = transform.position;
         bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lastBombTime = Time.time;
-        pl.CostHealth(bombCost);
+        pl.CostHealth(bombCost * pl.BombConsumeRate());
     }
     
     // Update is called once per frame

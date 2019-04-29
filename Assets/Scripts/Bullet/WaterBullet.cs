@@ -10,7 +10,7 @@ public class WaterBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 10F);
+        Destroy(gameObject, 5F);
     }
 
     // Update is called once per frame

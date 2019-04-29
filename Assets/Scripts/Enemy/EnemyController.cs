@@ -7,10 +7,11 @@ public class EnemyController : MonoBehaviour
     public float health = 10F;
     public float collideDamage = 5F;
     public float collideKnockBack = 24F;
+    Player player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -40,7 +41,7 @@ public class EnemyController : MonoBehaviour
     }
     public void Damage(float damage, Vector2 knockback)
     {
-        health -= damage;
+        health -= damage * player.PlayerDamageRate();
         StartCoroutine(FlashCoroutine());
         GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
     }
