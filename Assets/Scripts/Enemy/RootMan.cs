@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeMan : MonoBehaviour
+public class RootMan : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
     Rigidbody2D body;
     GameObject player;
-    float speed = 600F;
-    int vecCnt = 0;
+    float speed = 300F;
 
     Animator animator;
 
@@ -19,12 +18,7 @@ public class TreeMan : MonoBehaviour
         {
             UpdateDirection();
             SetVec();
-            yield return new WaitForSeconds(0.6F);
-
-            vec = Vector2.zero;
-            body.drag = 10F;
-            yield return new WaitForSeconds(0.4F);
-            body.drag = 1F;
+            yield return 0;
         }
     }
 
@@ -36,13 +30,8 @@ public class TreeMan : MonoBehaviour
             return;
         }
         Vector2 dPos = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dPos.y, dPos.x);
-        vecCnt++;
-        if (vecCnt % 2 == 0)
-            angle += Random.Range(0.5F, 0.7F);
-        else
-            angle -= Random.Range(0.5F, 0.7F);
-        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
+        dPos.Normalize();
+        vec = dPos * speed;
     }
 
 
