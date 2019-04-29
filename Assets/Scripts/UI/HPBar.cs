@@ -22,6 +22,7 @@ public class HPBar : MonoBehaviour
 
     public int updateStep;
 
+
     void Awake()
     {
         fullHealth=100;
@@ -35,7 +36,7 @@ public class HPBar : MonoBehaviour
     {
         bar1.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
         bar2.GetComponent<RectTransform>().localScale = new Vector3( currentHealth/fullHealth, 1, 1);
-        number.text = (string)(Mathf.Ceil(currentHealth) + " / " + (int)fullHealth);
+        number.text = (string)(Mathf.Max(Mathf.Ceil(currentHealth), 0) + " / " + (int)fullHealth);
     }
 
     
