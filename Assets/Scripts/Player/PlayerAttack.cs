@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-	public float attackSpeed = 0.5f, bombSpeed = 5F;
+	public float attackSpeed = 0.5f, bombSpeed = 2F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
     public GameObject bulletPrefab, bombPrefab;

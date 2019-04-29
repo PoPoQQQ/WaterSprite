@@ -9,7 +9,7 @@ public class Ghost : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     public GameObject sg;
-    float speed = 600F;
+    float speed = 680F;
     float phase,angle;
     float gamma, theta;
     bool moving = false;
@@ -68,7 +68,7 @@ public class Ghost : MonoBehaviour
     void ResetVec()
     {
         dPos = player.transform.position - transform.position;
-        if (dPos.magnitude <= 3F)
+        if (dPos.magnitude <= 3.5F)
             Split();
         angle = Mathf.Atan2(dPos.y, dPos.x);
         float randAngle = Random.Range(0.5F, 0.7F);

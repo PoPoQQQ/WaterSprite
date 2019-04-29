@@ -37,9 +37,9 @@ public class GameSystem : MonoBehaviour
 
     GameObject RandEnemy()
     {
-        float tR = 1F, rR = Mathf.Min(0.2F * (dayCnt - 1), 0.8F),
+        float tR = 1F, rR = Mathf.Min(0.16F * (dayCnt - 1), 0.8F),
             hR = Mathf.Min(0.2F * (dayCnt - 3), 1.5F),
-            gR = Mathf.Min(0.1F * (dayCnt - 6), 0.6F);
+            gR = Mathf.Min(0.08F * (dayCnt - 6), 0.5F);
         float tot = tR + rR + hR + gR;
         float r = Random.Range(0F, tot);
         if (r <= tR)
@@ -51,7 +51,15 @@ public class GameSystem : MonoBehaviour
         else 
             return ghost;
     }
-
+    GameObject FirstEnemy()
+    {
+        if (dayCnt <= 2)
+            return treeMan;
+        if (dayCnt <= 4)
+            return Random.Range(0F, 1F) < 0.7F ? rootMan : hornet;
+        
+        return Random.Range(0F,1F) < 0.2F * (dayCnt - 4) ? ghost : rootMan;
+    }
     GameObject FinalEnemy(int wave)
     {
         if (dayCnt == 1)
@@ -61,8 +69,8 @@ public class GameSystem : MonoBehaviour
         if (dayCnt <= 5)
             return Random.Range(0F, 1F) < 0.3F ? rootMan : hornet;
         if(dayCnt <= 8)
-            return Random.Range(0F, 1F) < 0.5F ? ghost : hornet;
-        return ghost;
+            return hornet;
+        return hornet;
 
     }
     IEnumerator NightCoroutine()
@@ -73,6 +81,8 @@ public class GameSystem : MonoBehaviour
             int enmCnt = CalcEnmCnt(i);
             for(int j =1;j<=enmCnt;j++)
             {
+                if (j == 1)
+                    nxtEnemy = FirstEnemy();
                 if (j < enmCnt)
                     nxtEnemy = RandEnemy();
                 else

@@ -41,9 +41,16 @@ public class SplitedGhost : MonoBehaviour
         if (GetComponent<EnemyController>().health > 0)
             return;
         float r = Random.Range(0F, 1F);
-        if (r <= 0.1F || dropCnt == 0)
-            SeedItem.Generate(transform.position, Plant.Type.Consume);
-        dropCnt++; 
+        float p = 0.05F;
+        if (dropCnt == 0)
+            p = 1F;
+        if (dropCnt <= 2)
+            p = 0.1F;
+        if (r <= p)
+        {
+            SeedItem.Generate(transform.position, Plant.Type.Attack);
+            dropCnt++;
+        }
     }
     void UpdateDirection()
     {

@@ -62,7 +62,7 @@ public class RootMan : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        if (Random.Range(0F, 1F) <= 0.2F)
+        if (Random.Range(0F, 1F) <= 0.4)
             SeedItem.Generate(transform.position, Plant.Type.Water);
     }
 
