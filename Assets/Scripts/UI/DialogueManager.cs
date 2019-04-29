@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class DialogueManager : MonoBehaviour
@@ -81,6 +82,11 @@ public class DialogueManager : MonoBehaviour
             dialogue.text += letter;
             yield return null;
         }
+    }
+
+    public void load()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
 
