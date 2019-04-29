@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     void ChangeMaxState(int _maxState)
     {
         maxState = _maxState;
+        bar.updateHealth(_maxState*100, health);
     }
     void ChangeState(int _state)
     {
