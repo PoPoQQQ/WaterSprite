@@ -61,6 +61,7 @@ public class Hornet : MonoBehaviour
         dPos = player.transform.position - transform.position;
         dPos.Normalize();
         var obj = GameObject.Instantiate(hornetBullet, transform.position, Quaternion.identity);
+        obj.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dPos.y, dPos.x) * Mathf.Rad2Deg);
         obj.GetComponent<Rigidbody2D>().velocity = dPos * 7F;
     }
     void UpdateVRate()
