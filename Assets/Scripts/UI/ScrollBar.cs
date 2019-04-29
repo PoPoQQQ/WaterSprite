@@ -72,18 +72,5 @@ public class ScrollBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("j"))
-        {
-            SetATK(5);
-        }
-        if(Input.GetKeyDown("k"))
-        {
-            SetCOST(4);
-        }
-        if(Input.GetKeyDown("l"))
-        {
-            ShowScroll();
-        }
-        //Debug.Log(gameObject.GetComponent<RectTransform>().localPosition);
     }
 }
