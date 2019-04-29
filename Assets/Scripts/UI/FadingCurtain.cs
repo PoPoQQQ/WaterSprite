@@ -10,6 +10,7 @@ public class FadingCurtain : MonoBehaviour
     public Color col;
     public GameObject dayIcon;
     public GameObject nightIcon;
+    public GameObject player;
 
     void Awake()
     {
@@ -32,6 +33,12 @@ public class FadingCurtain : MonoBehaviour
         Camera.main.GetComponent<MonoBehaviour>().enabled = night;
         dayIcon.SetActive(!night);
         nightIcon.SetActive(night);
+        if(night)
+            player.transform.position = new Vector3(-0.23f, 5.82f, 0);
+        else
+            player.transform.position = new Vector3(-0.23f, 9.98f, 0);
+        player.GetComponentInChildren<Animator>().SetFloat("X", 0);
+        player.GetComponentInChildren<Animator>().SetFloat("Y", -1);
         yield return new WaitForSeconds(sec);
         yield return StartCoroutine(fading(70));
     } 
