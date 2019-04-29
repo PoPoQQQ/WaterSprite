@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     void GameOver()
     {
         Debug.Log("GameOver!");
+        GetComponentInChildren<Animator>().SetBool("Dead", true);
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        PM.enabled = false;
     }
 
     void ChangeMaxState(int _maxState)
