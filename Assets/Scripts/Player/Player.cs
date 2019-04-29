@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
 	public float moveSpeed = 40f;
     public float health = 50F;
-    int state = 1;
+    public int state = 1;
+    public int maxState = 1;
     Rigidbody2D body;
     PlayerMoving PM;
     PlayerEffects PE;
@@ -20,8 +21,14 @@ public class Player : MonoBehaviour
         Debug.Log("GameOver!");
     }
 
+    void ChangeMaxState(int _maxState)
+    {
+        maxState = _maxState;
+    }
     void ChangeState(int _state)
     {
+        if (_state > maxState)
+            ChangeMaxState(_state);
         state = _state;
         GetComponentInChildren<Animator>().SetInteger("Form", _state);
     }
