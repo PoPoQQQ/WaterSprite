@@ -9,7 +9,7 @@ public class Ghost : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     public GameObject sg;
-    float speed = 700F;
+    float speed = 600F;
     float phase,angle;
     float gamma, theta;
     bool moving = false;

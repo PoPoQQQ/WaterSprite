@@ -92,6 +92,8 @@ public class Hornet : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (GetComponent<EnemyController>().health > 0)
+            return;
         float r = Random.Range(0F, 1F);
         if(r<= 0.3F)
             SeedItem.Generate(transform.position, Plant.Type.Attack);
