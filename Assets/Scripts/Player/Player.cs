@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public int atkBuffCnt = 0;
     public int csmBuffCnt = 0;
     public HPBar bar;
-    public ScrollBar scrollBar;
     
 
     void GameOver()
