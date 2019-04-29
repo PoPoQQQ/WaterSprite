@@ -7,6 +7,7 @@ public class TreeMan : MonoBehaviour
     Vector2 vec = Vector2.zero;
     Rigidbody2D body;
     GameObject player;
+    GameSystem GS;
     float speed = 600F;
     int vecCnt = 0;
     Animator animator;
@@ -52,12 +53,28 @@ public class TreeMan : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(ChangeVecCoroutine());
+        GS = FindObjectOfType<GameSystem>();
     }
 
     private void FixedUpdate()
     {
         body.AddForce(vec);
     }
+
+    private void OnDestroy()
+    {
+        if (GS.dayCnt == 1)
+        {
+            if (Random.Range(0F, 1F) <= 0.5F)
+                SeedItem.Generate(transform.position, Plant.Type.Water);
+        }
+        else
+        {
+            if (Random.Range(0F, 1F) <= 0.2F)
+                SeedItem.Generate(transform.position, Plant.Type.Water);
+        }
+    }
+
 
     void UpdateDirection()
     {

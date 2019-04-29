@@ -17,7 +17,7 @@ public class PlayerPlantOperate : MonoBehaviour
         seedCnt.Add(Plant.Type.Water, 0);
         seedCnt.Add(Plant.Type.Attack, 0);
         seedCnt.Add(Plant.Type.Consume, 0);
-        seedCnt[Plant.Type.Water]++;
+        AddSeed(Plant.Type.Water);
         pl = GetComponent<Player>();
     }
     public void TryPlant(Plant.Type seedType)
@@ -66,6 +66,10 @@ public class PlayerPlantOperate : MonoBehaviour
                 pl.csmBuffCnt++;
                 break;
         }
+    }
+    public void AddSeed(Plant.Type seedType)
+    {
+        seedCnt[seedType]++;
     }
     // Update is called once per frame
     void Update()
