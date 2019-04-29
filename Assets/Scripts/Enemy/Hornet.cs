@@ -54,7 +54,6 @@ public class Hornet : MonoBehaviour
         moveCnt++;
         angle += randAngle;
         vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
-        Debug.Log(angle);
     }
     void Shoot()
     {
