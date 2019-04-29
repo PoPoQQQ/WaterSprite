@@ -48,7 +48,7 @@ public class SplitedGhost : MonoBehaviour
             p = 0.1F;
         if (r <= p)
         {
-            SeedItem.Generate(transform.position, Plant.Type.Attack);
+            SeedItem.Generate(transform.position, Plant.Type.Consume);
             dropCnt++;
         }
     }
