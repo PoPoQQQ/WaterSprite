@@ -30,6 +30,8 @@ public class GameSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dayNightManager.setDayCnt(1);
+        dayNightManager.setDayIcon();
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
     }
@@ -49,6 +51,7 @@ public class GameSystem : MonoBehaviour
 
     public void NightStart()
     {
+        //Debug.Log("exchange");
         if (dayOrNight == DayOrNight.Night)
             return;
         dayOrNight = DayOrNight.Night;
