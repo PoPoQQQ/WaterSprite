@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     Rigidbody2D body;
     PlayerMoving PM;
     PlayerEffects PE;
-
+    public int atkBuffCnt = 0;
+    public int csmBuffCnt = 0;
     public HPBar bar;
     
 

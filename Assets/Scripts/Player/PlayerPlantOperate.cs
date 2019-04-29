@@ -6,7 +6,10 @@ public class PlayerPlantOperate : MonoBehaviour
 {
     public Dictionary<Plant.Type, int> seedCnt;
     public float waterCost = 30F;
+    public float waterRecovery = 30F;
     Player pl;
+    Plant HLP() => PlantUIController.highlightedPlant;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,25 +27,46 @@ public class PlayerPlantOperate : MonoBehaviour
         if (seedCnt[seedType] <= 0)
             return;
         seedCnt[seedType]--;
-        PlantUIController.highlightedPlant.PlantSeed(seedType);
+        HLP().PlantSeed(seedType);
     }
     public void TryWater()
     {
-        if (PlantUIController.highlightedPlant.watered || PlantUIController.highlightedPlant.type == Plant.Type.None)
+        if (HLP().watered || HLP().type == Plant.Type.None)
             return;
         if (pl.health <= waterCost)
             return;
         pl.CostHealth(waterCost);
-        PlantUIController.highlightedPlant.Water();
+        HLP().Water();
     }
 
     public void TryRemove()
     {
-        if (PlantUIController.highlightedPlant.age == 0 && PlantUIController.highlightedPlant.type != Plant.Type.None)
-            seedCnt[PlantUIController.highlightedPlant.type]++;
-        PlantUIController.highlightedPlant.Remove();
+        if (HLP().age == 0 && HLP().type != Plant.Type.None)
+            seedCnt[HLP().type]++;
+        HLP().Remove();
     }
+    public void TryCollect()
+    {
+        if (HLP().fruit <= 0)
+            return;
+        Debug.Log("Collect!");
+        Debug.Log(HLP().type);
+        HLP().Collect();
+        switch(HLP().type)
+        {
+            case Plant.Type.Water:
+                pl.AddHealth(waterRecovery);
+                break;
 
+            case Plant.Type.Attack:
+                pl.atkBuffCnt++;
+                break;
+
+            case Plant.Type.Consume:
+                pl.csmBuffCnt++;
+                break;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
