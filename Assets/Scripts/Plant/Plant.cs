@@ -75,6 +75,9 @@ public class Plant : MonoBehaviour
         age = 0;
         fruit = 0;
         type = Type.None;
+        age = 0;
+        fruit = 0;
+        watered = false;
         SetAnimationVariables();
     }
     public void Wither()

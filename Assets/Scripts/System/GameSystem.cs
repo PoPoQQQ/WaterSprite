@@ -36,7 +36,6 @@ public class GameSystem : MonoBehaviour
 
     public void DayStart()
     {
-        dayNightManager.setDayIcon();
         if (dayOrNight == DayOrNight.Day)
             return;
         dayCnt++;
@@ -45,15 +44,16 @@ public class GameSystem : MonoBehaviour
         foreach (var i in plants)
             i.Refresh();
         SwitchBGM(night, morning);
+        dayNightManager.setDayIcon();
     }
 
     public void NightStart()
     {
-        dayNightManager.setNightIcon();
         if (dayOrNight == DayOrNight.Night)
             return;
         dayOrNight = DayOrNight.Night;
         SwitchBGM(morning, night);
+        dayNightManager.setNightIcon();
     }
     // Update is called once per frame
     void Update()
