@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         ending.DOColor(new Color(1, 1, 1, 1), 3f);
         yield return new WaitForSeconds(4f);
-        endingtext.text = "You've been survived for "+ GameObject.Find("GameManager").GetComponent<GameSystem>().dayCnt+" day(s)";
+        endingtext.text = "You've survived for "+ GameObject.Find("GameManager").GetComponent<GameSystem>().dayCnt+" day(s)";
         endingtext.gameObject.SetActive(true);
         curtain.GetComponent<FadingCurtain>().StartCoroutine(curtain.GetComponent<FadingCurtain>().fading(70));
         yield return new WaitForSeconds(2f);
