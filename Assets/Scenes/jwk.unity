@@ -423,6 +423,8 @@ MonoBehaviour:
   MapXLowerbound: -17
   MapYUpperbound: 23.33
   MapYLowerbound: -23.33
+  morning: {fileID: 0}
+  night: {fileID: 0}
 --- !u!4 &589660115
 Transform:
   m_ObjectHideFlags: 0

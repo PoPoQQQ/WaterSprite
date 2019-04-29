@@ -22,7 +22,7 @@ public class Hornet : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
 
-        vRate = Random.Range(0F,1F);
+        vRate = Random.Range(0F, 1F);
         upward = Random.Range(0F, 1F) < 0.5F;
         moveCnt = Random.Range(0F, 1F) < 0.5F ? 0 : 1;
         ResetVec();
@@ -90,6 +90,12 @@ public class Hornet : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        float r = Random.Range(0F, 1F);
+        if(r<= 0.3F)
+            SeedItem.Generate(transform.position, Plant.Type.Attack);
+    }
     void Update()
     {
 

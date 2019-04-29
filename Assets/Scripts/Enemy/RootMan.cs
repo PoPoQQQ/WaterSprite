@@ -58,6 +58,12 @@ public class RootMan : MonoBehaviour
 
     }
 
+    private void OnDestroy()
+    {
+        if (Random.Range(0F, 1F) <= 0.2F)
+            SeedItem.Generate(transform.position, Plant.Type.Water);
+    }
+
     void UpdateDirection()
     {
         animator.SetFloat("X", dPos.x);

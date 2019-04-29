@@ -15,9 +15,10 @@ public class PlayerPlantOperate : MonoBehaviour
     void Start()
     {
         seedCnt = new Dictionary<Plant.Type, int>();
-        seedCnt.Add(Plant.Type.Water, 1);
-        seedCnt.Add(Plant.Type.Attack, 1);
-        seedCnt.Add(Plant.Type.Consume, 1);
+        seedCnt.Add(Plant.Type.Water, 0);
+        seedCnt.Add(Plant.Type.Attack, 0);
+        seedCnt.Add(Plant.Type.Consume, 0);
+        AddSeed(Plant.Type.Water);
         pl = GetComponent<Player>();
     }
     public void TryPlant(Plant.Type seedType)
@@ -70,6 +71,10 @@ public class PlayerPlantOperate : MonoBehaviour
                 scrollBar.ShowScroll();
                 break;
         }
+    }
+    public void AddSeed(Plant.Type seedType)
+    {
+        seedCnt[seedType]++;
     }
     // Update is called once per frame
     void Update()
