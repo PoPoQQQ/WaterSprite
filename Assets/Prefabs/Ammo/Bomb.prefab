@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc52765b532a5b2469c775ceb90126cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burstPrefab: {fileID: 3745407613359776333, guid: 4439732de71c6d443889f0adde83cb2a,
+  burstPrefab: {fileID: 318052971299261293, guid: b1e820429f689174a899fa080f345612,
     type: 3}
   phase: 0
   height: 0
