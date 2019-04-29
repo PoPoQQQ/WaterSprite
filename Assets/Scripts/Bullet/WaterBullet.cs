@@ -8,16 +8,10 @@ public class WaterBullet : MonoBehaviour
 
     float damage = 1F;
 
-    IEnumerator AddColliderCoroutine()
-    {
-        yield return new WaitForSeconds(0.1F);
-        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(AddColliderCoroutine());
         Destroy(gameObject, 10F);
     }
 

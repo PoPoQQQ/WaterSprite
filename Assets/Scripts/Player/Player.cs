@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
     public void AddHealth(float h)
     {
         health += h;
+        if (health > 300)
+            health = 300;
         Check();
     }
     // Start is called before the first frame update

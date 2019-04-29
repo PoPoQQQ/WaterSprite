@@ -22,8 +22,8 @@ TagManager:
   - Bullet
   - AirWall
   - BottomBorder
-  - 
-  - 
+  - EnemyBullet
+  - EnemyGhost
   - 
   - 
   - 
