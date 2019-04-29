@@ -19,7 +19,7 @@ public class WaterBomb : MonoBehaviour
     {
         phase += Time.deltaTime * 1.0F;
         height = phase * (1F - phase) * 12F + 0.2F;
-        transform.position = (Vector3)Vector2.Lerp(startPos, endPos, phase);
+        transform.position = (Vector3)Vector2.Lerp(startPos, endPos, phase) + Vector3.forward * transform.position.z;
         sc.transform.localPosition = new Vector3(0F, height);
         if (phase >= 1F)
         {

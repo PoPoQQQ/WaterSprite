@@ -245,6 +245,11 @@ PrefabInstance:
     - target: {fileID: 6253513304199601952, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471214638089323771, guid: 0dc2cf02a79656540afeae44acea927a,
+        type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5015333006353984558, guid: 0dc2cf02a79656540afeae44acea927a,
@@ -253,11 +258,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 913d6d72ef38aa14eac260353047ef64,
         type: 3}
-    - target: {fileID: 5471214638089323771, guid: 0dc2cf02a79656540afeae44acea927a,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dc2cf02a79656540afeae44acea927a, type: 3}
 --- !u!1 &6222997492996326210 stripped
