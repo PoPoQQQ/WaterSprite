@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("Dead", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
         shadow.SetActive(false);
-        splash.SetActive(true);
+        splash.GetComponent<Animator>().SetTrigger("Splash");
         PM.enabled = false;
     }
 
