@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         dir.Normalize();
 
         GameObject bullet = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(dir * 5f, ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * 8F;
         bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
         pl.CostHealth(shootCost);

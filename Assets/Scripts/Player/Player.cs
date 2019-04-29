@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     Rigidbody2D body;
     PlayerMoving PM;
     PlayerEffects PE;
-    
 
     void GameOver()
     {
