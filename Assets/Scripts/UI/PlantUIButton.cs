@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlantUIButton : MonoBehaviour
 {
-    public enum ButtonType { None, Seed, Remove, Water };
+    public enum ButtonType { None, Seed, Remove, Water , Collect};
     public ButtonType type;
     Button btn;
     public Plant.Type seedType;
@@ -38,6 +38,8 @@ public class PlantUIButton : MonoBehaviour
                 return pl.health > ppo.waterCost && HLP().type != Plant.Type.None && !HLP().watered;
             case ButtonType.Remove:
                 return HLP().type != Plant.Type.None;
+            case ButtonType.Collect:
+                return HLP().fruit > 0;
         }
         return false;
     }
@@ -64,6 +66,9 @@ public class PlantUIButton : MonoBehaviour
                 break;
             case ButtonType.Remove:
                 ppo.TryRemove();
+                break;
+            case ButtonType.Collect:
+                ppo.TryCollect();
                 break;
         }
     }
