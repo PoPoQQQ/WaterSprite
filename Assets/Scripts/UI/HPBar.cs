@@ -8,17 +8,23 @@ public class HPBar : MonoBehaviour
 
     public GameObject bar1;
     public GameObject bar2;
+    public GameObject allBar;
+    public GameObject frontImage;
 
     float fullHealth;
     float currentHealth;
+
+    float frontWidth;
+    float frontHeight;
 
     public int updateStep;
 
     void Awake()
     {
         fullHealth=100;
-        currentHealth=50;
-
+        currentHealth=100;
+        frontWidth = frontImage.GetComponent<RectTransform>().rect.width;
+        frontHeight = frontImage.GetComponent<RectTransform>().rect.height;
         updateNew();
     }
 
@@ -32,15 +38,18 @@ public class HPBar : MonoBehaviour
 
     public void updateHealth(float health, float current)
     {
-        //Debug.Log(currentHealth);
         if(health == fullHealth && current == currentHealth)
             return;
         if(health != fullHealth)
         {
-            float currentScale = gameObject.GetComponent<RectTransform>().localScale.x;
+            float currentScale = allBar.GetComponent<RectTransform>().localScale.x;
+            float delta = allBar.GetComponent<RectTransform>().rect.width * currentScale*(health/fullHealth - 1.0f);
+            //Debug.Log(delta);
             currentScale = currentScale*(health/fullHealth);
             fullHealth = health;
-            gameObject.GetComponent<RectTransform>().localScale = new Vector3(currentScale, 1.0f, 1.0f);
+            allBar.GetComponent<RectTransform>().localScale = new Vector3(currentScale, 1.0f, 1.0f);
+            frontWidth += delta;
+            frontImage.GetComponent<RectTransform>().sizeDelta = new Vector2(frontWidth,frontHeight);
             updateNew();
             
         }
@@ -81,4 +90,5 @@ public class HPBar : MonoBehaviour
     {
         bar.GetComponent<RectTransform>().localScale = new Vector3( bar.GetComponent<RectTransform>().localScale.x + change, 1, 1);
     }
+
 }
