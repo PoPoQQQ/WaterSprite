@@ -16,6 +16,15 @@ public class GameSystem : MonoBehaviour
     public float MapYUpperbound = 18;
     public float MapYLowerbound = -18;
 
+    public AudioSource morning;
+    public AudioSource night;
+
+    void SwitchBGM(AudioSource o, AudioSource i)
+    {
+        o.DOFade(0, 3f);
+        i.DOFade(1, 3f);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +40,7 @@ public class GameSystem : MonoBehaviour
         dayOrNight = DayOrNight.Day;
         foreach (var i in plants)
             i.Refresh();
+        SwitchBGM(night, morning);
     }
 
     void NightStart()
@@ -38,6 +48,7 @@ public class GameSystem : MonoBehaviour
         if (dayOrNight == DayOrNight.Night)
             return;
         dayOrNight = DayOrNight.Night;
+        SwitchBGM(morning, night);
     }
     // Update is called once per frame
     void Update()

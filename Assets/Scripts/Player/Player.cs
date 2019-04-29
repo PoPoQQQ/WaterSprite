@@ -15,6 +15,20 @@ public class Player : MonoBehaviour
     public int csmBuffCnt = 0;
     public HPBar bar;
     
+    public float PlayerDamageRate()
+    {
+        return 1F + 0.5F * atkBuffCnt;
+    }
+
+    public float BulletConsumeRate()
+    {
+        return Mathf.Pow(0.6F, csmBuffCnt);
+    }
+    public float BombConsumeRate()
+    {
+        return Mathf.Pow(0.7F, csmBuffCnt);
+    }
+
 
     void GameOver()
     {
@@ -61,7 +75,6 @@ public class Player : MonoBehaviour
         PE.Hurt();
         Check();
     }
-
     public void Damage(float damage) => Damage(damage, Vector2.zero);
 
     public void CostHealth(float cost)
