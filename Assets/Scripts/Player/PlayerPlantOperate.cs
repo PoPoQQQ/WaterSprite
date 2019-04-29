@@ -60,10 +60,12 @@ public class PlayerPlantOperate : MonoBehaviour
 
             case Plant.Type.Attack:
                 pl.atkBuffCnt++;
+                pl.scrollBar.SetATK(pl.atkBuffCnt);
                 break;
 
             case Plant.Type.Consume:
                 pl.csmBuffCnt++;
+                pl.scrollBar.SetCOST(pl.csmBuffCnt);
                 break;
         }
     }
