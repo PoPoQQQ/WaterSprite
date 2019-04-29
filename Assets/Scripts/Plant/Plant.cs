@@ -25,7 +25,6 @@ public class Plant : MonoBehaviour
     {
         type = Type.Withered;
         fruit = 0;
-        age = 1;
         SetAnimationVariables();
     }
 

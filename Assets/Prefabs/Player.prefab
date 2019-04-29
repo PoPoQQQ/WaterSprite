@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059803cc6d050df4d87a26213bfb282a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterCost: 30
 --- !u!114 &5088028085173583087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,18 +158,6 @@ MonoBehaviour:
     type: 3}
   bombPrefab: {fileID: 6222997492996326210, guid: 5bbfabfdf2a6a224996d440a451c2a86,
     type: 3}
---- !u!114 &5762963833199221569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487303034973714236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 059803cc6d050df4d87a26213bfb282a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9127569985150274083
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,12 +268,12 @@ PrefabInstance:
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2082758220768674804, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
@@ -338,13 +327,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 318052971299261293, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
-      propertyPath: m_TagString
-      value: Player
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 318052971299261293, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6053275265296994023, guid: 0dc2cf02a79656540afeae44acea927a,
         type: 3}

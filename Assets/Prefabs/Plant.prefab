@@ -117,6 +117,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb5f47768b68504b87cff6d118886ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7914926511826979399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352029787772947691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc85d5f6d80e124e8cdb24a5fec2c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  age: 0
+  fruit: 0
+  watered: 0
 --- !u!1001 &3658321046557366555
 PrefabInstance:
   m_ObjectHideFlags: 0

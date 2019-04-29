@@ -5,13 +5,10 @@ using DG.Tweening;
 
 public class PlantUIController : MonoBehaviour
 {
-    public enum UISelectStatus { None, Seed, Remove, Water};
-    public static UISelectStatus uiSelectStatus = UISelectStatus.None;
-    public static Plant.Type selectedSeedType = Plant.Type.None;
     public static Plant highlightedPlant = null;
     bool isHighlighted = false;
     GameObject UITop, UIBottom;
-
+    
     static bool UIEnabled = false;
     void UIEnable()
     {
@@ -30,7 +27,6 @@ public class PlantUIController : MonoBehaviour
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 500F, 0.6F);
         UIBottom.transform.DOMoveY(canvasY - 500F, 0.6F);
-        uiSelectStatus = UISelectStatus.None;
         UIEnabled = false;
     }
 

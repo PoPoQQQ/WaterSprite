@@ -9,7 +9,6 @@ public class TreeMan : MonoBehaviour
     GameObject player;
     float speed = 600F;
     int vecCnt = 0;
-
     Animator animator;
 
     IEnumerator ChangeVecCoroutine()
