@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public int atkBuffCnt = 0;
     public int csmBuffCnt = 0;
     public HPBar bar;
+    public GameObject shadow;
     
     public float PlayerDamageRate()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         Debug.Log("GameOver!");
         GetComponentInChildren<Animator>().SetBool("Dead", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
+        shadow.SetActive(false);
         PM.enabled = false;
     }
 
