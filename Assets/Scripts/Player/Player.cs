@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Player : MonoBehaviour
     public int csmBuffCnt = 0;
     public HPBar bar;
     public GameObject shadow;
-    public GameObject splash;
+    public Image splash;
+    public Sprite[] splashSprites;
     
     public float PlayerDamageRate()
     {
@@ -31,6 +33,18 @@ public class Player : MonoBehaviour
         return Mathf.Pow(0.7F, csmBuffCnt);
     }
 
+    IEnumerator PlaySplash()
+    {
+        int index = 0;
+        while(true)
+        {
+            splash.sprite = splashSprites[index++];
+            if(index == splashSprites.Length)
+                break;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
 
     void GameOver()
     {
@@ -38,7 +52,7 @@ public class Player : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("Dead", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
         shadow.SetActive(false);
-        splash.GetComponent<Animator>().SetTrigger("Splash");
+        StartCoroutine(PlaySplash());
         PM.enabled = false;
     }
 
