@@ -10,11 +10,56 @@ public class Plant : MonoBehaviour
     public int fruit = 0;
     public bool watered = false;
 
-    public GameObject sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck;
+    public GameObject sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck, wither;
 
     public void SetAnimationVariables()
     {
-        
+        sprout.SetActive(false);
+        waterfruit.SetActive(false);
+        waterpluck.SetActive(false);
+        attackfruit.SetActive(false);
+        attackpluck.SetActive(false);
+        consumefruit.SetActive(false);
+        consumepluck.SetActive(false);
+        wither.SetActive(false);
+
+        if(type == Type.None)
+            return;
+        if(age == 0)
+        {
+            sprout.SetActive(true);
+            return;
+        }
+        if(type == Type.Withered)
+        {
+            return;
+        }
+        if(type == Type.Water)
+        {
+            if(fruit > 0)
+                waterfruit.SetActive(true);
+            else
+                waterpluck.SetActive(true);
+        }
+        else if(type == Type.Attack)
+        {
+            if(fruit > 0)
+                attackfruit.SetActive(true);
+            else
+                attackpluck.SetActive(true);
+        }
+        else if(type == Type.Consume)
+        {
+            if(fruit > 0)
+                consumefruit.SetActive(true);
+            else
+                consumepluck.SetActive(true);
+        }
+        else
+        {
+            wither.SetActive(true);
+        }
+
     }
 
     public void Remove()
