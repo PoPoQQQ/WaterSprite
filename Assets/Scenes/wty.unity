@@ -303,6 +303,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1453959439}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345848754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4321694760878187884, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +830,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1294097846}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: barrierDoor
+      value: 
+      objectReference: {fileID: 2076779723}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: close
+      value: 
+      objectReference: {fileID: 345848754}
+    - target: {fileID: 2028475146, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: open
+      value: 
+      objectReference: {fileID: 1919368855}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
 --- !u!114 &1547088676 stripped
@@ -907,6 +925,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followingSpeed: 5
+--- !u!1 &1919368855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5079746085004996309, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2076779723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5474940913258359522, guid: 18fb9ebe801744449ac5c2c77450507a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6236440607713001512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6236440607713001512
 PrefabInstance:
   m_ObjectHideFlags: 0

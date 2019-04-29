@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8312756987642697206}
   - component: {fileID: 7480241503467547323}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: BarrierLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8245983900879440019}
   - component: {fileID: 3443705354556752807}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: BarrierDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2869368425376718475}
   - component: {fileID: 6418693887888493457}
-  m_Layer: 14
+  m_Layer: 10
   m_Name: BarrierRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
