@@ -10,10 +10,13 @@ public class Plant : MonoBehaviour
     public int fruit = 0;
     public bool watered = false;
 
+    public GameObject sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck;
+
     public void SetAnimationVariables()
     {
         
     }
+
     public void Remove()
     {
         age = 0;
