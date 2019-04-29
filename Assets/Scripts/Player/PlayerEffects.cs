@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEffects : MonoBehaviour
 {
-    public SpriteRenderer sprite;
+    //public SpriteRenderer sprite;
 
     GameObject cam;
     
@@ -15,7 +15,8 @@ public class PlayerEffects : MonoBehaviour
 
     IEnumerator FlashCoroutine()
     {
-        const float duration = 0.5f;
+        var sr = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        const float duration = 0.3f;
         const float frequency = 0.05f;
         float _t = 0;
 
@@ -25,10 +26,10 @@ public class PlayerEffects : MonoBehaviour
             _t += Time.deltaTime;
             if(_t >= 2 * frequency)
                 _t -= 2 * frequency;
-            sprite.enabled = (_t >= frequency);
+            sr.enabled = (_t >= frequency);
             yield return 0;
         }
-        sprite.enabled = true;
+        sr.enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
     public void Hurt()

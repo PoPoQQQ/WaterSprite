@@ -21,7 +21,8 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator FlashCoroutine()
     {
-        const float duration = 0.5f;
+        var sr = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        const float duration = 0.2f;
         const float frequency = 0.05f;
         float _t = 0;
 
@@ -30,17 +31,21 @@ public class EnemyController : MonoBehaviour
             _t += Time.deltaTime;
             if (_t >= 2 * frequency)
                 _t -= 2 * frequency;
-            GetComponentInChildren<SpriteRenderer>().enabled = (_t >= frequency);
+            sr.enabled = (_t >= frequency);
             yield return 0;
         }
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        sr.enabled = true;
+        if (health <= 0F)
+            Destroy(gameObject);
     }
-    void Damage(float damage)
+    public void Damage(float damage, Vector2 knockback)
     {
         health -= damage;
         StartCoroutine(FlashCoroutine());
-        Destroy(gameObject);
+        GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
     }
+
+    public void Damage(float damage) => Damage(damage, Vector2.zero);
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

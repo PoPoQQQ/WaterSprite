@@ -49,10 +49,7 @@ public class Player : MonoBehaviour
         Check();
     }
 
-    public void Damage(float damage)
-    {
-        Damage(damage, Vector2.zero);
-    }
+    public void Damage(float damage) => Damage(damage, Vector2.zero);
 
     public void CostHealth(float cost)
     {
