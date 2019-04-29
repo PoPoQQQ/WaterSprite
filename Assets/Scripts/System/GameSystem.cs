@@ -31,7 +31,6 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         dayNightManager.setDayCnt(1);
-        dayNightManager.setDayIcon();
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
     }
