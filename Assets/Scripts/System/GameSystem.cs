@@ -5,11 +5,12 @@ using DG.Tweening;
 
 public class GameSystem : MonoBehaviour
 {
-    public enum DayOrNight { Day, Night};
+    public enum DayOrNight { Day, Night };
     public DayOrNight dayOrNight = DayOrNight.Day;
     public int dayCnt = 1;
     public int score = 0;
     Plant[] plants;
+    LootSystem LS;
 
     public float MapXUpperbound = 32;
     public float MapXLowerbound = -32;
@@ -76,7 +77,8 @@ public class GameSystem : MonoBehaviour
     IEnumerator NightCoroutine()
     {
         int waveCnt = CalcWaveCnt();
-        for(int i = 1; i<=waveCnt;i++)
+        yield return new WaitForSeconds(4F);
+        for (int i = 1; i<=waveCnt;i++)
         {
             int enmCnt = CalcEnmCnt(i);
             for(int j =1;j<=enmCnt;j++)
@@ -108,6 +110,7 @@ public class GameSystem : MonoBehaviour
         dayNightManager.setDayCnt(1);
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
+        LS = GetComponent<LootSystem>();
     }
 
     public void DayStart()
@@ -121,6 +124,11 @@ public class GameSystem : MonoBehaviour
             i.Refresh();
         SwitchBGM(night, morning);
         dayNightManager.setDayIcon();
+        if(dayCnt% 10 == 0)
+        {
+            LS.lootChance[Plant.Type.Attack] += 0.18F;
+            LS.lootChance[Plant.Type.Consume] += 0.1F;
+        }
     }
 
     public void NightStart()

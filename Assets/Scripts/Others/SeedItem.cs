@@ -30,7 +30,7 @@ public class SeedItem : MonoBehaviour
         if (FindObjectOfType<PlayerPlantOperate>().seedCnt[type] >= 99)
             return;
         if(prefab == null)
-            prefab = Resources.Load<GameObject>("Prefab/SeedItem");
+            prefab = Resources.Load<GameObject>("Prefabs/SeedItem");
         GameObject obj = GameObject.Instantiate(prefab, pos, Quaternion.identity);
         Sprite s = null;
         switch(type)

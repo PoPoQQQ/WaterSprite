@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 589660114}
   - component: {fileID: 589660117}
   - component: {fileID: 589660116}
+  - component: {fileID: 589660118}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -669,6 +670,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &589660118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589660113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab0054c295ba054f93a7e8e83a2c422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &720683265 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5079746085004996309, guid: 18fb9ebe801744449ac5c2c77450507a,
@@ -861,6 +874,14 @@ PrefabInstance:
       propertyPath: open
       value: 
       objectReference: {fileID: 720683265}
+    - target: {fileID: 2028475145, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028475145, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.599976
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42adc353d89c7854ca3e92258db805f2, type: 3}
 --- !u!224 &1467952253 stripped

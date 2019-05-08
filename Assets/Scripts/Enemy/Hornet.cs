@@ -71,10 +71,8 @@ public class Hornet : MonoBehaviour
             if (vRate > 1)
             {
                 upward = false;
-                if (((Vector2)(player.transform.position - transform.position)).magnitude <= 4.5F)
-                {
+                if (((Vector2)(player.transform.position - transform.position)).magnitude <= 5F)
                     Shoot();
-                }
             }
         }
         else
@@ -95,17 +93,7 @@ public class Hornet : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        float r = Random.Range(0F, 1F);
-        float p = 0.2F;
-        if (dropCnt == 0)
-            p = 1F;
-        if (dropCnt <= 2)
-            p = 0.3F;
-        if(r <= p)
-        {
-            SeedItem.Generate(transform.position, Plant.Type.Attack);
-            dropCnt++;
-        }
+        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Attack, 0.06F);
     }
     void Update()
     {

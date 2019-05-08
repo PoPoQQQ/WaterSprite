@@ -56,14 +56,11 @@ public class TreeMan : MonoBehaviour
         body.AddForce(vec);
     }
 
-    static int dropCnt = 0;
     private void OnDestroy()
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        if (Random.Range(0F, 1F) <= 0.2F || dropCnt == 0 || dropCnt == 2)
-            SeedItem.Generate(transform.position, Plant.Type.Water);
-        dropCnt++;
+        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Water, 0.12F);
     }
 
 
