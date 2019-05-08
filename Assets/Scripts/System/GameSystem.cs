@@ -105,7 +105,6 @@ public class GameSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Screen.SetResolution(Screen.width, Screen.width / 16 * 9, Screen.fullScreen);
         dayNightManager.setDayCnt(1);
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
