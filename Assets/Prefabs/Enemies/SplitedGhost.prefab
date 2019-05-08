@@ -119,41 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Name
-      value: SplitedGhost
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 468268165948173544, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,6 +174,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Name
+      value: SplitedGhost
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: collideKnockBack
@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: health
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5663667078644130299, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}

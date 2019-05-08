@@ -5,11 +5,11 @@ using UnityEngine;
 public class Hornet : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
-    Vector2 dPos;
+    Vector2 navVec;
     Rigidbody2D body;
     GameObject player;
     public GameObject hornetBullet;
-    float speed = 700F;
+    float speed = 750F;
     float vRate = 0F, maxDelta;
     bool upward = false;
     int moveCnt = 0;
@@ -30,8 +30,8 @@ public class Hornet : MonoBehaviour
 
     void UpdateDirection()
     {
-        animator.SetFloat("X", dPos.x);
-        animator.SetFloat("Y", dPos.y);
+        animator.SetFloat("X", navVec.x);
+        animator.SetFloat("Y", navVec.y);
     }
 
     private void FixedUpdate()
@@ -42,10 +42,10 @@ public class Hornet : MonoBehaviour
 
     void ResetVec()
     {
-        dPos = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dPos.y, dPos.x);
+        navVec = EnemyNavigator.NavVec(transform.position);
+        float angle = Mathf.Atan2(navVec.y, navVec.x);
         float randAngle = 0F;
-        if (dPos.magnitude >= 4F)
+        if ((player.transform.position - transform.position).magnitude >= 4F)
             randAngle = Random.Range(0.5F, 0.7F);
         else
             randAngle = Random.Range(0.45F, 0.55F) * Mathf.PI;
@@ -57,11 +57,11 @@ public class Hornet : MonoBehaviour
     }
     void Shoot()
     {
-        dPos = player.transform.position - transform.position;
-        dPos.Normalize();
+        Vector2 shootVec = player.transform.position - transform.position; ;
+        shootVec.Normalize();
         var obj = GameObject.Instantiate(hornetBullet, transform.position, Quaternion.identity);
-        obj.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dPos.y, dPos.x) * Mathf.Rad2Deg);
-        obj.GetComponent<Rigidbody2D>().velocity = dPos * 7F;
+        obj.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(shootVec.y, shootVec.x) * Mathf.Rad2Deg);
+        obj.GetComponent<Rigidbody2D>().velocity = shootVec * 7F;
     }
     void UpdateVRate()
     {

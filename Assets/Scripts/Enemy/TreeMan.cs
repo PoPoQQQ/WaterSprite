@@ -30,13 +30,8 @@ public class TreeMan : MonoBehaviour
 
     void SetVec()
     {
-        if (!player)
-        {
-            vec = Vector2.zero;
-            return;
-        }
-        Vector2 dPos = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dPos.y, dPos.x);
+        Vector2 navVec = EnemyNavigator.NavVec(transform.position);
+        float angle = Mathf.Atan2(navVec.y, navVec.x);
         vecCnt++;
         if (vecCnt % 2 == 0)
             angle += Random.Range(0.5F, 0.7F);
