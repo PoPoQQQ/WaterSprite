@@ -5,11 +5,11 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
-    Vector2 dPos;
+    Vector2 navVec;
     Rigidbody2D body;
     GameObject player;
     public GameObject sg;
-    float speed = 680F;
+    float basicSpeed = 750F,speed;
     float phase,angle;
     float gamma, theta;
     bool moving = false;
@@ -29,8 +29,8 @@ public class Ghost : MonoBehaviour
             yield return new WaitForSeconds(2F);
 
             moving = false;
-            body.drag = 10F;
-            yield return new WaitForSeconds(0.1F);
+            body.drag = 15F;
+            yield return new WaitForSeconds(0.2F);
 
         }
     }
@@ -60,6 +60,7 @@ public class Ghost : MonoBehaviour
         {
             float a = 0.5F * i * Mathf.PI;
             var o = GameObject.Instantiate(sg, transform.position + new Vector3(Mathf.Cos(a), Mathf.Sin(a)) * 0.5F, Quaternion.identity);
+            o.GetComponent<EnemyController>().health = GetComponent<EnemyController>().health * 0.25F;
             o.GetComponent<SplitedGhost>().angle = a;
         }
         Destroy(gameObject);
@@ -67,10 +68,11 @@ public class Ghost : MonoBehaviour
 
     void ResetVec()
     {
-        dPos = player.transform.position - transform.position;
-        if (dPos.magnitude <= 3.5F)
+        speed = basicSpeed * Random.Range(0.5F, 1.5F);
+        navVec = EnemyNavigator.NavVec(transform.position);
+        if ((player.transform.position - transform.position).magnitude <= 3.5F)
             Split();
-        angle = Mathf.Atan2(dPos.y, dPos.x);
+        angle = Mathf.Atan2(navVec.y, navVec.x);
         float randAngle = Random.Range(0.5F, 0.7F);
         if (moveCnt % 2 == 1)
             randAngle = -randAngle;
@@ -96,8 +98,8 @@ public class Ghost : MonoBehaviour
 
     void UpdateDirection()
     {
-        animator.SetFloat("X", dPos.x);
-        animator.SetFloat("Y", dPos.y);
+        animator.SetFloat("X", navVec.x);
+        animator.SetFloat("Y", navVec.y);
     }
 
     void Update()

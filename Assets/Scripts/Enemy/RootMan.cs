@@ -6,7 +6,7 @@ using DG.Tweening;
 public class RootMan : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
-    Vector2 dPos;
+    Vector2 navVec;
     Rigidbody2D body;
     GameObject player;
     float speed = 500F;
@@ -31,8 +31,8 @@ public class RootMan : MonoBehaviour
 
     private void FixedUpdate()
     {
-        dPos = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(dPos.y, dPos.x);
+        navVec = EnemyNavigator.NavVec(transform.position);
+        float angle = Mathf.Atan2(navVec.y, navVec.x);
         angle += theta;
         vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
         UpdateDirection();
@@ -42,7 +42,7 @@ public class RootMan : MonoBehaviour
 
     void UpdateTheta()
     {
-        maxDelta = Mathf.Min(Mathf.PI * 0.5F, dPos.magnitude * 1.0F);
+        maxDelta = Mathf.Min(Mathf.PI * 0.5F, navVec.magnitude * 1.0F);
         if(upward)
         {
             theta += Time.fixedDeltaTime * 3F;
@@ -68,8 +68,8 @@ public class RootMan : MonoBehaviour
 
     void UpdateDirection()
     {
-        animator.SetFloat("X", dPos.x);
-        animator.SetFloat("Y", dPos.y);
+        animator.SetFloat("X", navVec.x);
+        animator.SetFloat("Y", navVec.y);
     }
 
     void Update()
