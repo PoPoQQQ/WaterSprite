@@ -15,7 +15,6 @@ public class EnemyController : MonoBehaviour
     {
         GS = FindObjectOfType<GameSystem>();
         player = FindObjectOfType<Player>();
-        health *= Mathf.Max(1.0F, 0.5F + 0.1F * GS.dayCnt);
         enemyCnt++;
     }
 
@@ -46,7 +45,9 @@ public class EnemyController : MonoBehaviour
     }
     public void Damage(float damage, Vector2 knockback)
     {
-        health -= damage * player.PlayerDamageRate();
+        damage *= player.PlayerDamageRate();
+        damage /= GS.EnemyDefRate;
+        health -= damage;
         StartCoroutine(FlashCoroutine());
         GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
     }

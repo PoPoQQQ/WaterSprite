@@ -31,7 +31,7 @@ public class LootSystem : MonoBehaviour
         if(r <= lootChance[type])
         {
             SeedItem.Generate(pos, type);
-            lootChance[type] = chanceIncrement;
+            lootChance[type] = 0;
             lootCnt[type]++;
         }
     }

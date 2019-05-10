@@ -9,7 +9,9 @@ public class RootMan : MonoBehaviour
     Vector2 navVec;
     Rigidbody2D body;
     GameObject player;
-    float speed = 500F;
+    GameSystem GS;
+    public float basicSpeed = 500F;
+    float speed = 470F;
     float theta = 0F, maxDelta;
     bool upward = false;
     Animator animator;
@@ -26,7 +28,8 @@ public class RootMan : MonoBehaviour
 
         theta = Random.Range(-0.5F * Mathf.PI, 0.5F * Mathf.PI);
         upward = Random.Range(0F, 1F) < 0.5F;
-          
+        GS = FindObjectOfType<GameSystem>();
+        speed = basicSpeed * (0.5F * GS.EnemySpeedRate + 0.5F);
     }
 
     private void FixedUpdate()

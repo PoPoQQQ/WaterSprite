@@ -16,6 +16,7 @@ public class GameSystem : MonoBehaviour
     public float MapXLowerbound = -32;
     public float MapYUpperbound = 18;
     public float MapYLowerbound = -18;
+    public float EnemyDefRate = 1F, EnemyAtkRate = 1F, EnemySpeedRate = 1F;
 
     public AudioSource morning;
     public AudioSource night;
@@ -111,6 +112,19 @@ public class GameSystem : MonoBehaviour
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
         LS = GetComponent<LootSystem>();
+    }
+
+    void UpdateDifficulty()
+    {
+        EnemyAtkRate = 0.9F + 0.1F * dayCnt;
+        if (dayCnt >= 8)
+            EnemyAtkRate += 0.1F * (dayCnt - 8);
+        EnemyAtkRate = Mathf.Clamp(EnemyAtkRate, 1F, 10F);
+
+        EnemyDefRate = Mathf.Clamp(EnemyAtkRate - 0.5F, 1F, 5F);
+
+        EnemySpeedRate = 0.99F + 0.01F * dayCnt;
+        EnemySpeedRate = Mathf.Clamp(EnemySpeedRate, 1F, 1.5F);
     }
 
     public void DayStart()

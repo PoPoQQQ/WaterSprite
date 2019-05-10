@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
 
     public void Damage(float damage, Vector2 KnockBack)
     {
-        damage *= 0.9F + 0.1F * GS.dayCnt;
+        damage *= GS.EnemyAtkRate;
         health -= damage;
         body.AddForce(KnockBack, ForceMode2D.Impulse);
         PE.Hurt();

@@ -8,7 +8,8 @@ public class TreeMan : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     GameSystem GS;
-    float speed = 600F;
+    public float basicSpeed = 600F;
+    float speed;
     int vecCnt = 0;
     Animator animator;
 
@@ -49,6 +50,7 @@ public class TreeMan : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(ChangeVecCoroutine());
         GS = FindObjectOfType<GameSystem>();
+        speed = basicSpeed * GS.EnemySpeedRate;
     }
 
     private void FixedUpdate()
@@ -60,7 +62,7 @@ public class TreeMan : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Water, 0.12F);
+        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Water, 0.16F);
     }
 
 
