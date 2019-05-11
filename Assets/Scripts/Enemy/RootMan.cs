@@ -10,8 +10,8 @@ public class RootMan : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     GameSystem GS;
-    public float basicSpeed = 500F;
-    float speed = 470F;
+    float basicSpeed = 470F;
+    float speedRate;
     float theta = 0F, maxDelta;
     bool upward = false;
     Animator animator;
@@ -29,7 +29,7 @@ public class RootMan : MonoBehaviour
         theta = Random.Range(-0.5F * Mathf.PI, 0.5F * Mathf.PI);
         upward = Random.Range(0F, 1F) < 0.5F;
         GS = FindObjectOfType<GameSystem>();
-        speed = basicSpeed * (0.5F * GS.EnemySpeedRate + 0.5F);
+        speedRate = basicSpeed * (0.5F * GS.EnemySpeedRate + 0.5F);
     }
 
     private void FixedUpdate()
@@ -37,7 +37,7 @@ public class RootMan : MonoBehaviour
         navVec = EnemyNavigator.NavVec(transform.position);
         float angle = Mathf.Atan2(navVec.y, navVec.x);
         angle += theta;
-        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
+        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed * speedRate;
         UpdateDirection();
         UpdateTheta();
         body.AddForce(vec);
@@ -48,13 +48,13 @@ public class RootMan : MonoBehaviour
         maxDelta = Mathf.Min(Mathf.PI * 0.5F, navVec.magnitude * 1.0F);
         if(upward)
         {
-            theta += Time.fixedDeltaTime * 3F;
+            theta += Time.fixedDeltaTime * 2.5F * speedRate;
             if (theta > maxDelta)
                 upward = false;
         }
         else
         {
-            theta -= Time.fixedDeltaTime * 3F;
+            theta -= Time.fixedDeltaTime * 2.5F * speedRate;
             if (theta < -maxDelta)
                 upward = true;
         }

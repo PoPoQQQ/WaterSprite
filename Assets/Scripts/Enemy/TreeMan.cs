@@ -8,8 +8,8 @@ public class TreeMan : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     GameSystem GS;
-    public float basicSpeed = 600F;
-    float speed;
+    float basicSpeed = 600F;
+    float speedRate;
     int vecCnt = 0;
     Animator animator;
 
@@ -20,11 +20,11 @@ public class TreeMan : MonoBehaviour
         {
             UpdateDirection();
             SetVec();
-            yield return new WaitForSeconds(0.6F);
+            yield return new WaitForSeconds(0.6F / speedRate);
 
             vec = Vector2.zero;
             body.drag = 10F;
-            yield return new WaitForSeconds(0.4F);
+            yield return new WaitForSeconds(0.4F / speedRate);
             body.drag = 1F;
         }
     }
@@ -38,7 +38,7 @@ public class TreeMan : MonoBehaviour
             angle += Random.Range(0.5F, 0.7F);
         else
             angle -= Random.Range(0.5F, 0.7F);
-        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * speed;
+        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed * speedRate;
     }
 
 
@@ -50,7 +50,7 @@ public class TreeMan : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         StartCoroutine(ChangeVecCoroutine());
         GS = FindObjectOfType<GameSystem>();
-        speed = basicSpeed * GS.EnemySpeedRate;
+        speedRate = GS.EnemySpeedRate;
     }
 
     private void FixedUpdate()
