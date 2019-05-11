@@ -29,7 +29,7 @@ public class RootMan : MonoBehaviour
         theta = Random.Range(-0.5F * Mathf.PI, 0.5F * Mathf.PI);
         upward = Random.Range(0F, 1F) < 0.5F;
         GS = FindObjectOfType<GameSystem>();
-        speedRate = basicSpeed * (0.5F * GS.EnemySpeedRate + 0.5F);
+        speedRate = (0.5F * GS.EnemySpeedRate + 0.5F);
     }
 
     private void FixedUpdate()
