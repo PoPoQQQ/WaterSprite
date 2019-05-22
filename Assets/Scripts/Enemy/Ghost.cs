@@ -16,6 +16,8 @@ public class Ghost : MonoBehaviour
     int moveCnt = 0;
     Animator animator;
 
+    Vector2 ToVec(float a) => new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+    float ToAng(Vector2 v) => Mathf.Atan2(v.y, v.x);
     IEnumerator SetVecCoroutine()
     {
         yield return new WaitForSeconds(Random.Range(0F, 2.5F));
@@ -56,21 +58,19 @@ public class Ghost : MonoBehaviour
 
     void Split()
     {
-        for(int i = 0;i<4;i++)
-        {
-            float a = 0.5F * i * Mathf.PI;
-            var o = GameObject.Instantiate(sg, transform.position + new Vector3(Mathf.Cos(a), Mathf.Sin(a)) * 0.5F, Quaternion.identity);
-            o.GetComponent<EnemyController>().health = GetComponent<EnemyController>().health * 0.25F;
-            o.GetComponent<SplitedGhost>().angle = a;
-        }
-        Destroy(gameObject);
+        float ang = ToAng(player.transform.position - transform.position);
+        var o = GameObject.Instantiate(sg, transform.position, Quaternion.identity);
+        o.GetComponent<SplitedGhost>().movAng = ang + 0.5F * Mathf.PI;
+
+        o = GameObject.Instantiate(sg, transform.position, Quaternion.identity);
+        o.GetComponent<SplitedGhost>().movAng = ang - 0.5F * Mathf.PI;
     }
 
     void ResetVec()
     {
         speed = basicSpeed * Random.Range(0.5F, 1.5F);
         navVec = EnemyNavigator.NavVec(transform.position);
-        if ((player.transform.position - transform.position).magnitude <= 3.5F)
+        if ((player.transform.position - transform.position).magnitude <= 4F)
             Split();
         angle = Mathf.Atan2(navVec.y, navVec.x);
         float randAngle = Random.Range(0.5F, 0.7F);
