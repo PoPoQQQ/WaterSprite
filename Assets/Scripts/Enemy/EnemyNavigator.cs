@@ -6,7 +6,9 @@ public class EnemyNavigator
 {
     static GameObject pl;
 
-    public static Vector2 NavVec(Vector2 pos)
+    static Vector2 ToVec(float a) => new Vector2(Mathf.Cos(a), Mathf.Sin(a));
+    static float ToAng(Vector2 v) => Mathf.Atan2(v.y, v.x);
+    public static Vector2 NavVec(Vector2 pos, float randMin, float randMax)
     {
         if (pl == null)
             pl = GameObject.Find("Player");
@@ -21,28 +23,45 @@ public class EnemyNavigator
         if (ray.collider.gameObject.tag == "Player")
             return vec;
         float dist = ray.distance;
-        float angle = Mathf.Atan2(vec.y, vec.x),dAngle;
+        float angle ,dAngle;
+        angle = ToAng(vec);
+
         Vector2 dVec = vec;
         RaycastHit2D dRay;
+        float retAng = angle;
         for(int i = 1;i<=6;i++)
         {
             dAngle = angle + Mathf.PI * 0.1F * i;
-            dVec = new Vector2(Mathf.Cos(dAngle), Mathf.Sin(dAngle));
+            dVec = ToVec(dAngle);
             dRay = Physics2D.Raycast(pos, dVec, 1000F, mask);
             if(!dRay)
-                return dVec;
+            {
+                retAng = dAngle + 0.4F;
+                break;
+            }
             if (dRay.collider.gameObject.tag == "Player" || dRay.distance >= dist + 1.2F)
-                return dVec;
+            {
+                retAng = dAngle + 0.4F;
+                break;
+            }
 
             dAngle = angle - Mathf.PI * 0.1F * i;
-            dVec = new Vector2(Mathf.Cos(dAngle), Mathf.Sin(dAngle));
+            dVec = ToVec(dAngle);
             dRay = Physics2D.Raycast(pos, dVec, 1000F, mask);
             if (!dRay)
-                return dVec;
+            {
+                retAng = dAngle - 0.4F;
+                break;
+            }
             if (dRay.collider.gameObject.tag == "Player" || dRay.distance >= dist + 1.2F)
-                return dVec;
+            {
+                retAng = dAngle - 0.4F;
+                break;
+            }
         }
-        return dVec;
-    }
 
+        retAng += Random.Range(randMin, randMax);
+        return ToVec(retAng);
+    }
+    public static Vector2 NavVec(Vector2 pos) => NavVec(pos, 0,0);
 }

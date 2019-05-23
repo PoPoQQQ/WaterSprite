@@ -23,10 +23,10 @@ public class WaterBombBurst : MonoBehaviour
         {
             var ec = collision.gameObject.GetComponent<EnemyController>();
             float dist = (transform.position - collision.transform.position).magnitude;
-            float dmg = 8F * (1.0F - 0.2F * dist);
+            float dmgRate = (1.0F - 0.2F * dist);
             if(ec)
             {
-                ec.Damage(7F, (ec.transform.position - transform.position).normalized * 800F);
+                ec.Damage(8F*dmgRate, (ec.transform.position - transform.position).normalized * 800F * dmgRate);
             }
 
         }
