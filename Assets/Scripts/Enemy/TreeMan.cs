@@ -20,25 +20,22 @@ public class TreeMan : MonoBehaviour
         {
             UpdateDirection();
             SetVec();
+            body.drag = 1F;
             yield return new WaitForSeconds(0.6F / speedRate);
 
             vec = Vector2.zero;
             body.drag = 10F;
             yield return new WaitForSeconds(0.4F / speedRate);
-            body.drag = 1F;
         }
     }
 
     void SetVec()
     {
-        Vector2 navVec = EnemyNavigator.NavVec(transform.position);
-        float angle = Mathf.Atan2(navVec.y, navVec.x);
         vecCnt++;
         if (vecCnt % 2 == 0)
-            angle += Random.Range(0.5F, 0.7F);
+            vec = EnemyNavigator.NavVec(transform.position, -0.7F, -0.5F);
         else
-            angle -= Random.Range(0.5F, 0.7F);
-        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed * speedRate;
+            vec = EnemyNavigator.NavVec(transform.position, 0.5F,0.7F);
     }
 
 
@@ -55,7 +52,7 @@ public class TreeMan : MonoBehaviour
 
     private void FixedUpdate()
     {
-        body.AddForce(vec);
+        body.AddForce(vec * basicSpeed * speedRate);
     }
 
     private void OnDestroy()

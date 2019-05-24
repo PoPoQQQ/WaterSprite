@@ -39,7 +39,7 @@ public class GameSystem : MonoBehaviour
 
     GameObject RandEnemy()
     {
-        return ghost;
+        //return ghost;
         float tR = 1F, rR = Mathf.Min(0.16F * (dayCnt - 1), 0.8F),
             hR = Mathf.Min(0.2F * (dayCnt - 3), 1.5F),
             gR = Mathf.Min(0.08F * (dayCnt - 6), 0.5F);

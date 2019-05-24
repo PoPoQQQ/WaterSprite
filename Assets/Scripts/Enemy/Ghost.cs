@@ -68,11 +68,12 @@ public class Ghost : MonoBehaviour
 
     void ResetVec()
     {
-        speed = basicSpeed * Random.Range(0.5F, 1.5F);
-        navVec = EnemyNavigator.NavVec(transform.position);
         if ((player.transform.position - transform.position).magnitude <= 4F)
             Split();
-        angle = Mathf.Atan2(navVec.y, navVec.x);
+
+        speed = basicSpeed * Random.Range(0.5F, 1.5F);
+
+        angle = EnemyNavigator.NavAng(transform.position);
         float randAngle = Random.Range(0.5F, 0.7F);
         if (moveCnt % 2 == 1)
             randAngle = -randAngle;
@@ -93,7 +94,6 @@ public class Ghost : MonoBehaviour
         {
             vec = Vector2.zero;
         }
-
     }
 
     void UpdateDirection()
@@ -106,4 +106,5 @@ public class Ghost : MonoBehaviour
     {
 
     }
+
 }

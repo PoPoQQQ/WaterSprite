@@ -1116,6 +1116,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone3 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 91db5a77444901841a520532f9f954c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 91db5a77444901841a520532f9f954c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1190,6 +1195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone3 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 91db5a77444901841a520532f9f954c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 91db5a77444901841a520532f9f954c4,
         type: 3}
@@ -1415,6 +1425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}
@@ -1790,6 +1805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trunk2 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: b1eb0e22f471d2f42ba3b2862275d165,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: b1eb0e22f471d2f42ba3b2862275d165,
         type: 3}
@@ -2916,6 +2936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone3 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 91db5a77444901841a520532f9f954c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 91db5a77444901841a520532f9f954c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3290,6 +3315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trunk0 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: e5f384446bd00a6479426d6903e56fc2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: e5f384446bd00a6479426d6903e56fc2,
         type: 3}
@@ -3740,6 +3770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trunk2 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: b1eb0e22f471d2f42ba3b2862275d165,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: b1eb0e22f471d2f42ba3b2862275d165,
         type: 3}
@@ -4266,6 +4301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone2 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 05375b7eb3932ac4f995815a4e38b770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 05375b7eb3932ac4f995815a4e38b770,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4415,6 +4455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}
@@ -4640,6 +4685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}
@@ -4940,6 +4990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}
@@ -9816,6 +9871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 05375b7eb3932ac4f995815a4e38b770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 05375b7eb3932ac4f995815a4e38b770,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10641,6 +10701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 05375b7eb3932ac4f995815a4e38b770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 05375b7eb3932ac4f995815a4e38b770,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10790,6 +10855,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}
@@ -11465,6 +11535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trunk1 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 276bb3c619e7a474892b9e268a2890f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 276bb3c619e7a474892b9e268a2890f7,
         type: 3}
@@ -12386,6 +12461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trunk0 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: e5f384446bd00a6479426d6903e56fc2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: e5f384446bd00a6479426d6903e56fc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12761,6 +12841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone3 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 91db5a77444901841a520532f9f954c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 91db5a77444901841a520532f9f954c4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12910,6 +12995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stone0 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532741813341904567, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4766625890466010670, guid: 0a16ef0bc31e2f34984b0cb6e759ab9d,
         type: 3}

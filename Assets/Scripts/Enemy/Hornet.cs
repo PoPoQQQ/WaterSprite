@@ -46,8 +46,7 @@ public class Hornet : MonoBehaviour
     void ResetVec()
     {
         navVec = EnemyNavigator.NavVec(transform.position);
-        float angle = Mathf.Atan2(navVec.y, navVec.x);
-        float randAngle = 0F;
+        float randAngle;
         if ((player.transform.position - transform.position).magnitude >= 4F)
             randAngle = Random.Range(0.5F, 0.7F);
         else
@@ -55,8 +54,7 @@ public class Hornet : MonoBehaviour
         if (moveCnt % 2 == 1)
             randAngle = -randAngle;
         moveCnt++;
-        angle += randAngle;
-        vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed;
+        vec = EnemyNavigator.NavVec(transform.position,randAngle) * basicSpeed;
     }
 
     IEnumerator ShootCoroutine()

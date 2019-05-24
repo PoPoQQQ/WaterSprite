@@ -34,8 +34,7 @@ public class RootMan : MonoBehaviour
 
     private void FixedUpdate()
     {
-        navVec = EnemyNavigator.NavVec(transform.position);
-        float angle = Mathf.Atan2(navVec.y, navVec.x);
+        float angle = EnemyNavigator.NavAng(transform.position);
         angle += theta;
         vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed * speedRate;
         UpdateDirection();

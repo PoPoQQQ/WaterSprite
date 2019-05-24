@@ -14,7 +14,6 @@ public class PlantUIController : MonoBehaviour
     {
         if (UIEnabled)
             return;
-        Debug.Log("Enable");
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 0F, 0.6F);
         UIBottom.transform.DOMoveY(canvasY + 0F, 0.6F);
@@ -25,7 +24,6 @@ public class PlantUIController : MonoBehaviour
     {
         if (!UIEnabled)
             return;
-        Debug.Log("Disable");
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 500F, 0.6F);
         UIBottom.transform.DOMoveY(canvasY - 500F, 0.6F);

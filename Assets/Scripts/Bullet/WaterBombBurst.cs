@@ -26,7 +26,8 @@ public class WaterBombBurst : MonoBehaviour
             float dmgRate = (1.0F - 0.2F * dist);
             if(ec)
             {
-                ec.Damage(8F*dmgRate, (ec.transform.position - transform.position).normalized * 800F * dmgRate);
+                ec.Damage(9F * dmgRate, (ec.transform.position - transform.position).normalized * 2200F * dmgRate);
+                ec.gameObject.AddComponent<WaterDamp>();
             }
 
         }
