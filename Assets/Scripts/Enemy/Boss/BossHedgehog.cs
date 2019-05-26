@@ -54,6 +54,7 @@ public class BossHedgehog : MonoBehaviour
         body.drag = 1.6F;
         EC.collideDamage = 15F;
         EC.collideKnockBack = 72F;
+        animator.SetBool("Dash", true);
 
         yield return new WaitForSeconds(1.8F);
 
@@ -61,13 +62,13 @@ public class BossHedgehog : MonoBehaviour
         vec = Vector2.zero;
         EC.collideDamage = 5F;
         EC.collideKnockBack = 32F;
+        animator.SetBool("Dash", false);
         SetState(State.Idle);
     }
 
     void Shoot()
     {
-        Debug.Log("Shoot!!");
-        for(int i =0;i<8;i++)
+        for(int i = 0; i < 8; i++)
         {
             GameObject obj = GameObject.Instantiate(bullet, transform.position + (Vector3)bulletVec[i] * 0.6F, Quaternion.identity);
             obj.transform.Find("SpriteCenter").Find("Sprite").GetComponent<SpriteRenderer>().sprite = bulletSprite[i];
@@ -78,6 +79,7 @@ public class BossHedgehog : MonoBehaviour
     IEnumerator ShootCoroutine()
     {
         int shootCnt = 3;
+        animator.SetTrigger("Shoot");
         for(int i = 1;i<=shootCnt;i++)
         {
             yield return new WaitForSeconds(0.6F);
@@ -95,10 +97,12 @@ public class BossHedgehog : MonoBehaviour
         {
             SetVec();
             UpdateDirection();
+            animator.SetBool("Walk", true);
             body.drag = 1F;
             yield return new WaitForSeconds(0.9F / speedRate);
 
             vec = Vector2.zero;
+            animator.SetBool("Walk", false);
             body.drag = 4F;
             yield return new WaitForSeconds(0.6F / speedRate);
         }
@@ -143,7 +147,6 @@ public class BossHedgehog : MonoBehaviour
 
     void UpdateDirection()
     {
-        return;
         Vector2 dir = player.transform.position - transform.position;
         animator.SetFloat("X", dir.x);
         animator.SetFloat("Y", dir.y);
