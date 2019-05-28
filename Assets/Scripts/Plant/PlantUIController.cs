@@ -22,7 +22,7 @@ public class PlantUIController : MonoBehaviour
 
     void UIDisable()
     {
-        if (!UIEnabled)
+        if (!UIEnabled) 
             return;
         float canvasY = UITop.transform.parent.position.y;
         UITop.transform.DOMoveY(canvasY + 500F, 0.6F);
