@@ -9,13 +9,29 @@ public class SplitedWisp : MonoBehaviour
     float alpha, theta;
     float bGrowth = 2F, cGrowth = 0.6F, alphaVel = 1F,thetaVel = 0.2F;
     GameObject mother;
+    BossWisp wisp;
 
     private void FixedUpdate()
     {
-        if(b < 4F)
-            b += bGrowth * Time.fixedDeltaTime;
-        else if (c < b * 1.1F)
-            c += cGrowth * Time.fixedDeltaTime;
+        if(!wisp.declining)
+        {
+            if (b < 4F)
+                b += bGrowth * Time.fixedDeltaTime;
+            else if (c < b * 1.1F)
+                c += cGrowth * Time.fixedDeltaTime;
+        }
+        else
+        {
+            if(c > 0F)
+            {
+                b -= 0.5F * Time.deltaTime;
+                c -= 2F * Time.deltaTime;
+            }
+            else if(b > 0F)
+            {
+                b -= 1.6F * Time.deltaTime;
+            }
+        }
 
         a = Mathf.Sqrt(b * b + c * c);
         alpha = basicAlpha + alphaVel * Time.time;
@@ -32,6 +48,7 @@ public class SplitedWisp : MonoBehaviour
     void Start()
     {
         mother = transform.parent.gameObject;
+        wisp = mother.GetComponent<BossWisp>();
     }
 
     // Update is called once per frame

@@ -7,10 +7,14 @@ public class BossWisp : MonoBehaviour
 {
     public enum State { large,mid,small};
     public State state = State.large;
+
     Vector2 endPos,startPos,basicPos;
     float movePhase = 0F,angle = 0F;
     float moveTime = 0F;
-    bool started = false;
+
+    int splitCnt = 0;
+    public bool declining = false;
+
     GameObject player;
     GameObject beam,splitedWisp;
     Coroutine moveCoroutine;
@@ -41,7 +45,6 @@ public class BossWisp : MonoBehaviour
         yield return new WaitForSeconds(3F);
 
         angle = Random.Range(-Mathf.PI, Mathf.PI);
-        started = true;
         for(int i =1;i<=8;i++)
         {
             startPos = transform.position;
@@ -81,6 +84,9 @@ public class BossWisp : MonoBehaviour
 
     void Split(float theta)
     {
+        if (state != State.mid || declining)
+            return;
+        splitCnt++;
         var obj = GameObject.Instantiate(splitedWisp, transform.position, Quaternion.identity, transform);
         obj.GetComponent<SplitedWisp>().basicTheta = theta;
         obj.GetComponent<SplitedWisp>().basicAlpha = theta;
@@ -89,14 +95,15 @@ public class BossWisp : MonoBehaviour
     IEnumerator MidCoroutine()
     {
         GetComponent<SpriteRenderer>().sprite = midSprite;
-        for(int i =0;i<6;i++)
-        {
+        splitCnt = 0;
+        declining = false;
+
+        for (int i =0;i<6;i++)
             Split(2F * i *Mathf.PI / 6F);
-        }
         yield return new WaitForSeconds(3F);
 
         angle = Random.Range(-Mathf.PI, Mathf.PI);
-        for (int i = 1; i <= 100; i++)
+        while(splitCnt <= 18)
         {
             startPos = transform.position;
             angle += Random.Range(0.5F, 1F) * Mathf.PI;
@@ -107,6 +114,9 @@ public class BossWisp : MonoBehaviour
             DOTween.To(() => movePhase, x => movePhase = x, 1, moveTime);
             yield return new WaitForSeconds(moveTime);
         }
+        declining = true;
+        yield return new WaitForSeconds(4F);
+        SetState(State.large);
     }
 
     private void FixedUpdate()
