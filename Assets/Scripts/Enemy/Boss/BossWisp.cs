@@ -32,6 +32,9 @@ public class BossWisp : MonoBehaviour
             case State.mid:
                 StartCoroutine(MidCoroutine());
                 break;
+            case State.small:
+                StartCoroutine(SmallCoroutine());
+                break;
         }
     }
 
@@ -45,7 +48,7 @@ public class BossWisp : MonoBehaviour
         yield return new WaitForSeconds(3F);
 
         angle = Random.Range(-Mathf.PI, Mathf.PI);
-        for(int i =1;i<=8;i++)
+        for(int i =1;i<=4;i++)
         {
             startPos = transform.position;
             angle += Random.Range(0.5F, 1F)*Mathf.PI;
@@ -56,7 +59,7 @@ public class BossWisp : MonoBehaviour
             DOTween.To(() => movePhase, x => movePhase = x, 1,moveTime);
             yield return new WaitForSeconds(moveTime);
         }
-        SetState(State.mid);
+        SetState(State.small);
     }
 
 
@@ -82,14 +85,16 @@ public class BossWisp : MonoBehaviour
         }
     }
 
-    void Split(float theta)
+    void Split(float theta) => Split(theta, theta,false);
+    void Split(float theta,float alpha,bool outerRing)
     {
-        if (state != State.mid || declining)
+        if (state == State.mid && declining)
             return;
         splitCnt++;
         var obj = GameObject.Instantiate(splitedWisp, transform.position, Quaternion.identity, transform);
-        obj.GetComponent<SplitedWisp>().basicTheta = theta;
-        obj.GetComponent<SplitedWisp>().basicAlpha = theta;
+        obj.GetComponent<SplitedWisp>().theta = theta;
+        obj.GetComponent<SplitedWisp>().alpha = alpha;
+        obj.GetComponent<SplitedWisp>().outerRing = outerRing;
     }
 
     IEnumerator MidCoroutine()
@@ -119,6 +124,18 @@ public class BossWisp : MonoBehaviour
         SetState(State.large);
     }
 
+
+    IEnumerator SmallCoroutine()
+    {
+        for(int i =1;i<=3;i++)
+        {
+            Split(0F, 0F,false);
+            Split(0.5F * Mathf.PI, 0F, true);
+            Split(1F * Mathf.PI, 0F, false);
+            Split(1.5F * Mathf.PI, 0F, true);
+            yield return new WaitForSeconds(0.6F);
+        }
+    }
     private void FixedUpdate()
     {
         transform.position = Vector2.Lerp(startPos, endPos, movePhase);
