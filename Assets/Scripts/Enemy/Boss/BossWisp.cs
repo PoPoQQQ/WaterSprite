@@ -19,6 +19,7 @@ public class BossWisp : MonoBehaviour
     GameObject beam,splitedWisp;
     Coroutine moveCoroutine;
     public Sprite largeSprite, midSprite;
+    EnemyController EC;
 
     void SetState(State s)
     {
@@ -38,7 +39,7 @@ public class BossWisp : MonoBehaviour
         }
     }
 
-
+    int stateChangeCnt = 0;
     IEnumerator LargeMoveCoroutine()
     {
         GetComponent<SpriteRenderer>().sprite = largeSprite;
@@ -59,12 +60,17 @@ public class BossWisp : MonoBehaviour
             DOTween.To(() => movePhase, x => movePhase = x, 1,moveTime);
             yield return new WaitForSeconds(moveTime);
         }
-        SetState(State.small);
+        stateChangeCnt++;
+        if (stateChangeCnt <= -2)
+            SetState(State.mid);
+        else
+            SetState(State.small);
     }
 
 
     void Beam()
     {
+        //EC.Damage(3, true);
         Vector2 vec = player.transform.position - transform.position;
         float angle = Mathf.Rad2Deg * Mathf.Atan2(vec.y, vec.x);
         GameObject.Instantiate(beam, transform.position, Quaternion.Euler(0F, 0F, angle),transform);
@@ -85,9 +91,10 @@ public class BossWisp : MonoBehaviour
         }
     }
 
-    void Split(float theta) => Split(theta, theta,false);
-    void Split(float theta,float alpha,bool outerRing)
+    public void Split(float theta) => Split(theta, theta,false);
+    public void Split(float theta,float alpha,bool outerRing)
     {
+        //EC.Damage(2, true);
         if (state == State.mid && declining)
             return;
         splitCnt++;
@@ -108,7 +115,7 @@ public class BossWisp : MonoBehaviour
         yield return new WaitForSeconds(3F);
 
         angle = Random.Range(-Mathf.PI, Mathf.PI);
-        while(splitCnt <= 18)
+        while(splitCnt <= 12)
         {
             startPos = transform.position;
             angle += Random.Range(0.5F, 1F) * Mathf.PI;
@@ -147,6 +154,7 @@ public class BossWisp : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         beam = Resources.Load<GameObject>("Prefabs/Ammo/WispBeam");
         splitedWisp = Resources.Load<GameObject>("Prefabs/Enemies/SplitedWisp");
+        EC = GetComponent<EnemyController>();
         SetState(State.large);
     }
 

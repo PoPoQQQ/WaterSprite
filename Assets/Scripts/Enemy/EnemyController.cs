@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
     public float health = 10F;
     public float collideDamage = 5F;
     public float collideKnockBack = 24F;
+    public bool isBoss = false;
+    public bool invincible = false;
     public static int enemyCnt = 0;
     Player player;
     GameSystem GS;
@@ -43,14 +45,22 @@ public class EnemyController : MonoBehaviour
         if (health <= 0F)
             Destroy(gameObject);
     }
-    public void Damage(float damage, Vector2 knockback)
+    public void Damage(float damage, Vector2 knockback, bool isSystemDamage)
     {
-        damage *= player.PlayerDamageRate();
-        damage /= GS.EnemyDefRate;
+        if (!isSystemDamage)
+        {
+            if (invincible)
+                return;
+            damage *= player.PlayerDamageRate();
+            damage /= GS.EnemyDefRate;
+        }
         health -= damage;
         StartCoroutine(FlashCoroutine());
         GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
     }
+
+    public void Damage(float damage, bool isSystemDamage) => Damage(damage, Vector2.zero,isSystemDamage);
+    public void Damage(float damage, Vector2 knockback) => Damage(damage, knockback, false);
 
     public void Damage(float damage) => Damage(damage, Vector2.zero);
 

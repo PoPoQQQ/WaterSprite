@@ -85,4 +85,10 @@ public class SplitedWisp : MonoBehaviour
     {
         
     }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<EnemyController>().health <= 0F)
+            wisp.Split(theta, alpha, false);
+    }
 }

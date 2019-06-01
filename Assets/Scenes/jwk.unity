@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 1669895617}
   - component: {fileID: 1669895616}
   - component: {fileID: 1669895618}
+  - component: {fileID: 1669895619}
   m_Layer: 0
   m_Name: Shape 1
   m_TagString: Untagged
@@ -998,8 +999,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  declining: 0
   largeSprite: {fileID: 21300000, guid: bc8ab9136c7ecd04391decd7e0628730, type: 3}
   midSprite: {fileID: 21300000, guid: 2ecbdc269afb95f4389212f1fa7272da, type: 3}
+--- !u!114 &1669895619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669895615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3dc0973437a2514cadcbf252c0b400b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  collideDamage: 5
+  collideKnockBack: 24
+  isBoss: 1
+  invincible: 1
 --- !u!1 &1876434709
 GameObject:
   m_ObjectHideFlags: 0
