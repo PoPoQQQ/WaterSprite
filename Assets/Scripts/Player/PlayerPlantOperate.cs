@@ -28,6 +28,7 @@ public class PlayerPlantOperate : MonoBehaviour
         if (seedCnt[seedType] <= 0)
             return;
         seedCnt[seedType]--;
+        InventoryManager.instance.useItem(Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[seedType]));
         HLP().PlantSeed(seedType);
     }
     public void TryWater()
@@ -75,11 +76,19 @@ public class PlayerPlantOperate : MonoBehaviour
     }
     public void AddSeed(Plant.Type seedType)
     {
+        CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
+        temp = Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[seedType]);
+        InventoryManager.instance.addItem(temp);
         seedCnt[seedType]++;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.J))
+            AddSeed(Plant.Type.Water);
+        if(Input.GetKeyDown(KeyCode.K))
+            AddSeed(Plant.Type.Attack);
+        if(Input.GetKeyDown(KeyCode.L))
+            AddSeed(Plant.Type.Consume);
     }
 }
