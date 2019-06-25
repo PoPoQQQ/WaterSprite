@@ -28,7 +28,8 @@ public class Hornet : MonoBehaviour
         upward = Random.Range(0F, 1F) < 0.5F;
         moveCnt = Random.Range(0F, 1F) < 0.5F ? 0 : 1;
         ResetVec();
-        speedRate = 0.7F * GS.EnemySpeedRate + 0.3F;
+        speedRate = Mathf.Lerp(1F, GS.EnemySpeedRate, 0.7F);
+
     }
 
     void UpdateDirection()
@@ -106,7 +107,6 @@ public class Hornet : MonoBehaviour
 
     }
 
-    static int dropCnt = 0;
     private void OnDestroy()
     {
         if (GetComponent<EnemyController>().health > 0)

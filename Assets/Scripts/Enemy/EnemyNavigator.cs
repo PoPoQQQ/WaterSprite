@@ -20,6 +20,8 @@ public class EnemyNavigator
         int mask = LayerMask.GetMask("Player", "Obstacle", "AirWall");
         Vector2 vec = (plPos - pos).normalized;
         var ray = Physics2D.Raycast(pos, vec, 1000F, mask);
+        if(!ray.collider)
+            return ToAng(vec);
         if (ray.collider.gameObject.tag == "Player")
             return ToAng(vec);
         float dist = ray.distance;

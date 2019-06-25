@@ -125,7 +125,7 @@ public class BossHedgehog : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        bullet = Resources.Load<GameObject>("Prefabs/Ammo/HedgehogBullet");
+        bullet = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/HedgehogBullet");
         bulletSprite = new Sprite[8];
         for(int i =0;i<8;i++)
         {

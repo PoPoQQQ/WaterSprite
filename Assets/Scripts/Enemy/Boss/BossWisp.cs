@@ -152,7 +152,7 @@ public class BossWisp : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        beam = Resources.Load<GameObject>("Prefabs/Ammo/WispBeam");
+        beam = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/WispBeam");
         splitedWisp = Resources.Load<GameObject>("Prefabs/Enemies/SplitedWisp");
         EC = GetComponent<EnemyController>();
         SetState(State.large);
