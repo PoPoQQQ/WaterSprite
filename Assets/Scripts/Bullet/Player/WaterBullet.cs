@@ -21,9 +21,11 @@ public class WaterBullet : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
+            return;
+        if (collision.gameObject.tag == "Enemy")
         {
             var ec = collision.gameObject.GetComponent<EnemyController>();
             if (ec)
