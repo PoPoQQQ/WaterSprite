@@ -25,8 +25,6 @@ public class EnemyBullet : MonoBehaviour
             if (pl)
                 pl.Damage(damage);
         }
-
-        Debug.Log("Collide!");
         Destroy(gameObject);
     }
 }

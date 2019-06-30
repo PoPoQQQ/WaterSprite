@@ -25,13 +25,11 @@ public class PlayerAttack : MonoBehaviour
     void TryShoot()
     {
         if (Time.time >= lastShootTime + attackSpeed && pl.health > shootCost * pl.BulletConsumeRate())
-            WaterShoot();
+            LightningShoot();//FireShoot();//WaterShoot();
     }
 
     void LightningShoot()
     {
-
-        Debug.Log("Lightning!!");
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.y -= offsetY;
         dir.Normalize();
@@ -72,9 +70,14 @@ public class PlayerAttack : MonoBehaviour
     void TryBomb()
     {
         if (Time.time >= lastBombTime + bombSpeed && pl.health > bombCost * pl.BombConsumeRate())
-            Bomb();
+        {
+            pl.CostHealth(bombCost * pl.BombConsumeRate());
+            LightningBomb();//WaterBomb();
+            lastBombTime = Time.time;
+        }
     }
-    void Bomb()
+
+    void WaterBomb()
     {
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.y -= offsetY;
@@ -84,10 +87,19 @@ public class PlayerAttack : MonoBehaviour
         var bomb = bombObj.GetComponent<WaterBomb>();
         bomb.startPos = transform.position;
         bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lastBombTime = Time.time;
-        pl.CostHealth(bombCost * pl.BombConsumeRate());
     }
-    
+
+    LightningChain LC;
+    void LightningBomb()
+    {
+        if (LC == null)
+            LC = new LightningChain();
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        LC.playerPos = transform.position;
+        LC.aimPos = (Vector2)transform.position + Vector2.ClampMagnitude(dir, 4);
+        LC.MakeChain();
+    }
+
     // Update is called once per frame
     void Update()
     {

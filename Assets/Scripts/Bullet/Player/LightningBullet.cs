@@ -30,7 +30,6 @@ public class LightningBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Enemy")
         {
             var ec = collision.gameObject.GetComponent<EnemyController>();
@@ -39,6 +38,8 @@ public class LightningBullet : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Player")
         {
+            if (phase > 0)
+                return;
             Debug.Log("PL");
             var pl = collision.gameObject.GetComponent<Player>();
             if(pl)
