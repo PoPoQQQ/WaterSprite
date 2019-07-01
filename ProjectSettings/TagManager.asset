@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plant
   - Enemy
+  - Trunk
   layers:
   - Default
   - TransparentFX

@@ -59,6 +59,7 @@ public class TreeMan : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
+        TrunkGenerator.Generate(Trunk.Type.Tree, transform.position);
         FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Water, 0.16F);
     }
 
