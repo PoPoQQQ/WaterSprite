@@ -39,8 +39,10 @@ public class BossTree : MonoBehaviour
         GameObject.Instantiate(TreeStabPrefab, pos, Quaternion.identity);
     }
 
+    int stabCnt = 0, coroutineCnt = 0;
     IEnumerator LineStabCoroutine()
     {
+        coroutineCnt++;
         int cnt;
         float dist =2F, basicAngle, adjAngle;
         basicAngle = Random.Range(0F, 2F) * Mathf.PI;
@@ -58,19 +60,49 @@ public class BossTree : MonoBehaviour
             }
             yield return new WaitForSeconds((1F - 0.03F * cnt) * 0.8F);
         }
+        coroutineCnt--;
     }
 
     IEnumerator PointStabCoroutine(int maxCnt, float interval)
     {
+        coroutineCnt++;
         for(int i = 1;i<=maxCnt;i++)
         {
             Stab(player.transform.position);
             yield return new WaitForSeconds(interval);
         }
+        coroutineCnt--;
+    }
+
+    bool CoroutinesEnded()
+    {
+        return coroutineCnt == 0;
     }
 
     IEnumerator StabCoroutine()
     {
+        yield return new WaitForSeconds(1F);
+        stabCnt++;
+        if (stabCnt == 1)
+        {
+            StartCoroutine(PointStabCoroutine(16, 0.8F));
+        }
+        else if (stabCnt == 2)
+        {
+            StartCoroutine(LineStabCoroutine());
+        }
+        else if (stabCnt == 3)
+        {
+            StartCoroutine(PointStabCoroutine(21, 0.6F));
+        }
+        else
+        {
+            StartCoroutine(LineStabCoroutine());
+            StartCoroutine(PointStabCoroutine(16, 0.8F));
+        }
+        yield return new WaitForSeconds(1F);
+        yield return new WaitUntil(CoroutinesEnded);
+        SetState(State.Idle);
 
     }
 
