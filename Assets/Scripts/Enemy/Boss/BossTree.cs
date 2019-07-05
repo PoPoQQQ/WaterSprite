@@ -71,12 +71,12 @@ public class BossTree : MonoBehaviour
 
     IEnumerator StabCoroutine()
     {
-
+    	yield return 0;
     }
 
     IEnumerator SummonCoroutine()
     {
-
+    	yield return 0;
     }
     IEnumerator MoveCoroutine()
     {

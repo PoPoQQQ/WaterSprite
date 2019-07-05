@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -96,12 +96,12 @@ TextureImporter:
       name: Trunks_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 208
-        width: 196
-        height: 212
+        x: 61
+        y: 203
+        width: 205
+        height: 224
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,12 +117,12 @@ TextureImporter:
       name: Trunks_1
       rect:
         serializedVersion: 2
-        x: 316
-        y: 204
-        width: 216
-        height: 320
+        x: 313
+        y: 197
+        width: 224
+        height: 333
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,12 +138,12 @@ TextureImporter:
       name: Trunks_2
       rect:
         serializedVersion: 2
-        x: 596
-        y: 200
-        width: 248
-        height: 316
+        x: 588
+        y: 195
+        width: 260
+        height: 322
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

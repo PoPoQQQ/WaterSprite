@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -99,12 +99,12 @@ TextureImporter:
       name: Stones_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 228
-        width: 288
-        height: 224
+        x: 35
+        y: 227
+        width: 291
+        height: 226
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -120,12 +120,12 @@ TextureImporter:
       name: Stones_1
       rect:
         serializedVersion: 2
-        x: 376
-        y: 248
-        width: 108
-        height: 84
+        x: 375
+        y: 246
+        width: 111
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: Stones_2
       rect:
         serializedVersion: 2
-        x: 560
-        y: 248
-        width: 120
-        height: 164
+        x: 557
+        y: 246
+        width: 126
+        height: 168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Stones_3
       rect:
         serializedVersion: 2
-        x: 744
-        y: 240
-        width: 144
-        height: 88
+        x: 740
+        y: 238
+        width: 149
+        height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
