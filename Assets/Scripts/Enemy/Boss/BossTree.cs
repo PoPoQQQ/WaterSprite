@@ -81,6 +81,7 @@ public class BossTree : MonoBehaviour
 
     IEnumerator StabCoroutine()
     {
+<<<<<<< HEAD
         yield return new WaitForSeconds(1F);
         stabCnt++;
         if (stabCnt == 1)
@@ -104,11 +105,14 @@ public class BossTree : MonoBehaviour
         yield return new WaitUntil(CoroutinesEnded);
         SetState(State.Idle);
 
+=======
+    	yield return 0;
+>>>>>>> 8ea8e18ec48e554905c5bf18ad3d0af2625e2ea7
     }
 
     IEnumerator SummonCoroutine()
     {
-
+    	yield return 0;
     }
     IEnumerator MoveCoroutine()
     {
