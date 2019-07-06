@@ -40,25 +40,25 @@ public class BossTree : MonoBehaviour
     }
 
     int stabCnt = 0, coroutineCnt = 0;
-    IEnumerator LineStabCoroutine()
+    IEnumerator LineStabCoroutine(float basicAngle)
     {
         coroutineCnt++;
         int cnt;
-        float dist =2F, basicAngle, adjAngle;
-        basicAngle = Random.Range(0F, 2F) * Mathf.PI;
+        float dist = 2F, adjAngle;
+
         Vector2 pos;
-        for(cnt = 1;cnt<=15;cnt++)
+        for (cnt = 1; cnt <= 20; cnt++)
         {
-            dist += (1F-0.03F*cnt) * 0.6F;
-            adjAngle = Mathf.Sin(dist) * 0.5F;
-            float angle = basicAngle + adjAngle;
-            for(int i =1;i<=3;i++)
+            dist += 0.65F;
+            adjAngle = Mathf.Sin(dist) * 0.4F;
+            float angle = basicAngle + adjAngle * 5F / (dist + 2F);
+            for (int i = 1; i <= 4; i++)
             {
-                angle += Mathf.PI * 0.6667F;
+                angle += Mathf.PI * 0.5F;
                 pos = (Vector2)transform.position + dist * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 Stab(pos);
             }
-            yield return new WaitForSeconds((1F - 0.03F * cnt) * 0.8F);
+            yield return new WaitForSeconds(0.6F - 0.012F * cnt);
         }
         coroutineCnt--;
     }
@@ -81,42 +81,56 @@ public class BossTree : MonoBehaviour
 
     IEnumerator StabCoroutine()
     {
-<<<<<<< HEAD
         yield return new WaitForSeconds(1F);
         stabCnt++;
         if (stabCnt == 1)
         {
-            StartCoroutine(PointStabCoroutine(16, 0.8F));
+            StartCoroutine(PointStabCoroutine(24, 0.55F));
         }
         else if (stabCnt == 2)
         {
-            StartCoroutine(LineStabCoroutine());
+            StartCoroutine(LineStabCoroutine(Random.Range(0F,Mathf.PI)));
         }
         else if (stabCnt == 3)
         {
-            StartCoroutine(PointStabCoroutine(21, 0.6F));
+            StartCoroutine(LineStabCoroutine(Random.Range(0F, Mathf.PI)));
+            StartCoroutine(PointStabCoroutine(24, 0.6F));
         }
         else
         {
-            StartCoroutine(LineStabCoroutine());
-            StartCoroutine(PointStabCoroutine(16, 0.8F));
+            float ba = Random.Range(0F, Mathf.PI);
+            StartCoroutine(LineStabCoroutine(ba));
+            StartCoroutine(PointStabCoroutine(34, 0.6F));
+
+            yield return new WaitForSeconds(4F);
+            StartCoroutine(LineStabCoroutine(ba + Mathf.PI*0.25F));
         }
         yield return new WaitForSeconds(1F);
         yield return new WaitUntil(CoroutinesEnded);
         SetState(State.Idle);
 
-=======
-    	yield return 0;
->>>>>>> 8ea8e18ec48e554905c5bf18ad3d0af2625e2ea7
     }
 
     IEnumerator SummonCoroutine()
     {
-    	yield return 0;
+        yield return new WaitForSeconds(1.5F);
+
+        GameObject[] trunks = GameObject.FindGameObjectsWithTag("Trunk");
+        foreach(var i in trunks)
+        {
+            if ((i.transform.position - transform.position).magnitude <= 8F)
+                i.GetComponent<Trunk>().Summon();
+        }
+
+        yield return new WaitForSeconds(1.5F);
+        SetState(State.Idle);
     }
+
     IEnumerator MoveCoroutine()
     {
         yield return new WaitForSeconds(Random.Range(0F, 2F));
+
+        float phase = 0F;
         while (state == State.Idle)
         {
             UpdateDirection();
@@ -127,9 +141,21 @@ public class BossTree : MonoBehaviour
             vec = Vector2.zero;
             body.drag = 10F;
             yield return new WaitForSeconds(0.8F / speedRate);
+
+            float dist = (transform.position - player.transform.position).magnitude;
+            phase += 1F / dist;
+            if(phase >=1F)
+            {
+                SetState(State.Stab);
+                break;
+            }
         }
     }
 
+    private void FixedUpdate()
+    {
+        body.AddForce(vec * basicSpeed * speedRate);
+    }
     void SetVec()
     {
         vecCnt++;
@@ -137,10 +163,15 @@ public class BossTree : MonoBehaviour
             vec = EnemyNavigator.NavVec(transform.position, -0.7F, -0.5F);
         else
             vec = EnemyNavigator.NavVec(transform.position, 0.5F, 0.7F);
+
+        float dist = (transform.position - player.transform.position).magnitude;
+        if (dist > 7F)
+            vec *= 1F + (dist - 7F) * 0.15F;
     }
 
     void UpdateDirection()
     {
+        return;
         Vector2 dir = player.transform.position - transform.position;
         animator.SetFloat("X", dir.x);
         animator.SetFloat("Y", dir.y);
@@ -152,7 +183,7 @@ public class BossTree : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        StartCoroutine(MoveCoroutine());
+        SetState(State.Idle);
         GS = FindObjectOfType<GameSystem>();
         speedRate = GS.EnemySpeedRate;
     }

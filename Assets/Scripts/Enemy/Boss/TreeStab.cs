@@ -8,6 +8,7 @@ public class TreeStab : MonoBehaviour
     {
         yield return new WaitForSeconds(0.8F);
 
+        GetComponent<SpriteRenderer>().color = Color.magenta;
         var cc = gameObject.AddComponent<CapsuleCollider2D>();
         cc.isTrigger = true;
         cc.direction = CapsuleDirection2D.Horizontal;
@@ -21,7 +22,7 @@ public class TreeStab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(StabCoroutine());
     }
 
     // Update is called once per frame

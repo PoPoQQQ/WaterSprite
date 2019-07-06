@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6269861727562874037}
   - component: {fileID: 6269861727562874038}
-  - component: {fileID: 6269861727562874039}
+  - component: {fileID: 9090435258207968443}
   m_Layer: 0
   m_Name: TreeStab
   m_TagString: Untagged
@@ -69,30 +69,26 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c8d947155a46b5440b21a81fade485a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &6269861727562874039
-CapsuleCollider2D:
+--- !u!114 &9090435258207968443
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6269861727562874032}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8, y: 0.7}
-  m_Direction: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49338e815894c1840ab451422efd7ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

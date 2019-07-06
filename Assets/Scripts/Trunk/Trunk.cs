@@ -20,10 +20,18 @@ public class Trunk : MonoBehaviour
     public Type type;
     public enum State { Start, Idle, Burning, End };
     public State state = State.Start;
-
+    GameObject EnemyPrefab;
     // Sprout state = 0, 1, 2. Only used in Idle state.
     public int sproutState = 0;
 
+    IEnumerator ReviveCoroutine()
+    {
+        yield return new WaitForSeconds(1F);
+
+        GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+
+        Destroy(gameObject, 1F);
+    }
     public void SetState(State s)
     {
         state = s;
@@ -32,7 +40,9 @@ public class Trunk : MonoBehaviour
         if (s == State.Burning)
             Destroy(gameObject, 5F);
         if (s == State.End)
-            Destroy(gameObject, 1F);
+        {
+            StartCoroutine(ReviveCoroutine());
+        }
     }
 
     public void Sprout(float p)
@@ -47,6 +57,16 @@ public class Trunk : MonoBehaviour
     }
     public void Sprout() => Sprout(1F);
 
+    public void Summon()
+    {
+        sproutState--;
+        // Animator State Machine operations here......
+        if(sproutState < 0)
+        {
+            SetState(State.End);
+        }
+    }
+
     public void Burn(float p)
     {
         if (state != State.Idle)
@@ -59,7 +79,10 @@ public class Trunk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if (type == Type.Tree)
+            EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Treeman");
+        else
+            EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Rootman");
     }
 
     // Update is called once per frame
