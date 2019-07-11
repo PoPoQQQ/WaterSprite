@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBomb : MonoBehaviour
+public class MoleStone : MonoBehaviour
 {
     GameObject sc;
     GameObject burstPrefab;
@@ -11,7 +11,7 @@ public class WaterBomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        burstPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/BombBurst");
+        burstPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/MoleStoneBurst");
         sc = transform.Find("SpriteCenter").gameObject;
     }
 
