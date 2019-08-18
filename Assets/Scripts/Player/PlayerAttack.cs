@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-	public float attackSpeed = 0.5f, bombSpeed = 2F;
+	public float shootInterval = 0.5f, bombInterval = 6.5F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
     GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab;
@@ -24,11 +24,35 @@ public class PlayerAttack : MonoBehaviour
 
     void TryShoot()
     {
-        if (Time.time >= lastShootTime + attackSpeed && pl.health > shootCost * pl.BulletConsumeRate())
-            LightningShoot();//FireShoot();//WaterShoot();
+        Player.Element e = pl.curElement;
+        if (Time.time >= lastShootTime + shootInterval)
+        {
+            switch(e)
+            {
+                case Player.Element.Water:
+                    WaterShoot();
+                    break;
+                case Player.Element.Fire:
+                    FireShoot();
+                    break;
+                case Player.Element.Ice:
+                    IceShoot();
+                    break;
+                case Player.Element.Electric:
+                    ElectricShoot();
+                    break;
+            }
+            if(!pl.limeBuffed)
+            {
+                if (e == Player.Element.Electric)
+                    pl.CostElem(2F, e);// Cost 2, Return 1 if catched the boomerang
+                else
+                    pl.CostElem(1F, e);
+            }
+        }
     }
 
-    void LightningShoot()
+    void ElectricShoot()
     {
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.y -= offsetY;
@@ -38,7 +62,6 @@ public class PlayerAttack : MonoBehaviour
         lb.GetComponent<LightningBullet>().vec = dir;
 
         lastShootTime = Time.time;
-        pl.CostHealth(2F);
     }
     void FireShoot()
     {
@@ -51,9 +74,7 @@ public class PlayerAttack : MonoBehaviour
         fire.GetComponent<Fire>().CalcVel(dir);
 
         lastShootTime = Time.time;
-        pl.CostHealth(shootCost * pl.BulletConsumeRate());
     }
-
     void WaterShoot()
     {
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -64,16 +85,41 @@ public class PlayerAttack : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = dir * 12F;
         bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
-        pl.CostHealth(shootCost * pl.BulletConsumeRate());
     }
+    void IceShoot()
+    {
+        Debug.Log("ICE SHOOT NOT FINISHED!!!");
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dir.y -= offsetY;
+        dir.Normalize();
 
+        GameObject bullet = GameObject.Instantiate(WaterBulletPrefab, transform.position, transform.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * 12F;
+        bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        lastShootTime = Time.time;
+    }
     void TryBomb()
     {
-        if (Time.time >= lastBombTime + bombSpeed && pl.health > bombCost * pl.BombConsumeRate())
+        bombInterval = 6.5F - 1F * pl.mulberryBuffCnt;
+        Player.Element e = pl.curElement;
+        if (Time.time >= lastBombTime + bombInterval && pl.elems[e] >= 5F)
         {
-            pl.CostHealth(bombCost * pl.BombConsumeRate());
-            LightningBomb();//WaterBomb();
-            lastBombTime = Time.time;
+            switch (e)
+            {
+                case Player.Element.Water:
+                    WaterBomb();
+                    break;
+                case Player.Element.Fire:
+                    FireBomb();
+                    break;
+                case Player.Element.Ice:
+                    IceBomb();
+                    break;
+                case Player.Element.Electric:
+                    ElectricBomb();
+                    break;
+            }
+            pl.CostElem(5F, e);
         }
     }
 
@@ -88,9 +134,32 @@ public class PlayerAttack : MonoBehaviour
         bomb.startPos = transform.position;
         bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+    void FireBomb()
+    {
+        Debug.Log("FIRE BOMB NOT FINISHED!!!");
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dir.y -= offsetY;
+        dir.Normalize();
 
+        GameObject bombObj = GameObject.Instantiate(WaterBombPrefab, transform.position, Quaternion.identity);
+        var bomb = bombObj.GetComponent<WaterBomb>();
+        bomb.startPos = transform.position;
+        bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+    void IceBomb()
+    {
+        Debug.Log("ICE BOMB NOT FINISHED!!!");
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dir.y -= offsetY;
+        dir.Normalize();
+
+        GameObject bombObj = GameObject.Instantiate(WaterBombPrefab, transform.position, Quaternion.identity);
+        var bomb = bombObj.GetComponent<WaterBomb>();
+        bomb.startPos = transform.position;
+        bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
     LightningChain LC;
-    void LightningBomb()
+    void ElectricBomb()
     {
         if (LC == null)
             LC = new LightningChain();

@@ -50,7 +50,7 @@ public class SplitedGhost : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Consume, 0.02F);
+        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Mulberry, 0.02F);
     }
     void UpdateDirection()
     {

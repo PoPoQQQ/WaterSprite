@@ -15,10 +15,10 @@ public class PlayerPlantOperate : MonoBehaviour
     void Start()
     {
         seedCnt = new Dictionary<Plant.Type, int>();
-        seedCnt.Add(Plant.Type.Water, 0);
-        seedCnt.Add(Plant.Type.Attack, 0);
-        seedCnt.Add(Plant.Type.Consume, 0);
-        AddSeed(Plant.Type.Water);
+        seedCnt.Add(Plant.Type.Aquabud, 0);
+        seedCnt.Add(Plant.Type.Goji, 0);
+        seedCnt.Add(Plant.Type.Mulberry, 0);
+        AddSeed(Plant.Type.Aquabud);
         pl = GetComponent<Player>();
     }
     public void TryPlant(Plant.Type seedType)
@@ -57,17 +57,17 @@ public class PlayerPlantOperate : MonoBehaviour
         HLP().Collect();
         switch(type)
         {
-            case Plant.Type.Water:
+            case Plant.Type.Aquabud:
                 pl.AddHealth(waterRecovery);
                 break;
 
-            case Plant.Type.Attack:
-                pl.atkBuffCnt++;
-                scrollBar.SetATK(pl.atkBuffCnt);
+            case Plant.Type.Goji:
+                pl.gojiBuffCnt++;
+                scrollBar.SetATK(pl.gojiBuffCnt);
                 scrollBar.ShowScroll();
                 break;
 
-            case Plant.Type.Consume:
+            case Plant.Type.Mulberry:
                 pl.csmBuffCnt++;
                 scrollBar.SetCOST(pl.csmBuffCnt);
                 scrollBar.ShowScroll();
@@ -85,10 +85,10 @@ public class PlayerPlantOperate : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.J))
-            AddSeed(Plant.Type.Water);
+            AddSeed(Plant.Type.Aquabud);
         if(Input.GetKeyDown(KeyCode.K))
-            AddSeed(Plant.Type.Attack);
+            AddSeed(Plant.Type.Goji);
         if(Input.GetKeyDown(KeyCode.L))
-            AddSeed(Plant.Type.Consume);
+            AddSeed(Plant.Type.Mulberry);
     }
 }

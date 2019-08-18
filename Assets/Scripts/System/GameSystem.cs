@@ -9,6 +9,7 @@ public class GameSystem : MonoBehaviour
     public DayOrNight dayOrNight = DayOrNight.Day;
     public int dayCnt = 1;
     public int score = 0;
+    Player pl;
     Plant[] plants;
     LootSystem LS;
 
@@ -22,12 +23,12 @@ public class GameSystem : MonoBehaviour
     public AudioSource night;
 
     public DNExchange dayNightManager;
-    public GameObject treeMan, rootMan, hornet, ghost,nxtEnemy;
+    public GameObject treeMan, rootMan, hornet, ghost, skull, hornetPlus, boar, mole;
+    public GameObject nxtEnemy;
     int CalcWaveCnt()
     {
         if (dayCnt <= 4)
             return 2;
-
         if (dayCnt <= 11)
             return 3;
         return 4;
@@ -37,33 +38,79 @@ public class GameSystem : MonoBehaviour
         return (int)(0.4F + Mathf.Sqrt((float)dayCnt) + 0.6F * wave);
     }
 
+    float r = 0F;
     GameObject RandEnemy()
     {
-        //return ghost;
-        float tR = 1F, rR = Mathf.Min(0.16F * (dayCnt - 1), 0.8F),
-            hR = Mathf.Min(0.2F * (dayCnt - 3), 1.5F),
-            gR = Mathf.Min(0.08F * (dayCnt - 6), 0.5F);
-        float tot = tR + rR + hR + gR;
-        float r = Random.Range(0F, tot);
-        if (r <= tR)
+        if (dayCnt == 1)
             return treeMan;
-        else if (r <= tR + rR)
-            return rootMan;
-        else if (r <= tR + rR + hR)
-            return hornet;
-        else 
-            return ghost;
+        if (dayCnt <= 3)
+            return Random.Range(0F, 2F) <= 1F ? treeMan : rootMan;
+        if(dayCnt <= 10)
+        {
+            r += Random.Range(0.5F, 1.5F);
+            if (r > 2F)
+                r -= 2F;
+
+            if (r <= 0.6F)
+                return treeMan;
+            else if (r <= 1.2F)
+                return rootMan;
+            else return hornet;
+        }
+        if (dayCnt <= 20)
+        {
+            r += Random.Range(0.5F, 1.5F);
+            if (r > 2F)
+                r -= 2F;
+
+            if (r <= 0.3F)
+                return treeMan;
+            else if (r <= 1.1F)
+                return meleeE;
+            else return rangeE;
+        }
+        else
+        {
+            r += Random.Range(0.5F, 1.5F);
+            if (r > 2F)
+                r -= 2F;
+
+            if (r <= 1F)
+                return meleeE;
+            else return rangeE;
+        }
     }
+
+    GameObject meleeE, rangeE;//melee enemy,  ranged enemy
+
     GameObject FirstEnemy()
     {
-        if (dayCnt <= 2)
-            return treeMan;
-        if (dayCnt <= 4)
-            return Random.Range(0F, 1F) < 0.7F ? rootMan : hornet;
-        
-        return Random.Range(0F,1F) < 0.2F * (dayCnt - 4) ? ghost : rootMan;
+        if (dayCnt == 1)
+            meleeE = treeMan;
+        else if (dayCnt <= 10)
+            meleeE = Random.Range(0F, 2F) < 1F ? treeMan : rootMan;
+        else
+        {
+            float r = Random.Range(0F, 3F);
+            if (r <= 1F) meleeE = treeMan;
+            else if (r <= 2F) meleeE = rootMan;
+            else meleeE = boar;
+        }
+
+        if (dayCnt <= 10)
+            rangeE = hornet;
+        else if (dayCnt <= 20)
+            rangeE = Random.Range(0F, 2F) < 1F ? hornet : skull;
+        else
+        {
+            float r = Random.Range(0F, 3F);
+            if (r <= 1F) rangeE = hornet;
+            else if (r <= 2F) rangeE = skull;
+            else rangeE = mole;
+        }
+        return meleeE;
     }
-    GameObject FinalEnemy(int wave)
+    GameObject LastEnemy(int wave)
     {
         if (dayCnt == 1)
             return treeMan;
@@ -72,8 +119,26 @@ public class GameSystem : MonoBehaviour
         if (dayCnt <= 5)
             return Random.Range(0F, 1F) < 0.3F ? rootMan : hornet;
         if(dayCnt <= 8)
-            return hornet;
-        return hornet;
+        {
+            if (wave <= 2)
+                return hornet;
+            else
+                return ghost;
+        }
+        if (dayCnt <= 15)
+        {
+            if (Random.Range(0F,2F) < 1F)
+                return hornet;
+            else
+                return ghost;
+        }
+        else
+        {
+            if (Random.Range(0F, 2F) < 1F)
+                return hornetPlus;
+            else
+                return ghost;
+        }
 
     }
     IEnumerator NightCoroutine()
@@ -90,7 +155,7 @@ public class GameSystem : MonoBehaviour
                 if (j < enmCnt)
                     nxtEnemy = RandEnemy();
                 else
-                    nxtEnemy = FinalEnemy(i);
+                    nxtEnemy = LastEnemy(i);
                 GameObject.Instantiate(nxtEnemy, new Vector3(Random.Range(-8F, 10F), Random.Range(-27F, -25F)), Quaternion.identity);
                 yield return new WaitForSeconds(1F);
             }
@@ -112,6 +177,7 @@ public class GameSystem : MonoBehaviour
         dayNightManager.setDayCnt(1);
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
+        pl = FindObjectOfType<Player>();
         LS = GetComponent<LootSystem>();
     }
 
@@ -137,12 +203,13 @@ public class GameSystem : MonoBehaviour
         dayOrNight = DayOrNight.Day;
         foreach (var i in plants)
             i.Refresh();
+        pl.Refresh();
         SwitchBGM(night, morning);
         dayNightManager.setDayIcon();
         if(dayCnt% 10 == 0)
         {
-            LS.lootChance[Plant.Type.Attack] += 0.18F;
-            LS.lootChance[Plant.Type.Consume] += 0.1F;
+            LS.lootChanceMultiplier[Plant.Type.Goji] += 0.18F;
+            LS.lootChanceMultiplier[Plant.Type.Mulberry] += 0.1F;
         }
     }
 

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerMoving : MonoBehaviour
 {
+    Player pl;
+    private void Start()
+    {
+        pl = GetComponent<Player>();
+    }
     private void FixedUpdate()
     {
         Vector2 dir = Vector2.zero;
@@ -13,7 +18,10 @@ public class PlayerMoving : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) dir += Vector2.right;
         if (dir.magnitude > 1F)
             dir.Normalize();
-        float speed = GetComponent<Player>().moveSpeed;
+        float speed = pl.moveSpeed;
+        speed *= pl.moveSpeed;
+        if (pl.cloudberryBuffed)
+            speed *= 1.5F;
         GetComponent<Rigidbody2D>().AddForce(dir * speed);
 
     }

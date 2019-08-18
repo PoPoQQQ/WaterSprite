@@ -6,9 +6,9 @@ using UnityEngine;
 public class CollecableSeed : CollectableItem
 {
     public static Dictionary<Plant.Type, string> seedDictionary = new Dictionary<Plant.Type, string>(){
-        {Plant.Type.Water, "ItemAsset/Seeds/WaterSeed"},
-        {Plant.Type.Attack, "ItemAsset/Seeds/AtkSeed"}, 
-        {Plant.Type.Consume, "ItemAsset/Seeds/CsmSeed"}
+        {Plant.Type.Aquabud, "ItemAsset/Seeds/WaterSeed"},
+        {Plant.Type.Goji, "ItemAsset/Seeds/AtkSeed"}, 
+        {Plant.Type.Mulberry, "ItemAsset/Seeds/CsmSeed"}
     };
 
 

@@ -35,13 +35,13 @@ public class SeedItem : MonoBehaviour
         Sprite s = null;
         switch(type)
         {
-            case Plant.Type.Water:
+            case Plant.Type.Aquabud:
                 s = Resources.Load<Sprite>("Seeds/seed1");
                 break;
-            case Plant.Type.Attack:
+            case Plant.Type.Goji:
                 s = Resources.Load<Sprite>("Seeds/seed2");
                 break;
-            case Plant.Type.Consume:
+            case Plant.Type.Mulberry:
                 s = Resources.Load<Sprite>("Seeds/seed3");
                 break;
         }
