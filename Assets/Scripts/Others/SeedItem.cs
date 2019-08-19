@@ -32,8 +32,10 @@ public class SeedItem : MonoBehaviour
         if(prefab == null)
             prefab = Resources.Load<GameObject>("Prefabs/SeedItem");
         GameObject obj = GameObject.Instantiate(prefab, pos, Quaternion.identity);
-        Sprite s = null;
-        switch(type)
+        obj.GetComponent<SpriteRenderer>().sprite
+            = Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[type]).icon;
+         obj.GetComponent<SeedItem>().seedType = type;
+        /* switch(type)
         {
             case Plant.Type.Aquabud:
                 s = Resources.Load<Sprite>("Seeds/seed1");
@@ -44,9 +46,8 @@ public class SeedItem : MonoBehaviour
             case Plant.Type.Mulberry:
                 s = Resources.Load<Sprite>("Seeds/seed3");
                 break;
-        }
-        obj.GetComponent<SpriteRenderer>().sprite = s;
-        obj.GetComponent<SeedItem>().seedType = type;
+        }*/
+       
     }
     // Update is called once per frame
     void Update()
