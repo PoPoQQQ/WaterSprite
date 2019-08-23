@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPlantOperate : MonoBehaviour
 {
     public Dictionary<Plant.Type, int> seedCnt;
-    public float waterCost = 30F;
+    public float waterCost = 10F;
     public float waterRecovery = 30F;
     public ScrollBar scrollBar;
     Player pl;
@@ -35,9 +35,11 @@ public class PlayerPlantOperate : MonoBehaviour
     {
         if (HLP().watered || HLP().type == Plant.Type.None)
             return;
-        if (pl.health <= waterCost)
-            return;
-        pl.CostHealth(waterCost);
+        pl.CostElem(waterCost, Player.Element.Water);
+        
+        //if (pl.health <= waterCost)
+        //    return;
+        //pl.CostHealth(waterCost);
         HLP().Water();
     }
 
@@ -49,13 +51,13 @@ public class PlayerPlantOperate : MonoBehaviour
     }
     public void TryCollect()
     {
-        if (HLP().fruit <= 0)
-            return;
-        Debug.Log("Collect!");
         Plant.Type type = HLP().type;
-        Debug.Log(type);
+        if(!PlayerFruitEater.Usable(type) || HLP().fruit <= 0)
+            return;
+        Debug.Log("Collect " + type);
         HLP().Collect();
-        switch(type)
+        PlayerFruitEater.Eat(type);
+        /* switch(type)
         {
             case Plant.Type.Aquabud:
                 pl.AddHealth(waterRecovery);
@@ -72,7 +74,7 @@ public class PlayerPlantOperate : MonoBehaviour
                 scrollBar.SetCOST(pl.csmBuffCnt);
                 scrollBar.ShowScroll();
                 break;
-        }
+        }*/
     }
     public void AddSeed(Plant.Type seedType)
     {

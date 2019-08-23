@@ -101,4 +101,6 @@ public class Inventory : MonoBehaviour
             RemoveItem(temp);
         }
     }
+
+    
 }

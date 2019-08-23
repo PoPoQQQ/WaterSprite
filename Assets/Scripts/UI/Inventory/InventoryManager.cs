@@ -25,6 +25,7 @@ public class InventoryManager : MonoBehaviour
 
     public void useItem(CollectableItem temp)
     {
+        
         if(temp.itemType==CollectableItem.ItemType.seed)
         {
             seeds.RemoveItem(temp);

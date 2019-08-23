@@ -7,7 +7,7 @@ public class PlayerFruitEater : MonoBehaviour
     static Player pl;
     static GameSystem GS;
 
-    static bool Usable(Plant.Type t)
+    public static bool Usable(Plant.Type t)
     {
         if (pl == null)
             pl = FindObjectOfType<Player>();
@@ -32,7 +32,7 @@ public class PlayerFruitEater : MonoBehaviour
         return false;
     }
 
-    static void Eat(Plant.Type t)
+    public static void Eat(Plant.Type t)
     {
 
         if (pl == null)
