@@ -35,7 +35,7 @@ public class PlantUIButton : MonoBehaviour
             case ButtonType.Seed:
                 return ppo.seedCnt[seedType] > 0 && HLP().type == Plant.Type.None;
             case ButtonType.Water:
-                return pl.health > ppo.waterCost && HLP().type != Plant.Type.None && !HLP().watered;
+                return pl.TotalElement() > ppo.waterCost && HLP().type != Plant.Type.None && !HLP().watered;
             case ButtonType.Remove:
                 return HLP().type != Plant.Type.None;
             case ButtonType.Collect:

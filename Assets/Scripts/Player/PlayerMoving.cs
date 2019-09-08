@@ -19,7 +19,6 @@ public class PlayerMoving : MonoBehaviour
         if (dir.magnitude > 1F)
             dir.Normalize();
         float speed = pl.moveSpeed;
-        speed *= pl.moveSpeed;
         if (pl.cloudberryBuffed)
             speed *= 1.5F;
         GetComponent<Rigidbody2D>().AddForce(dir * speed);
