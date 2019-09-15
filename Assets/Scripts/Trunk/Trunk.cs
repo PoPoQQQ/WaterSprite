@@ -18,18 +18,53 @@ public class Trunk : MonoBehaviour
 {
     public enum Type { Tree, Root};
     public Type type;
-    public enum State { Idle, Sprout, Burning, End };
+    public enum State { Idle, Sprout, End };
+    public bool burning = false;
     public State state = State.Idle;
     GameObject EnemyPrefab;
     Animator anim;
 
+    IEnumerator FlashCoroutine()
+    {
+        var sr = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        const float duration = 1f;
+        const float frequency = 0.05f;
+        float _t = 0;
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            _t += Time.deltaTime;
+            if (_t >= 2 * frequency)
+                _t -= 2 * frequency;
+            sr.enabled = (_t >= frequency);
+            yield return 0;
+        }
+        sr.enabled = true;
+    }
     IEnumerator ReviveCoroutine()
     {
         yield return new WaitForSeconds(0.875F);
-
+        Destroy(GetComponent<CapsuleCollider2D>());
         GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
 
-        Destroy(gameObject, 1F);
+        Destroy(gameObject);
+    }
+
+    IEnumerator BurnCoroutine()
+    {
+        burning = true;
+        var bsr = transform.Find("Fire").GetComponent<SpriteRenderer>();
+        bsr.color = Color.white;
+        yield return new WaitForSeconds(1.75F);
+        if(Random.Range(0F,1F)<=0.4F)
+        {
+            Destroy(gameObject, 1F);
+            StartCoroutine(FlashCoroutine());
+        }
+
+        yield return new WaitForSeconds(1.75F);
+        bsr.color = new Color(1F,1F,1F,0F);
+        burning = false;
     }
     public void SetState(State s)
     {
@@ -39,8 +74,6 @@ public class Trunk : MonoBehaviour
         if (s == State.Sprout)
             anim.SetTrigger("Sprout");
 
-        if (s == State.Burning)
-            Destroy(gameObject, 5F);
         if (s == State.End)
         {
             StartCoroutine(ReviveCoroutine());
@@ -74,17 +107,19 @@ public class Trunk : MonoBehaviour
 
     public void Burn(float p)
     {
-        if (state != State.Idle)
+        if (state == State.End || burning)
             return;
         if (Random.Range(0F, 1F) <= p)
-            SetState(State.Burning);
+        {
+            StartCoroutine(BurnCoroutine());
+        }
     }
     public void Burn() => Burn(1F);
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = transform.Find("Sprite").GetComponent<Animator>();
         if (type == Type.Tree)
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Treeman");
         else

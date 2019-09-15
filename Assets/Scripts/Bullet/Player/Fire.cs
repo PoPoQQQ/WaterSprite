@@ -52,7 +52,7 @@ public class Fire : MonoBehaviour
     {
         
     }
-
+    float burnRate = -1F;
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == ("Enemy"))
@@ -61,6 +61,15 @@ public class Fire : MonoBehaviour
             if (!ec)
                 return;
             ec.Damage(2F * Time.deltaTime);
+        }
+        if (collision.gameObject.tag == "Trunk")
+        {
+            if (burnRate < 0F)
+                burnRate = Random.Range(0F, 1F);
+            var t = collision.gameObject.GetComponent<Trunk>();
+            if (t && burnRate>0.5F)
+                t.Burn();
+
         }
     }
 
