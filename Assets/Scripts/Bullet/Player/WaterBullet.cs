@@ -31,6 +31,13 @@ public class WaterBullet : MonoBehaviour
             if (ec)
                 ec.Damage(damage);
         }
+        if (collision.gameObject.tag == "Trunk")
+        {
+            var t = collision.gameObject.GetComponent<Trunk>();
+            if (t)
+                t.Sprout(0.3F);
+
+        }
 
         GameObject burst = GameObject.Instantiate(burstPrefab, transform.position, Quaternion.identity);
         Destroy(burst, 0.5f);

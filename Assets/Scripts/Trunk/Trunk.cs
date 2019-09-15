@@ -18,15 +18,14 @@ public class Trunk : MonoBehaviour
 {
     public enum Type { Tree, Root};
     public Type type;
-    public enum State { Start, Idle, Burning, End };
-    public State state = State.Start;
+    public enum State { Idle, Sprout, Burning, End };
+    public State state = State.Idle;
     GameObject EnemyPrefab;
-    // Sprout state = 0, 1, 2. Only used in Idle state.
-    public int sproutState = 0;
+    Animator anim;
 
     IEnumerator ReviveCoroutine()
     {
-        yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(0.875F);
 
         GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
 
@@ -35,35 +34,41 @@ public class Trunk : MonoBehaviour
     public void SetState(State s)
     {
         state = s;
-        // Animator State Machine operations here......
+        if (s == State.Idle)
+            anim.SetTrigger("Idle");
+        if (s == State.Sprout)
+            anim.SetTrigger("Sprout");
 
         if (s == State.Burning)
             Destroy(gameObject, 5F);
         if (s == State.End)
         {
             StartCoroutine(ReviveCoroutine());
+            anim.SetTrigger("End");
         }
     }
 
     public void Sprout(float p)
     {
-        if (sproutState >= 2 || state != State.Idle)
+        if (state != State.Idle)
             return;
         if (Random.Range(0F, 1F) <= p)
         {
-            sproutState++;
-            // Animator State Machine operations here......
+            SetState(State.Sprout);
         }
     }
     public void Sprout() => Sprout(1F);
 
     public void Summon()
     {
-        sproutState--;
-        // Animator State Machine operations here......
-        if(sproutState < 0)
+        if (state == State.Idle)
         {
             SetState(State.End);
+        }
+        if (state == State.Sprout)
+        {
+            if (Random.Range(0F, 1F) <= 0.5F)
+                SetState(State.Idle);
         }
     }
 
@@ -79,6 +84,7 @@ public class Trunk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         if (type == Type.Tree)
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Treeman");
         else

@@ -31,5 +31,12 @@ public class WaterBombBurst : MonoBehaviour
             }
 
         }
+        if (collision.gameObject.tag == "Trunk")
+        {
+            var t = collision.gameObject.GetComponent<Trunk>();
+            if (t)
+                t.Sprout(0.6F);
+
+        }
     }
 }

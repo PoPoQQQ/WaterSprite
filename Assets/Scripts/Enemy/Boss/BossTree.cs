@@ -146,7 +146,7 @@ public class BossTree : MonoBehaviour
             phase += 1F / dist;
             if(phase >=1F)
             {
-                SetState(State.Stab);
+                SetState(State.Summon);
                 break;
             }
         }
