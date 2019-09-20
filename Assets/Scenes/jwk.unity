@@ -851,6 +851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossTree
       objectReference: {fileID: 0}
+    - target: {fileID: 7204634163038745697, guid: 1ee53502feda02545aa0515f83205286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7204634163038745701, guid: 1ee53502feda02545aa0515f83205286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -959,13 +964,15 @@ GameObject:
   - component: {fileID: 1341618985}
   - component: {fileID: 1341618984}
   - component: {fileID: 1341618983}
+  - component: {fileID: 1341618986}
+  - component: {fileID: 1341618987}
   m_Layer: 0
   m_Name: Mole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1341618979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,7 +1027,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c8d947155a46b5440b21a81fade485a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9961065f9b94fa4abb54310b6e34e76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1040,7 +1047,7 @@ Transform:
   m_GameObject: {fileID: 1341618978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -1112,6 +1119,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1341618986
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341618978}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc086b2ac22dc6349ad614408a89918a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1341618987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341618978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883a9afa7d3da0448b0e6cd1a129ea6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1386940476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1372,7 +1410,7 @@ PrefabInstance:
     - target: {fileID: 8232091193471336670, guid: 6c53bf5b346b32a46acd90baba5d9506,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: 6c53bf5b346b32a46acd90baba5d9506,
         type: 3}
@@ -1456,7 +1494,7 @@ GameObject:
   - component: {fileID: 1669895618}
   - component: {fileID: 1669895619}
   m_Layer: 0
-  m_Name: Shape 1
+  m_Name: BossWisp
   m_TagString: Trunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1710,6 +1748,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407061742821944251, guid: 25870f5ac92e16345b00b65114c8fbac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6086601204421595248, guid: 25870f5ac92e16345b00b65114c8fbac,
         type: 3}

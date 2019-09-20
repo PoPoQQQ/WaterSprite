@@ -9,9 +9,10 @@ public class Mole : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     GameSystem GS;
-    GameObject StonePrefab;
-    float basicSpeed = 4F;
+    GameObject StonePrefab, TrailPrefab;
+    float basicSpeed = 3F;
     float speedRate;
+    Animator anim;
 
     bool Inbound(Vector2 pos)
     {
@@ -29,8 +30,20 @@ public class Mole : MonoBehaviour
         float angle = Random.Range(0F, 2F) * Mathf.PI;
         return c + dist * new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
+
+    IEnumerator BurrowTrailCoroutine()
+    {
+        while(state == State.Burrow)
+        {
+            yield return new WaitForSeconds(0.05F);
+            var o = GameObject.Instantiate(TrailPrefab, transform.position, Quaternion.identity);
+            Destroy(o, 1.25F);
+        }
+    }
+
     IEnumerator BurrowCoroutine()
     {
+        StartCoroutine(BurrowTrailCoroutine());
         Vector2 tgtPos = CircleRandPos(player.transform.position,3F);
         float dist = (tgtPos - (Vector2)transform.position).magnitude;
         Vector2 vec = (tgtPos - (Vector2)transform.position).normalized;
@@ -45,7 +58,8 @@ public class Mole : MonoBehaviour
 
     IEnumerator PeepCoroutine()
     {
-        yield return new WaitForSeconds(1.5F);
+        anim.SetInteger("State", 0);
+        yield return new WaitForSeconds(2.25F);
         SetState(State.Attack);
     }
 
@@ -58,12 +72,17 @@ public class Mole : MonoBehaviour
     }
     IEnumerator AttackCoroutine()
     {
+        anim.SetInteger("State", 1);
+        anim.SetBool("Leftward", transform.position.x > player.transform.position.x);
         for(int i = 1;i<=5;i++)
         {
             yield return new WaitForSeconds(0.3F);
+            anim.SetBool("Leftward", transform.position.x > player.transform.position.x);
             Throw();
             yield return new WaitForSeconds(0.3F);
         }
+        anim.SetInteger("State", 2);
+        yield return new WaitForSeconds(2.25F);
         SetState(State.Burrow);
     }
     public void SetState(State s)
@@ -74,17 +93,14 @@ public class Mole : MonoBehaviour
         {
             case State.Burrow:
                 Destroy(GetComponent<CircleCollider2D>());
-                GetComponent<SpriteRenderer>().color = new Color(1F, 1F, 1F, 0.4F);
                 StartCoroutine(BurrowCoroutine());
                 break;
             case State.Peep:
                 var cc = gameObject.AddComponent<CircleCollider2D>();
                 cc.radius = 0.42F;
-                GetComponent<SpriteRenderer>().color = Color.white;
                 StartCoroutine(PeepCoroutine());
                 break;
             case State.Attack:
-                GetComponent<SpriteRenderer>().color = new Color(1F,0.6F,0.6F);
                 StartCoroutine(AttackCoroutine());
                 break;
         }
@@ -100,6 +116,8 @@ public class Mole : MonoBehaviour
         speedRate = GS.EnemySpeedRate;
         SetState(State.Burrow);
         StonePrefab = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/MoleStone");
+        TrailPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/MoleTrail");
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
