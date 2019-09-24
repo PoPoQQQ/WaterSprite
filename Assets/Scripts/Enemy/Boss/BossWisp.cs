@@ -16,10 +16,10 @@ public class BossWisp : MonoBehaviour
     public bool declining = false;
 
     GameObject player;
-    GameObject beam,splitedWisp;
+    GameObject beam,splitedWisp,haze;
     Coroutine moveCoroutine;
-    public Sprite largeSprite, midSprite;
     EnemyController EC;
+    Animator anim;
 
     void SetState(State s)
     {
@@ -42,7 +42,6 @@ public class BossWisp : MonoBehaviour
     int stateChangeCnt = 0;
     IEnumerator LargeMoveCoroutine()
     {
-        GetComponent<SpriteRenderer>().sprite = largeSprite;
         startPos = transform.position;
         endPos = Vector2.down * 20;
         DOTween.To(() => movePhase, x => movePhase = x, 1, 3F);
@@ -61,7 +60,7 @@ public class BossWisp : MonoBehaviour
             yield return new WaitForSeconds(moveTime);
         }
         stateChangeCnt++;
-        if (stateChangeCnt <= -2)
+        if (stateChangeCnt <= 2)
             SetState(State.mid);
         else
             SetState(State.small);
@@ -70,12 +69,15 @@ public class BossWisp : MonoBehaviour
 
     void Beam()
     {
-        //EC.Damage(3, true);
         Vector2 vec = player.transform.position - transform.position;
         float angle = Mathf.Rad2Deg * Mathf.Atan2(vec.y, vec.x);
-        GameObject.Instantiate(beam, transform.position, Quaternion.Euler(0F, 0F, angle),transform);
-        GameObject.Instantiate(beam, transform.position, Quaternion.Euler(0F, 0F, angle + 120F), transform);
-        GameObject.Instantiate(beam, transform.position, Quaternion.Euler(0F, 0F, angle + 240F), transform);
+        float alpha = angle - 0.25F * Mathf.PI;
+        GameObject.Instantiate(beam, transform.position + 0F*new Vector3(Mathf.Sin(alpha),Mathf.Cos(alpha)),
+            Quaternion.Euler(0F, 0F, angle),transform);
+        GameObject.Instantiate(beam, transform.position + 0F * new Vector3(Mathf.Sin(alpha + 0.667F*Mathf.PI), Mathf.Cos(alpha + 0.667F * Mathf.PI)),
+            Quaternion.Euler(0F, 0F, angle - 120F), transform);
+        GameObject.Instantiate(beam, transform.position + 0F * new Vector3(Mathf.Sin(alpha + 1.333F * Mathf.PI), Mathf.Cos(alpha + 1.333F * Mathf.PI)),
+            Quaternion.Euler(0F, 0F, angle - 240F), transform);
     }
     IEnumerator BeamCoroutine()
     {
@@ -106,7 +108,8 @@ public class BossWisp : MonoBehaviour
 
     IEnumerator MidCoroutine()
     {
-        GetComponent<SpriteRenderer>().sprite = midSprite;
+        Debug.Log("m");
+        anim.SetInteger("State", 2);
         splitCnt = 0;
         declining = false;
 
@@ -128,13 +131,19 @@ public class BossWisp : MonoBehaviour
         }
         declining = true;
         yield return new WaitForSeconds(4F);
+        anim.SetInteger("State", 1);
         SetState(State.large);
     }
 
 
     IEnumerator SmallCoroutine()
     {
-        for(int i =1;i<=3;i++)
+        Destroy(anim.gameObject, 2.5F);
+        anim.SetInteger("State", 3);
+        yield return new WaitForSeconds(2F);
+        var obj = GameObject.Instantiate(haze, GameObject.Find("Camera Position").transform);
+        Destroy(obj, 1F);
+        for (int i =1;i<=3;i++)
         {
             Split(0F, 0F,false);
             Split(0.5F * Mathf.PI, 0F, true);
@@ -153,6 +162,8 @@ public class BossWisp : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         beam = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/WispBeam");
+        haze = Resources.Load<GameObject>("Prefabs/Enemies/WispHaze");
+        anim = transform.Find("Sprite").GetComponent<Animator>();
         splitedWisp = Resources.Load<GameObject>("Prefabs/Enemies/SplitedWisp");
         EC = GetComponent<EnemyController>();
         SetState(State.large);

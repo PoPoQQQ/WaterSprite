@@ -48,8 +48,10 @@ public class PlantUIButton : MonoBehaviour
     void Update()
     {
         btn.interactable = CheckInteractable();
+        /*
         if (type == ButtonType.Seed)
             text.text = ppo.seedCnt[seedType].ToString();
+            */
     }
 
     public void OnClick()
