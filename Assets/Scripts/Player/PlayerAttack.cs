@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 	public float shootInterval = 0.5f, bombInterval = 6.5F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
-    GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab;
+    GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab,IceBulletPrefab;
     float lastShootTime = -1123F, lastBombTime = -1234F;
     Player pl;
     GameSystem GS;
@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
         FireBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Fire/Fire");
         WaterBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bullet");
         WaterBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bomb");
+        IceBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/Bullet");
         GS = FindObjectOfType<GameSystem>();
         pl = GetComponent<Player>();
     }
@@ -30,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
             switch(e)
             {
                 case Player.Element.Water:
-                    WaterShoot();
+                    FireShoot();
                     break;
                 case Player.Element.Fire:
                     FireShoot();
@@ -88,14 +89,14 @@ public class PlayerAttack : MonoBehaviour
     }
     void IceShoot()
     {
-        Debug.Log("ICE SHOOT NOT FINISHED!!!");
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dir.y -= offsetY;
         dir.Normalize();
 
-        GameObject bullet = GameObject.Instantiate(WaterBulletPrefab, transform.position, transform.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = dir * 12F;
-        bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        GameObject bullet = GameObject.Instantiate(IceBulletPrefab, transform.position + (Vector3)dir*0.5F, transform.rotation);
+        bullet.transform.Find("Sprite").rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90F);
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * 24F;
+        //bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
     }
     void TryBomb()

@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class WaterBarrier : MonoBehaviour
 {
+    IEnumerator DisappearCoroutine()
+    {
+        yield return new WaitForSeconds(3.5F);
+        GetComponent<Animator>().SetTrigger("dis");
+
+        yield return new WaitForSeconds(0.5F);
+        Destroy(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DisappearCoroutine());
     }
 
     // Update is called once per frame
