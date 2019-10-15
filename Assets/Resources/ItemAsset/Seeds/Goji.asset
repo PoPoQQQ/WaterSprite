@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Goji
   m_EditorClassIdentifier: 
   name: Goji
-  icon: {fileID: 21300000, guid: fcbf9a751a52efb4cbcfa2a6c35b661d, type: 3}
+  icon: {fileID: 21300000, guid: a72661aefbb95b44e9996fe4d19c75df, type: 3}
   itemType: 0
   seedType: 3

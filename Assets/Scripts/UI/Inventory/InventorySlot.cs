@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -39,17 +40,28 @@ public class InventorySlot : MonoBehaviour
 
     GameObject temp;
 
+    IEnumerator dragslot()
+    {
+        Vector3 origincale = icon.transform.localScale;
+        temp = Instantiate(icon.gameObject, Input.mousePosition, Quaternion.identity);
+        icon.transform.DOScale(origincale*.8f, .05f);
+        temp.transform.SetParent(transform.parent.parent);
+        temp.transform.SetAsLastSibling();
+        temp.GetComponent<Image>().raycastTarget = false;
+        temp.SetActive(false);
+        yield return new WaitForSeconds(.05f);
+        temp.SetActive(true);
+        icon.transform.localScale = origincale;
+        icon.enabled = false;
+        count.enabled = false;
+    }
+
     public void BeginDragUI()
     {
         if(icon.enabled)
         {
             
-            temp = Instantiate(icon.gameObject, Input.mousePosition, Quaternion.identity);
-            temp.transform.SetParent(transform.parent.parent);
-            temp.transform.SetAsLastSibling();
-            temp.GetComponent<Image>().raycastTarget = false;
-            icon.enabled = false;
-            count.enabled = false;
+            StartCoroutine(dragslot());
         }
     }
 
