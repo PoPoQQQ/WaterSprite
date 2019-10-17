@@ -35,6 +35,7 @@ public class InventorySlot : MonoBehaviour
             item = temp.item;
             count.text = temp.cnt.ToString();
             icon.sprite = temp.item.icon;
+            icon.SetNativeSize();
         }
     }
 

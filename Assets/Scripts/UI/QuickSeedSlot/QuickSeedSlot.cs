@@ -29,6 +29,7 @@ public class QuickSeedSlot : MonoBehaviour
             icon.enabled = true;
             num.enabled = true;
             icon.sprite = item.item.icon;
+            icon.SetNativeSize();
             num.text = item.cnt.ToString();
         }
         
