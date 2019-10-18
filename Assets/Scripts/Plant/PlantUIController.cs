@@ -34,13 +34,13 @@ public class PlantUIController : MonoBehaviour
     {
         isHighlighted = true;
         highlightedPlant = GetComponent<Plant>();
-        UIEnable();
+        //UIEnable();
     }
     public void DisableHighlight()
     {
         isHighlighted = false;
         highlightedPlant = null;
-        UIDisable();
+        //UIDisable();
     }
     // Start is called before the first frame update
     void Start()

@@ -14,6 +14,8 @@ public class FadingCurtain : MonoBehaviour
     public GameObject barrierDoor;
     public GameObject close;
     public GameObject open;
+    public GameObject dayQuickSlot;
+    public GameObject nightQuickSlot;
 
     void Awake()
     {
@@ -34,7 +36,9 @@ public class FadingCurtain : MonoBehaviour
     {
         yield return StartCoroutine(fadingReverse(70));
         Camera.main.GetComponent<MonoBehaviour>().enabled = night;
+        dayQuickSlot.SetActive(!night);
         dayIcon.SetActive(!night);
+        nightQuickSlot.SetActive(night);
         nightIcon.SetActive(night);
         if(night)
             player.transform.position = new Vector3(-0.23f, 5.82f, 0);
@@ -73,7 +77,7 @@ public class FadingCurtain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //exchange(0f,false);
     }
 
     // Update is called once per frame

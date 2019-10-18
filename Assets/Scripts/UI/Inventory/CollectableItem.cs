@@ -12,4 +12,5 @@ public class CollectableItem : ScriptableObject
     public string name;
     public Sprite icon;
     public ItemType itemType;
+    public Plant.Type seedType;
 }

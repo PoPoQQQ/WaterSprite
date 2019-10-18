@@ -52,29 +52,10 @@ public class PlayerPlantOperate : MonoBehaviour
     public void TryCollect()
     {
         Plant.Type type = HLP().type;
-        if(!PlayerFruitEater.Usable(type) || HLP().fruit <= 0)
+        if(HLP().fruit <= 0)
             return;
-        Debug.Log("Collect " + type);
+        AddFruit(HLP().type);
         HLP().Collect();
-        PlayerFruitEater.Eat(type);
-        /* switch(type)
-        {
-            case Plant.Type.Aquabud:
-                pl.AddHealth(waterRecovery);
-                break;
-
-            case Plant.Type.Goji:
-                pl.gojiBuffCnt++;
-                scrollBar.SetATK(pl.gojiBuffCnt);
-                scrollBar.ShowScroll();
-                break;
-
-            case Plant.Type.Mulberry:
-                pl.csmBuffCnt++;
-                scrollBar.SetCOST(pl.csmBuffCnt);
-                scrollBar.ShowScroll();
-                break;
-        }*/
     }
     public void AddSeed(Plant.Type seedType)
     {
@@ -83,14 +64,30 @@ public class PlayerPlantOperate : MonoBehaviour
         InventoryManager.instance.addItem(temp);
         seedCnt[seedType]++;
     }
+    public void AddFruit(Plant.Type seedType)
+    {
+        CollectableFruit temp = ScriptableObject.CreateInstance("CollectableFruit") as CollectableFruit;
+        temp = Resources.Load<CollectableFruit>(CollectableFruit.FruitDictionary[seedType]);
+        InventoryManager.instance.addItem(temp);
+    }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.J))
+        {
             AddSeed(Plant.Type.Aquabud);
+            AddFruit(Plant.Type.Aquabud);
+        }
         if(Input.GetKeyDown(KeyCode.K))
+        {
             AddSeed(Plant.Type.Goji);
+            AddFruit(Plant.Type.Goji);
+        }
         if(Input.GetKeyDown(KeyCode.L))
+        {
             AddSeed(Plant.Type.Mulberry);
+            AddFruit(Plant.Type.Mulberry);
+        }
+
     }
 }

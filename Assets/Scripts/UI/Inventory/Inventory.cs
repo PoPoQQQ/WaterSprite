@@ -20,6 +20,9 @@ public class Inventory : MonoBehaviour
 
 	public itemSave[] itemList;
 
+    private void Start() {
+    }
+
     public void initList(int num)
     {
         itemList = new itemSave[num];
@@ -92,6 +95,8 @@ public class Inventory : MonoBehaviour
 
     public void tryPlantSeed(int code)
     {
+        if(itemList[code].cnt <= 0)
+            return;
         string name = "ItemAsset/Seeds/" + itemList[code].item.name;
         CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
         temp = Resources.Load<CollecableSeed>(name);

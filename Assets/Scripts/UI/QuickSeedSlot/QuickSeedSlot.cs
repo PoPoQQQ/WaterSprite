@@ -37,6 +37,18 @@ public class QuickSeedSlot : MonoBehaviour
 
     public void setHilight(bool t)
     {
+        if(Rect == null){
+            Debug.Log(transform.parent.name + " " + gameObject.name);
+            Debug.Log(Rect);
+            Debug.Log(transform.Find("rect").name);
+        }
         Rect.enabled = t;
+    }
+
+    public void setAlpha(float a)
+    {
+        Color c = icon.color;
+        c.a = a;
+        icon.color = c;
     }
 }

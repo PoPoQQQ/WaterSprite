@@ -21,6 +21,4 @@ public class CollecableSeed : CollectableItem
         {Plant.Type.Miracle, "ItemAsset/Seeds/Miracle"},
         {Plant.Type.Withered, "ItemAsset/Seeds/Withered"}
     };
-
-    public Plant.Type seedType;
 }
