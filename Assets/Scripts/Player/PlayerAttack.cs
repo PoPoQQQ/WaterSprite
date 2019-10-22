@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 	public float shootInterval = 0.5f, bombInterval = 6.5F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
-    GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab,IceBulletPrefab;
+    GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab,IceBulletPrefab, IceBombPrefab;
     float lastShootTime = -1123F, lastBombTime = -1234F;
     Player pl;
     GameSystem GS;
@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
         WaterBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bullet");
         WaterBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bomb");
         IceBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/Bullet");
+        IceBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/IceBomb");
         GS = FindObjectOfType<GameSystem>();
         pl = GetComponent<Player>();
     }
@@ -31,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
             switch(e)
             {
                 case Player.Element.Water:
-                    FireShoot();
+                    ElectricShoot();
                     break;
                 case Player.Element.Fire:
                     FireShoot();
@@ -108,7 +109,7 @@ public class PlayerAttack : MonoBehaviour
             switch (e)
             {
                 case Player.Element.Water:
-                    WaterBomb();
+                    IceBomb();
                     break;
                 case Player.Element.Fire:
                     FireBomb();
@@ -121,6 +122,7 @@ public class PlayerAttack : MonoBehaviour
                     break;
             }
             pl.CostElem(5F, e);
+            lastBombTime = Time.time;
         }
     }
 
@@ -149,15 +151,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void IceBomb()
     {
-        Debug.Log("ICE BOMB NOT FINISHED!!!");
-        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        dir.y -= offsetY;
-        dir.Normalize();
-
-        GameObject bombObj = GameObject.Instantiate(WaterBombPrefab, transform.position, Quaternion.identity);
-        var bomb = bombObj.GetComponent<WaterBomb>();
-        bomb.startPos = transform.position;
-        bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        GameObject.Instantiate(IceBombPrefab, transform.position, Quaternion.identity);
     }
     LightningChain LC;
     void ElectricBomb()
