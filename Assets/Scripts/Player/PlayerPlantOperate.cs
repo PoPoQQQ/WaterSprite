@@ -35,7 +35,7 @@ public class PlayerPlantOperate : MonoBehaviour
     {
         if (HLP().watered || HLP().type == Plant.Type.None)
             return;
-        pl.CostElem(waterCost, Player.Element.Water);
+        pl.CostHealth(waterCost);
         
         //if (pl.health <= waterCost)
         //    return;

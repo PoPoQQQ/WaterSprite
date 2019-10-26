@@ -14,6 +14,6 @@ public class PlayerTest : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.P))
-        	GetComponent<Player>().AddElem(50f * Time.deltaTime,Player.Element.Water);
+        	GetComponent<Player>().AddHealth(50f * Time.deltaTime);
     }
 }
