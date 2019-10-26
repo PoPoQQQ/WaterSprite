@@ -44,8 +44,8 @@ public class LightningBullet : MonoBehaviour
             var pl = collision.gameObject.GetComponent<Player>();
             if(pl)
             {
-                if(!pl.limeBuffed)
-                    pl.AddElem(1F, Player.Element.Electric);
+                if (!pl.limeBuffed)
+                    pl.AddHealth(1);
                 Destroy(gameObject,0.1F);
             }
         }

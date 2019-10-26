@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     void TryShoot()
     {
-        Player.Element e = pl.curElement;
+        Player.Element e = pl.element;
         if (Time.time >= lastShootTime + shootInterval)
         {
             switch(e)
@@ -47,9 +47,9 @@ public class PlayerAttack : MonoBehaviour
             if(!pl.limeBuffed)
             {
                 if (e == Player.Element.Electric)
-                    pl.CostElem(2F, e);// Cost 2, Return 1 if catched the boomerang
+                    pl.CostHealth(2F);// Cost 2, Return 1 if catched the boomerang
                 else
-                    pl.CostElem(1F, e);
+                    pl.CostHealth(1F);
             }
         }
     }
@@ -103,8 +103,8 @@ public class PlayerAttack : MonoBehaviour
     void TryBomb()
     {
         bombInterval = 6.5F - 1F * pl.mulberryBuffCnt;
-        Player.Element e = pl.curElement;
-        if (Time.time >= lastBombTime + bombInterval && pl.elems[e] >= 5F)
+        Player.Element e = pl.element;
+        if (Time.time >= lastBombTime + bombInterval && pl.health >= 5F)
         {
             switch (e)
             {
@@ -121,7 +121,7 @@ public class PlayerAttack : MonoBehaviour
                     ElectricBomb();
                     break;
             }
-            pl.CostElem(5F, e);
+            pl.CostHealth(5F);
             lastBombTime = Time.time;
         }
     }

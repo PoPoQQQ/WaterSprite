@@ -17,9 +17,7 @@ public class PlayerFruitEater : MonoBehaviour
         switch(t)
         {
             case Plant.Type.Aquabud:
-                return pl.TotalElement() < 300F;
-            case Plant.Type.Cyanberry:
-                return pl.elems[Player.Element.Water] > 30F;
+                return pl.health < 300F;
             case Plant.Type.Goji:
                 return pl.gojiBuffCnt < 5;
             case Plant.Type.Mulberry:
@@ -43,11 +41,7 @@ public class PlayerFruitEater : MonoBehaviour
         switch (t)
         {
             case Plant.Type.Aquabud:
-                pl.AddElem(30, Player.Element.Water);
-                break;
-            case Plant.Type.Cyanberry:
-                pl.CostElem(30, Player.Element.Water);
-                pl.AddElem(30, Player.Element.Ice);
+                pl.AddHealth(30);
                 break;
             case Plant.Type.Goji:
                 pl.gojiBuffCnt++;

@@ -9,43 +9,8 @@ public class Player : MonoBehaviour
 {
     //-------------Elements-----------
     public enum Element { Water, Fire, Ice, Electric};
-    public Dictionary<Element, float> elems = new Dictionary<Element, float>();
-    public Element curElement = Element.Water;
-    public Element NextElement(Element e)
-    {
-        switch(e)
-        {
-            case Element.Water:
-                return Element.Fire;
-            case Element.Fire:
-                return Element.Ice;
-            case Element.Ice:
-                return Element.Electric;
-            case Element.Electric:
-                return Element.Water;
-        }
-        return Element.Water;
-    }
-    public Element PrevElement(Element e)
-    {
-        switch(e)
-        {
-            case Element.Water:
-                return Element.Electric;
-            case Element.Fire:
-                return Element.Water;
-            case Element.Ice:
-                return Element.Fire;
-            case Element.Electric:
-                return Element.Ice;
-        }
-        return Element.Water;
-    }
-
-    public float TotalElement()
-    {
-        return elems[Element.Water] + elems[Element.Fire] + elems[Element.Ice] + elems[Element.Electric];
-    }
+    public Element element = Element.Water;
+    public float health = 100;
 
     //-------------Values-------------
     public float moveSpeed = 40f;
@@ -111,7 +76,7 @@ public class Player : MonoBehaviour
     void ChangeMaxState(int _maxState)
     {
         maxState = _maxState;
-        bar.updateHealth(_maxState*100, TotalElement());
+        bar.updateHealth(_maxState*100, health);
     }
     void ChangeState(int _state)
     {
@@ -123,7 +88,7 @@ public class Player : MonoBehaviour
 
     void Check() // ----- Need To Rewrite!!!! -----
     {
-        /*
+        
     	bar.updateHealth(health);
         if (health <= 0F)
             GameOver();
@@ -140,28 +105,28 @@ public class Player : MonoBehaviour
             if (_state != state)
                 ChangeState(_state);
         }
-        */
+        
     }
 
     public void Damage(float damage, Vector2 KnockBack)
     {
         damage *= GS.EnemyAtkRate;
-        elems[Element.Water] -= damage;
+        health -= damage;
         body.AddForce(KnockBack, ForceMode2D.Impulse);
         PE.Hurt();
         Check();
     }
     public void Damage(float damage) => Damage(damage, Vector2.zero);
 
-    public void CostElem(float cost,Element e)
+    public void CostHealth(float cost)
     {
-        elems[e] -= cost;
+        health -= cost;
         Check();
     }
 
-    public void AddElem(float h, Element e)
+    public void AddHealth(float h)
     {
-        elems[e] += h;
+        health += h;
         Check();
     }
     public void Refresh()
@@ -171,16 +136,13 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        elems[Element.Water] = 100;
-        elems[Element.Fire] = 0;
-        elems[Element.Electric] = 0;
-        elems[Element.Ice] = 0;
+        health = 100;
         GS = FindObjectOfType<GameSystem>();
         body = GetComponent<Rigidbody2D>();
         PM = GetComponent<PlayerMoving>();
         PE = GetComponent<PlayerEffects>();
         bar = FindObjectOfType<HPBar>();
-        bar.updateHealth(TotalElement());
+        bar.updateHealth(health);
     }
 
     // Update is called once per frame
