@@ -21,8 +21,12 @@ public class Player : MonoBehaviour
     public int gojiBuffCnt = 0;
     public int mulberryBuffCnt = 0;
     public int wisplumBuffCnt = 0;
-    public bool limeBuffed = false;
-    public bool cloudberryBuffed = false;
+    public float limeBuffTime = 0;
+    public float cloudberryBuffTime = 0;
+    public float elementTime;
+    public const float MaxElementTime = 30F;
+    public const float MaxLimeBuffTime = 10F;
+    public const float MaxCloudberryBuffTime = 10F;
 
     //-------------UI & Graphics-------------
     public HPBar bar;
@@ -39,12 +43,14 @@ public class Player : MonoBehaviour
     PlayerMoving PM;
     PlayerEffects PE;
 
+
+
     public float PlayerDamageRate()
     {
         return 1F + 0.5F * gojiBuffCnt;
     }
 
-    IEnumerator PlaySplash()
+    IEnumerator PlayerDeathSplashCoroutine()
     {
         int index = 0;
         while(true)
@@ -70,7 +76,7 @@ public class Player : MonoBehaviour
         GetComponentInChildren<Animator>().SetBool("Dead", true);
         GetComponent<CapsuleCollider2D>().enabled = false;
         shadow.SetActive(false);
-        StartCoroutine(PlaySplash());
+        StartCoroutine(PlayerDeathSplashCoroutine());
         PM.enabled = false;
     }
     void ChangeMaxState(int _maxState)
@@ -129,9 +135,15 @@ public class Player : MonoBehaviour
         health += h;
         Check();
     }
+
+    public void SetElement(Element e)
+    {
+        element = e;
+        elementTime = MaxElementTime;
+    }
     public void Refresh()
     {
-        limeBuffed = cloudberryBuffed = false;
+        limeBuffTime = cloudberryBuffTime = 0;
     }
     // Start is called before the first frame update
     void Start()
@@ -148,6 +160,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // ------------- Buffs & Elements ---------------
+        limeBuffTime -= Time.deltaTime;
+        cloudberryBuffTime -= Time.deltaTime;
+        if(element != Element.Water)
+        {
+            elementTime -= Time.deltaTime;
+            if (elementTime <= 0F)
+                element = Element.Water;
+        }
     }
 }

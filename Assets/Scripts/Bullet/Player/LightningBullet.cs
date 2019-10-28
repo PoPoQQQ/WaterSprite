@@ -44,7 +44,7 @@ public class LightningBullet : MonoBehaviour
             var pl = collision.gameObject.GetComponent<Player>();
             if(pl)
             {
-                if (!pl.limeBuffed)
+                if (pl.limeBuffTime == 0F)
                     pl.AddHealth(1);
                 Destroy(gameObject,0.1F);
             }

@@ -27,12 +27,15 @@ public class PlayerAttack : MonoBehaviour
     void TryShoot()
     {
         Player.Element e = pl.element;
-        if (Time.time >= lastShootTime + shootInterval)
+        float cd = shootInterval;
+        if (pl.limeBuffTime >= 0F)
+            cd *= 0.5F;
+        if (Time.time >= lastShootTime + cd)
         {
             switch(e)
             {
                 case Player.Element.Water:
-                    ElectricShoot();
+                    WaterShoot();
                     break;
                 case Player.Element.Fire:
                     FireShoot();
@@ -44,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
                     ElectricShoot();
                     break;
             }
-            if(!pl.limeBuffed)
+            if(pl.limeBuffTime <= 0F)
             {
                 if (e == Player.Element.Electric)
                     pl.CostHealth(2F);// Cost 2, Return 1 if catched the boomerang
@@ -109,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
             switch (e)
             {
                 case Player.Element.Water:
-                    IceBomb();
+                    WaterBomb();
                     break;
                 case Player.Element.Fire:
                     FireBomb();

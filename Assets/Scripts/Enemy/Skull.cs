@@ -5,7 +5,6 @@ using UnityEngine;
 public class Skull : MonoBehaviour
 {
     Vector2 vec = Vector2.zero;
-    Vector2 navVec;
     Rigidbody2D body;
     GameObject player;
     GameSystem GS;
@@ -28,8 +27,8 @@ public class Skull : MonoBehaviour
 
     void UpdateDirection()
     {
-        animator.SetFloat("X", navVec.x);
-        animator.SetFloat("Y", navVec.y);
+        animator.SetFloat("X", vec.x);
+        animator.SetFloat("Y", vec.y);
     }
 
     private void FixedUpdate()
@@ -44,6 +43,7 @@ public class Skull : MonoBehaviour
         if (Time.time >= lastShootTime + 4F && dist <=5F)
             StartCoroutine(ShootCoroutine());
         body.AddForce(vec);
+        UpdateDirection();
     }
 
 
@@ -67,7 +67,6 @@ public class Skull : MonoBehaviour
         shootVec.Normalize();
         var obj = GameObject.Instantiate(boomerang, transform.position, Quaternion.identity);
         obj.GetComponent<Boomerang>().basicVec = shootVec;
-        obj.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(shootVec.y, shootVec.x) * Mathf.Rad2Deg);
     }
 
     void Update()

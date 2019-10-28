@@ -5,10 +5,11 @@ using UnityEngine;
 public class Plant : MonoBehaviour
 { 
     public enum Type { None,
-        Aquabud, Cyanberry,
-        Goji, Mulberry, Wisplum,
+        Aquabud, Goji, Mulberry, Wisplum,
+        Lychee, Cyanberry, Mango,         
         Lime, Cloudberry,
         Dragonfruit, Jujube, Persimmon,
+        Turret, Bubble,
         Baobab, Jackfruit, Miracle,
         Withered };
 
