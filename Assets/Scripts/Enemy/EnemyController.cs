@@ -10,6 +10,11 @@ public class EnemyController : MonoBehaviour
     public bool isBoss = false;
     public bool invincible = false;
     public static int enemyCnt = 0;
+
+    // Loot
+    public Plant.Type lootType = Plant.Type.Aquabud;
+    public float lootRate = 0.04F;
+
     Player player;
     GameSystem GS;
     // Start is called before the first frame update
