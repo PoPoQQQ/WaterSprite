@@ -7,7 +7,10 @@ public class PlayerAttack : MonoBehaviour
 	public float shootInterval = 0.5f, bombInterval = 6.5F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
-    GameObject WaterBulletPrefab, WaterBombPrefab, FireBulletPrefab,LightningBulletPrefab,IceBulletPrefab, IceBombPrefab;
+    GameObject WaterBulletPrefab, WaterBombPrefab,
+        FireBulletPrefab, FireBombPrefab,
+        LightningBulletPrefab,
+        IceBulletPrefab, IceBombPrefab;
     float lastShootTime = -1123F, lastBombTime = -1234F;
     Player pl;
     GameSystem GS;
@@ -16,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     {
         LightningBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Lightning/LightningBullet");
         FireBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Fire/Fire");
+        FireBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Fire/FireBomb");
         WaterBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bullet");
         WaterBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bomb");
         IceBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/Bullet");
@@ -106,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
     void TryBomb()
     {
         bombInterval = 6.5F - 1F * pl.mulberryBuffCnt;
-        Player.Element e = pl.element;
+        Player.Element e = Player.Element.Fire;//pl.element;
         if (Time.time >= lastBombTime + bombInterval && pl.health >= 5F)
         {
             switch (e)
@@ -142,15 +146,8 @@ public class PlayerAttack : MonoBehaviour
     }
     void FireBomb()
     {
-        Debug.Log("FIRE BOMB NOT FINISHED!!!");
-        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        dir.y -= offsetY;
-        dir.Normalize();
-
-        GameObject bombObj = GameObject.Instantiate(WaterBombPrefab, transform.position, Quaternion.identity);
-        var bomb = bombObj.GetComponent<WaterBomb>();
-        bomb.startPos = transform.position;
-        bomb.endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        GameObject bombObj = GameObject.Instantiate(FireBombPrefab, pl.transform);
+        bombObj.transform.localPosition = Vector3.zero;
     }
     void IceBomb()
     {
