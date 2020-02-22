@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 230671707327105995}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.81, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7687857577832925255}
   m_RootOrder: 1
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 165c82948e9e1744395351269d8f2699, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e140558048c65584ab29775b2444d81a, type: 3}
+  m_Color: {r: 1, g: 0.67168653, b: 0.4292453, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -90,7 +90,7 @@ Animator:
   m_GameObject: {fileID: 230671707327105995}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 535ead1f656859142a9e0fa40c3cf06c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3e53b51b2084ec84181a10480bfb2558, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -99,7 +99,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2494890800876793049
+--- !u!114 &-2762176547141182642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,9 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8232091193471336670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0b6e1b23f1d264396dfe48a90e19e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 53645ab34794d314d8b95f236fad2b8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bigHornetBullet: {fileID: 6222997492996326210, guid: 62812a48426d4b1448f291b4ddd17e17,
+    type: 3}
 --- !u!1001 &7840589750840861871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: m_Name
-      value: Skull
+      value: BigHornet
       objectReference: {fileID: 0}
     - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
@@ -151,12 +153,12 @@ PrefabInstance:
     - target: {fileID: 468268165948173544, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.713469
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 468268165948173544, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.81023
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 468268165948173544, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
@@ -205,8 +207,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
       propertyPath: collideDamage
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865234497232061536, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865234497232061536, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92c2600d5f6f2594694c80fe876ce51f, type: 3}
