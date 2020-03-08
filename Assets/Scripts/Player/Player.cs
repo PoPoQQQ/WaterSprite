@@ -141,10 +141,30 @@ public class Player : MonoBehaviour
         element = e;
         elementTime = MaxElementTime;
     }
+
     public void Refresh()
     {
         limeBuffTime = cloudberryBuffTime = 0;
     }
+
+    IEnumerator SetWispsCoroutine()
+    {
+        yield return new WaitForSeconds(0.8F);
+        wisplumBuffCnt++;
+        GameObject wispPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Wisp");
+        for (int i = 0; i < wisplumBuffCnt; i++)
+        {
+            float ang = i * Mathf.PI * 2 / wisplumBuffCnt;
+            var obj = GameObject.Instantiate(wispPrefab, transform);
+            obj.GetComponent<Wisp>().ang = ang;
+        }
+    }
+
+    public void SetWisps()
+    {
+        StartCoroutine(SetWispsCoroutine());
+    }
+
     // Start is called before the first frame update
     void Start()
     {

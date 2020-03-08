@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-	public float shootInterval = 0.5f, bombInterval = 6.5F;
+	public float shootCD = 0.5f, bombCD = 6.5F, itemCD = 1F;
     public float offsetY = 0f;
     public float shootCost = 0.5F, bombCost = 5F;
     GameObject WaterBulletPrefab, WaterBombPrefab,
         FireBulletPrefab, FireBombPrefab,
         LightningBulletPrefab,
-        IceBulletPrefab, IceBombPrefab;
-    float lastShootTime = -1123F, lastBombTime = -1234F;
+        IceBulletPrefab, IceBombPrefab,
+        PersimmonFlashPrefab, JujubeFlashPrefab, DragonfruitBeamPrefab,
+        TurretPrefab, BarrierPrefab;
+    float lastShootTime = -1123F, lastBombTime = -1234F, lastItemTime = -1345F;
     Player pl;
     GameSystem GS;
 
@@ -24,14 +26,73 @@ public class PlayerAttack : MonoBehaviour
         WaterBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Water/Bomb");
         IceBulletPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/Bullet");
         IceBombPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Ice/IceBomb");
+        PersimmonFlashPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/StunFlash");
+        JujubeFlashPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/JujubeFlash");
+        DragonfruitBeamPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/DragonfruitBeam");
+        TurretPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Turret");
+        BarrierPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Barrier");
         GS = FindObjectOfType<GameSystem>();
         pl = GetComponent<Player>();
     }
 
+    public bool CanUseItem()
+    {
+        return Time.time - lastItemTime > itemCD;
+    }
+
+    public void JujubeFlash()
+    {
+        if (!CanUseItem())
+            return;
+        lastItemTime = Time.time;
+
+        GameObject.Instantiate(JujubeFlashPrefab, pl.transform);
+    }
+
+    public void DragonfruitShoot()
+    {
+        if (!CanUseItem())
+            return;
+        lastItemTime = Time.time;
+
+        Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dir.y -= offsetY;
+        dir.Normalize();
+        float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        var obj = GameObject.Instantiate(DragonfruitBeamPrefab, pl.transform);
+        obj.transform.rotation = Quaternion.Euler(0F, 0F, ang);
+        obj.transform.Find("Sprite").position = obj.transform.position + new Vector3(0F, 0.6F, -9.9F);
+
+    }
+    public void PersimmonFlash()
+    {
+        if (!CanUseItem())
+            return;
+        lastItemTime = Time.time;
+
+        GameObject.Instantiate(PersimmonFlashPrefab, pl.transform);
+    }
+
+    public void PlaceTurret()
+    {
+        if (!CanUseItem())
+            return;
+        lastItemTime = Time.time;
+        GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Ammo/Player/Turret"),
+            pl.transform.position, Quaternion.identity);
+    }
+    public void PlaceBarrier()
+    {
+        if (!CanUseItem())
+            return;
+        lastItemTime = Time.time;
+        GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Ammo/Player/Barrier"),
+            pl.transform.position, Quaternion.identity);
+    }
     void TryShoot()
     {
         Player.Element e = pl.element;
-        float cd = shootInterval;
+        float cd = shootCD;
         if (pl.limeBuffTime >= 0F)
             cd *= 0.5F;
         if (Time.time >= lastShootTime + cd)
@@ -39,6 +100,8 @@ public class PlayerAttack : MonoBehaviour
             switch(e)
             {
                 case Player.Element.Water:
+                    //DragonfruitShoot();
+                    //JujubeFlash();
                     WaterShoot();
                     break;
                 case Player.Element.Fire:
@@ -69,7 +132,6 @@ public class PlayerAttack : MonoBehaviour
 
         GameObject lb = GameObject.Instantiate(LightningBulletPrefab, transform.position+(Vector3)dir*0.5F, Quaternion.identity);
         lb.GetComponent<LightningBullet>().vec = dir;
-
         lastShootTime = Time.time;
     }
     void FireShoot()
@@ -107,11 +169,12 @@ public class PlayerAttack : MonoBehaviour
         //bullet.GetComponent<DirectionAdjustion>().Adjust(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         lastShootTime = Time.time;
     }
+    
     void TryBomb()
     {
-        bombInterval = 6.5F - 1F * pl.mulberryBuffCnt;
-        Player.Element e = Player.Element.Fire;//pl.element;
-        if (Time.time >= lastBombTime + bombInterval && pl.health >= 5F)
+        bombCD = 6.5F * Mathf.Pow(0.75F, pl.mulberryBuffCnt);
+        Player.Element e = pl.element;
+        if (Time.time >= lastBombTime + bombCD && pl.health >= 5F)
         {
             switch (e)
             {
@@ -167,11 +230,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GS.dayOrNight == GameSystem.DayOrNight.Day)
-            return;
-        if (Input.GetMouseButton(0))
-            TryShoot();
-        if (Input.GetMouseButton(1))
-            TryBomb();
+        if (GS.dayOrNight == GameSystem.DayOrNight.Night)
+        {
+            if (Input.GetMouseButton(0))
+                TryShoot();
+            if (Input.GetMouseButton(1))
+                TryBomb();
+        }
     }
 }

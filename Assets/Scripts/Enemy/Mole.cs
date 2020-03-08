@@ -13,6 +13,7 @@ public class Mole : MonoBehaviour
     float basicSpeed = 3F;
     float speedRate;
     Animator anim;
+    EnemyController ec;
 
     bool Inbound(Vector2 pos)
     {
@@ -118,11 +119,14 @@ public class Mole : MonoBehaviour
         StonePrefab = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/MoleStone");
         TrailPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/MoleTrail");
         anim = GetComponent<Animator>();
+        ec = GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ec.stunned && state != State.Burrow)
+            SetState(State.Burrow);
+           
     }
 }

@@ -15,9 +15,7 @@ public class RootMan : MonoBehaviour
     float theta = 0F, maxDelta;
     bool upward = false;
     Animator animator;
-
-
-
+    EnemyController ec;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +23,7 @@ public class RootMan : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        ec = GetComponent<EnemyController>();
 
         theta = Random.Range(-0.5F * Mathf.PI, 0.5F * Mathf.PI);
         upward = Random.Range(0F, 1F) < 0.5F;
@@ -39,7 +38,8 @@ public class RootMan : MonoBehaviour
         vec = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * basicSpeed * speedRate;
         UpdateDirection();
         UpdateTheta();
-        body.AddForce(vec);
+        if (!ec.stunned)
+            body.AddForce(vec);
     }
 
     void UpdateTheta()

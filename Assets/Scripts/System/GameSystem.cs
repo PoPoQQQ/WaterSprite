@@ -9,7 +9,7 @@ public class GameSystem : MonoBehaviour
     public DayOrNight dayOrNight = DayOrNight.Day;
     public int dayCnt = 1;
     public int score = 0;
-    Player pl;
+    Player PL;
     Plant[] plants;
     LootSystem LS;
 
@@ -177,7 +177,7 @@ public class GameSystem : MonoBehaviour
         dayNightManager.setDayCnt(1);
         DOTween.Init();
         plants = FindObjectsOfType<Plant>();
-        pl = FindObjectOfType<Player>();
+        PL = FindObjectOfType<Player>();
         LS = GetComponent<LootSystem>();
     }
 
@@ -203,7 +203,7 @@ public class GameSystem : MonoBehaviour
         dayOrNight = DayOrNight.Day;
         foreach (var i in plants)
             i.Refresh();
-        pl.Refresh();
+        PL.Refresh();
         SwitchBGM(night, morning);
         dayNightManager.setDayIcon();
         if(dayCnt% 10 == 0)
@@ -221,6 +221,7 @@ public class GameSystem : MonoBehaviour
         dayOrNight = DayOrNight.Night;
         SwitchBGM(morning, night);
         dayNightManager.setNightIcon();
+        PL.SetWisps();
         StartCoroutine(NightCoroutine());
     }
     // Update is called once per frame

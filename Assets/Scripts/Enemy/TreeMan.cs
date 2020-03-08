@@ -12,6 +12,7 @@ public class TreeMan : MonoBehaviour
     float speedRate;
     int vecCnt = 0;
     Animator animator;
+    EnemyController ec;
 
     IEnumerator ChangeVecCoroutine()
     {
@@ -48,11 +49,13 @@ public class TreeMan : MonoBehaviour
         StartCoroutine(ChangeVecCoroutine());
         GS = FindObjectOfType<GameSystem>();
         speedRate = GS.EnemySpeedRate;
+        ec = GetComponent<EnemyController>();
     }
 
     private void FixedUpdate()
     {
-        body.AddForce(vec * basicSpeed * speedRate);
+        if(!ec.stunned)
+            body.AddForce(vec * basicSpeed * speedRate);
     }
 
     private void OnDestroy()

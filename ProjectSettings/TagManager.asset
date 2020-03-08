@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Beam
+    uniqueID: 3768483719
+    locked: 0

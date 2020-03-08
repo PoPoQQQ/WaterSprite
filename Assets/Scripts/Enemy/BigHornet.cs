@@ -15,6 +15,7 @@ public class BigHornet : MonoBehaviour
     bool upward = false;
     int moveCnt = 0;    
     Animator animator;
+    EnemyController ec;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class BigHornet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        ec = GetComponent<EnemyController>();
 
         vRate = Random.Range(0F, 1F);
         upward = Random.Range(0F, 1F) < 0.5F;
@@ -41,7 +43,8 @@ public class BigHornet : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateVRate();
-        body.AddForce(vec * vRate);
+        if(!ec.stunned)
+            body.AddForce(vec * vRate);
     }
 
     void ResetVec()
@@ -72,6 +75,8 @@ public class BigHornet : MonoBehaviour
 
     void Shoot()
     {
+        if (ec.stunned)
+            return;
         Vector2 shootVec = player.transform.position - transform.position;
         shootVec.Normalize();
         float ang = Mathf.Atan2(shootVec.y, shootVec.x);

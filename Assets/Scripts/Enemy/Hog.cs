@@ -13,6 +13,7 @@ public class Hog : MonoBehaviour
     Vector2 dashVec;
     Rigidbody2D body;
     GameObject player;
+    EnemyController ec;
 
     void SetState(State s)
     {
@@ -33,6 +34,10 @@ public class Hog : MonoBehaviour
     IEnumerator IdleCoroutine()
     {
         yield return new WaitForSeconds(3F);
+        while(ec.stunned)
+        {
+            yield return new WaitForSeconds(0.5F);
+        }
         SetState(State.Dash);
     }
     // Start is called before the first frame update
@@ -41,6 +46,7 @@ public class Hog : MonoBehaviour
         SetState(State.Idle);
         body = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        ec = GetComponent<EnemyController>();
     }
 
     void ResetDash()
@@ -58,18 +64,28 @@ public class Hog : MonoBehaviour
             SetState(State.Idle);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if(state == State.Dash)
+
+        if (state == State.Dash)
         {
             if (dashTime <= maxDashTime * 0.8F)
                 body.AddForce(dashVec);
             else
                 body.AddForce(body.velocity * -600F);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(state == State.Dash)
+        {
             dashTime += Time.deltaTime;
             if (dashTime >= maxDashTime)
                 ResetDash();
+            if (ec.stunned)
+                SetState(State.Idle);
         }
     }
 

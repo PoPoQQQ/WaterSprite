@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class PlayerFruitEater : MonoBehaviour
 {
-    static Player pl;
+    static Player PL;
+    static PlayerAttack PA;
     static GameSystem GS;
 
     public static bool Usable(Plant.Type t)
     {
-        if (pl == null)
-            pl = FindObjectOfType<Player>();
+        if (PL == null)
+            PL = FindObjectOfType<Player>();
         if (GS == null)
             GS = FindObjectOfType<GameSystem>();
+        if (PA == null)
+            PA = FindObjectOfType<PlayerAttack>();
         if(GS.dayOrNight == GameSystem.DayOrNight.Day)
         {
             switch (t)
             {
                 case Plant.Type.Aquabud:
-                    return pl.health < 300F;
+                    return PL.health < 300F;
                 case Plant.Type.Goji:
-                    return pl.gojiBuffCnt < 5;
+                    return PL.gojiBuffCnt < 5;
                 case Plant.Type.Mulberry:
-                    return pl.mulberryBuffCnt < 5;
+                    return PL.mulberryBuffCnt < 5;
                 default:
                     return false;
             }
@@ -36,16 +39,21 @@ public class PlayerFruitEater : MonoBehaviour
                 case Plant.Type.Cloudberry:
                     return true;
                 case Plant.Type.Lychee:
-                    return pl.element == Player.Element.Water;
+                    return PL.element == Player.Element.Water;
                 case Plant.Type.Cyanberry:
-                    return pl.element == Player.Element.Water;
+                    return PL.element == Player.Element.Water;
                 case Plant.Type.Mango:
-                    return pl.element == Player.Element.Water;
+                    return PL.element == Player.Element.Water;
                 case Plant.Type.Turret:
-                    return true;
+                    return PA.CanUseItem();
                 case Plant.Type.Bubble:
-                    return true;
-
+                    return PA.CanUseItem();
+                case Plant.Type.Persimmon:
+                    return PA.CanUseItem();
+                case Plant.Type.Jujube:
+                    return PA.CanUseItem();
+                case Plant.Type.Dragonfruit:
+                    return PA.CanUseItem();
                 default:
                     return false;
             }
@@ -56,42 +64,53 @@ public class PlayerFruitEater : MonoBehaviour
     public static void Eat(Plant.Type t)
     {
 
-        if (pl == null)
-            pl = FindObjectOfType<Player>();
+        if (PL == null)
+            PL = FindObjectOfType<Player>();
         if (GS == null)
             GS = FindObjectOfType<GameSystem>();
+        if (PA == null)
+            PA = FindObjectOfType<PlayerAttack>();
 
         switch (t)
         {
             case Plant.Type.Aquabud:
-                pl.AddHealth(30);
+                PL.AddHealth(30);
                 break;
             case Plant.Type.Goji:
-                pl.gojiBuffCnt++;
+                PL.gojiBuffCnt++;
                 break;
             case Plant.Type.Mulberry:
-                pl.mulberryBuffCnt++;
+                PL.mulberryBuffCnt++;
                 break;
             case Plant.Type.Lime:
-                pl.limeBuffTime = Player.MaxLimeBuffTime;
+                PL.limeBuffTime = Player.MaxLimeBuffTime;
                 break;
             case Plant.Type.Cloudberry:
-                pl.cloudberryBuffTime = Player.MaxCloudberryBuffTime;
+                PL.cloudberryBuffTime = Player.MaxCloudberryBuffTime;
                 break;
             case Plant.Type.Lychee:
-                pl.SetElement(Player.Element.Fire);
+                PL.SetElement(Player.Element.Fire);
                 break;
             case Plant.Type.Cyanberry:
-                pl.SetElement(Player.Element.Ice);
+                PL.SetElement(Player.Element.Ice);
                 break;
             case Plant.Type.Mango:
-                pl.SetElement(Player.Element.Electric);
+                PL.SetElement(Player.Element.Electric);
                 break;
             case Plant.Type.Turret:
-                GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Ammo/Player/Turret"), pl.transform.position, Quaternion.identity);
+                PA.PlaceTurret();
                 break;
             case Plant.Type.Bubble:
-                GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Ammo/Player/Barrier"), pl.transform.position, Quaternion.identity);
+                PA.PlaceBarrier(); 
+                break;
+            case Plant.Type.Dragonfruit:
+                PA.DragonfruitShoot();
+                break;
+            case Plant.Type.Jujube:
+                PA.JujubeFlash();
+                break;
+            case Plant.Type.Persimmon:
+                PA.PersimmonFlash();
                 break;
         }
     }

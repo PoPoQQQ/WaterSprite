@@ -15,6 +15,7 @@ public class Ghost : MonoBehaviour
     bool moving = false;
     int moveCnt = 0;
     Animator animator;
+    EnemyController ec;
 
     Vector2 ToVec(float a) => new Vector2(Mathf.Cos(a), Mathf.Sin(a));
     float ToAng(Vector2 v) => Mathf.Atan2(v.y, v.x);
@@ -43,6 +44,7 @@ public class Ghost : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        ec = GetComponent<EnemyController>();
 
         moving = Random.Range(0F, 1F) < 0.5F;
         moveCnt = Random.Range(0F, 1F) < 0.5F ? 0 : 1;
@@ -53,11 +55,14 @@ public class Ghost : MonoBehaviour
     {
         phase += Time.fixedDeltaTime;
         UpdateVec();
-        body.AddForce(vec * speed);
+        if(!ec.stunned)
+            body.AddForce(vec * speed);
     }
 
     void Split()
     {
+        if (ec.stunned)
+            return;
         float ang = ToAng(player.transform.position - transform.position);
         var o = GameObject.Instantiate(sg, transform.position, Quaternion.identity);
         o.GetComponent<SplitedGhost>().movAng = ang + 0.5F * Mathf.PI;

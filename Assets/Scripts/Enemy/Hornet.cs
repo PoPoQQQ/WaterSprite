@@ -15,6 +15,7 @@ public class Hornet : MonoBehaviour
     bool upward = false;
     int moveCnt = 0;
     Animator animator;
+    EnemyController ec;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Hornet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        ec = GetComponent<EnemyController>();
 
         vRate = Random.Range(0F, 1F);
         upward = Random.Range(0F, 1F) < 0.5F;
@@ -41,7 +43,8 @@ public class Hornet : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateVRate();
-        body.AddForce(vec * vRate);
+        if(!ec.stunned)
+            body.AddForce(vec * vRate);
     }
 
     void ResetVec()
@@ -74,6 +77,8 @@ public class Hornet : MonoBehaviour
 
     void Shoot()
     {
+        if (ec.stunned)
+            return;
         Vector2 shootVec = player.transform.position - transform.position;
         shootVec.Normalize();
         var obj = GameObject.Instantiate(hornetBullet, transform.position, Quaternion.identity);

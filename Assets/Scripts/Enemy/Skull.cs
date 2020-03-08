@@ -11,6 +11,7 @@ public class Skull : MonoBehaviour
     GameObject boomerang;
     float basicSpeed = 300F, speedRate = 1F;
     Animator animator;
+    EnemyController ec;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Skull : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         boomerang = Resources.Load<GameObject>("Prefabs/Ammo/Enemy/Boomerang");
+        ec = GetComponent<EnemyController>();
 
         speedRate = Mathf.Lerp(1F, GS.EnemySpeedRate, 0.7F);
 
@@ -42,7 +44,8 @@ public class Skull : MonoBehaviour
             vec = Vector2.zero;
         if (Time.time >= lastShootTime + 4F && dist <=5F)
             StartCoroutine(ShootCoroutine());
-        body.AddForce(vec);
+        if(!ec.stunned)
+            body.AddForce(vec);
         UpdateDirection();
     }
 
@@ -63,6 +66,9 @@ public class Skull : MonoBehaviour
 
     void Shoot()
     {
+        if (ec.stunned)
+            return;
+
         Vector2 shootVec = player.transform.position - transform.position;
         shootVec.Normalize();
         var obj = GameObject.Instantiate(boomerang, transform.position, Quaternion.identity);
