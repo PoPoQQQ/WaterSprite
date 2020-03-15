@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &507104589640346154
 Animator:
@@ -272,10 +272,21 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 13
-  m_BackSortingOrder: 13
+  m_FrontSortingOrder: 14
+  m_BackSortingOrder: 12
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!210 &5770580977273222758
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232091193471336670}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &-2762176547141182642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,17 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigHornetBullet: {fileID: 6222997492996326210, guid: 62812a48426d4b1448f291b4ddd17e17,
     type: 3}
---- !u!210 &5770580977273222758
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8232091193471336670}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1001 &7840589750840861871
 PrefabInstance:
   m_ObjectHideFlags: 0

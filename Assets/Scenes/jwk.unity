@@ -908,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 8232091193471336670, guid: 5af4449cb001e9841b32fbc2db28222b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: 5af4449cb001e9841b32fbc2db28222b,
         type: 3}
@@ -1233,7 +1233,7 @@ PrefabInstance:
     - target: {fileID: 8232091193471336670, guid: c1286f964cf32914dbb4ed97cd89e0da,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: c1286f964cf32914dbb4ed97cd89e0da,
         type: 3}
@@ -2841,11 +2841,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hornet
       objectReference: {fileID: 0}
-    - target: {fileID: 8232091193471336670, guid: 12cf8790a9f0be94ab36f929ed8d1832,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: 12cf8790a9f0be94ab36f929ed8d1832,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3079,12 +3074,12 @@ PrefabInstance:
     - target: {fileID: 7687857577832925255, guid: e91096956c1fa2b4aa4e7425f680055d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.4
+      value: 10.74
       objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: e91096956c1fa2b4aa4e7425f680055d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -24.62
       objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: e91096956c1fa2b4aa4e7425f680055d,
         type: 3}

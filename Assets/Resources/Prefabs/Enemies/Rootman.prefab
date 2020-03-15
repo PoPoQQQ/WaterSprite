@@ -272,10 +272,21 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 13
-  m_BackSortingOrder: 13
+  m_FrontSortingOrder: 14
+  m_BackSortingOrder: 12
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!210 &1213955314911757253
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232091193471336670}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &3411146005702639336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,17 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22edeacb35d05249b4bf5cc97637675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!210 &1213955314911757253
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8232091193471336670}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1001 &7840589750840861871
 PrefabInstance:
   m_ObjectHideFlags: 0

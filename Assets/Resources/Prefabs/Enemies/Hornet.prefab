@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 0
 --- !u!95 &507104589640346154
 Animator:
@@ -99,6 +99,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!210 &7083414317713699328
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8232091193471336670}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!114 &7634039435076462584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,17 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hornetBullet: {fileID: 6222997492996326210, guid: 8383a0c78038e5e41b2fb081ebbdd7b0,
     type: 3}
---- !u!210 &7083414317713699328
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8232091193471336670}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &8857816487738823366
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,8 +198,8 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 13
-  m_BackSortingOrder: 13
+  m_FrontSortingOrder: 14
+  m_BackSortingOrder: 12
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &8887910622421950806

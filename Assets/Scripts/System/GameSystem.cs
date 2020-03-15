@@ -156,7 +156,7 @@ public class GameSystem : MonoBehaviour
                     nxtEnemy = RandEnemy();
                 else
                     nxtEnemy = LastEnemy(i);
-                GameObject.Instantiate(nxtEnemy, new Vector3(Random.Range(-8F, 10F), Random.Range(-27F, -25F)), Quaternion.identity);
+                GameObject.Instantiate(nxtEnemy, RandomPosGenerator.GetPos(), Quaternion.identity);
                 yield return new WaitForSeconds(1F);
             }
             while(EnemyController.enemyCnt >0)
