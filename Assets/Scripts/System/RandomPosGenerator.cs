@@ -17,7 +17,7 @@ public static class RandomPosGenerator
         }
         Debug.DrawLine(pos + Vector2.down * 0.5F * COLY, pos + Vector2.up * 0.5F * COLY);
         Debug.DrawLine(pos + Vector2.left * 0.5F * COLX, pos + Vector2.right * 0.5F * COLX);
-        Debug.Break();
+        //Debug.Break();
         return pos;
     }
 

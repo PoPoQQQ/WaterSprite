@@ -16,14 +16,21 @@ public class TrunkGenerator
 
 public class Trunk : MonoBehaviour
 {
+    public static List<GameObject> TrunkList = new List<GameObject>();
+
     public enum Type { Tree, Root};
     public Type type;
     public enum State { Idle, Sprout, End };
     public bool burning = false;
+    public float health = 1F;
     public State state = State.Idle;
     GameObject EnemyPrefab;
     Animator anim;
+    int deathDate = 0;
 
+    ParticleSystem PS;
+    float evokeEffectTime = -1F;
+    GameObject evokeObj;
     IEnumerator FlashCoroutine()
     {
         var sr = transform.Find("Sprite").GetComponent<SpriteRenderer>();
@@ -83,28 +90,53 @@ public class Trunk : MonoBehaviour
 
     public void Sprout(float p)
     {
+        health += p;
         if (state != State.Idle)
             return;
-        if (Random.Range(0F, 1F) <= p)
+        if (health >= 2F)
         {
             SetState(State.Sprout);
         }
     }
     public void Sprout() => Sprout(1F);
 
-    public void Summon()
+    public void Evoke(GameObject obj)
     {
-        if (state == State.Idle)
+        if (FindObjectOfType<GameSystem>().dayCnt == deathDate)
+            return;
+        if (evokeEffectTime > 0F)
+            return;
+
+        float dmg =  Random.Range(0.4F, 0.8F);
+        health -= dmg;
+        evokeEffectTime = Mathf.Max(evokeEffectTime, dmg * 2F);
+        var psef = GetComponent<ParticleSystem>().externalForces;
+        psef.RemoveAllInfluences();
+        psef.AddInfluence(obj.GetComponent<ParticleSystemForceField>());
+        if (state == State.Idle && health<=0F)
         {
             SetState(State.End);
         }
-        if (state == State.Sprout)
+        if (state == State.Sprout && health<=1F)
         {
-            if (Random.Range(0F, 1F) <= 0.5F)
                 SetState(State.Idle);
         }
     }
 
+    public void BossSummon()
+    {
+        float dmg = Random.Range(0.4F, 0.8F);
+        health -= dmg;
+
+        if (state == State.Idle && health <= 0F)
+        {
+            SetState(State.End);
+        }
+        if (state == State.Sprout && health <= 1F)
+        {
+            SetState(State.Idle);
+        }
+    }
     public void Burn(float p)
     {
         if (state == State.End || burning)
@@ -119,17 +151,35 @@ public class Trunk : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        deathDate = FindObjectOfType<GameSystem>().dayCnt;
         anim = transform.Find("Sprite").GetComponent<Animator>();
         if (type == Type.Tree)
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Treeman");
         else
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Rootman");
+        TrunkList.Add(gameObject);
+        PS = GetComponent<ParticleSystem>();
+    }
+
+    private void OnDestroy()
+    {
+        TrunkList.Remove(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        evokeEffectTime -= Time.deltaTime;
+        if(evokeEffectTime>0)
+        {
+            var em = PS.emission;
+            em.rateOverTimeMultiplier = 15F;
+        }
+        else
+        {
+            var em = PS.emission;
+            em.rateOverTimeMultiplier = 0F;
+        }
     }
 
 }

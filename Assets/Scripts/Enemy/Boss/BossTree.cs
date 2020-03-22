@@ -119,7 +119,7 @@ public class BossTree : MonoBehaviour
         foreach(var i in trunks)
         {
             if ((i.transform.position - transform.position).magnitude <= 8F)
-                i.GetComponent<Trunk>().Summon();
+                i.GetComponent<Trunk>().BossSummon();
         }
 
         yield return new WaitForSeconds(1.5F);

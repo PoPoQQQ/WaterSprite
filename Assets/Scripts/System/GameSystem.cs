@@ -23,7 +23,8 @@ public class GameSystem : MonoBehaviour
     public AudioSource night;
 
     public DNExchange dayNightManager;
-    public GameObject treeMan, rootMan, hornet, ghost, skull, hornetPlus, boar, mole;
+    public GameObject treeMan, rootMan, hornet, ghost, skull, bigHornet, hog, mole;
+    public GameObject bossHedgehog, bossWisp, bossTree;
     public GameObject nxtEnemy;
     int CalcWaveCnt()
     {
@@ -39,6 +40,8 @@ public class GameSystem : MonoBehaviour
     }
 
     float r = 0F;
+
+    GameObject meleeE, rangeE;//melee enemy,  ranged enemy
     GameObject RandEnemy()
     {
         if (dayCnt == 1)
@@ -80,9 +83,6 @@ public class GameSystem : MonoBehaviour
             else return rangeE;
         }
     }
-
-    GameObject meleeE, rangeE;//melee enemy,  ranged enemy
-
     GameObject FirstEnemy()
     {
         if (dayCnt == 1)
@@ -94,7 +94,7 @@ public class GameSystem : MonoBehaviour
             float r = Random.Range(0F, 3F);
             if (r <= 1F) meleeE = treeMan;
             else if (r <= 2F) meleeE = rootMan;
-            else meleeE = boar;
+            else meleeE = hog;
         }
 
         if (dayCnt <= 10)
@@ -135,11 +135,31 @@ public class GameSystem : MonoBehaviour
         else
         {
             if (Random.Range(0F, 2F) < 1F)
-                return hornetPlus;
+                return bigHornet;
             else
                 return ghost;
         }
 
+    }
+    Vector2 BossPos()
+    {
+        Vector2 pos = PL.transform.position;
+        pos -= pos.normalized * 5F;
+        return pos;
+    }
+    GameObject BossObj()
+    {
+        switch (dayCnt % 30)
+        {
+            case 10:
+                return bossHedgehog;
+            case 20:
+                return bossWisp;
+            case 0:
+                return bossTree;
+            default:
+                return bossHedgehog;
+        }
     }
     IEnumerator NightCoroutine()
     {
@@ -163,6 +183,16 @@ public class GameSystem : MonoBehaviour
                 yield return new WaitForSeconds(1F);
             yield return new WaitForSeconds(1.5F);
         }
+
+        if(dayCnt%10 == 0)
+        {
+            GameObject.Instantiate(BossObj(), BossPos(), Quaternion.identity);
+            while (EnemyController.enemyCnt > 0)
+                yield return new WaitForSeconds(3F);
+            yield return new WaitForSeconds(1.5F);
+        }
+
+
         DayStart();
     }
     void SwitchBGM(AudioSource o, AudioSource i)
