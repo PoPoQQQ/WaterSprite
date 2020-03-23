@@ -19,12 +19,9 @@ public class InventoryUI : MonoBehaviour
             slotList[i].code = i;
         SlotNum = slotList.Length;
         inventory.initList(SlotNum);
-    }
-    void Start () {
-
-		inventory.onItemChangedCallBack += UpdateUI;
+        inventory.onItemChangedCallBack += UpdateUI;
 		UpdateUI();
-	}
+    }
 
     public void setPointer(int num)
     {

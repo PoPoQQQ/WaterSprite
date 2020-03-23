@@ -18,11 +18,14 @@ public class InventoryManager : MonoBehaviour
         Transform deb1 = transform.Find("Items");
         GameObject deb2 = deb1.gameObject;
         items = transform.Find("Items").gameObject.GetComponent<Inventory>();
+        pl = GetComponent<Player>();
+    }
+
+    void Start()
+    {
         AddSeed(Plant.Type.Aquabud);
         AddSeed(Plant.Type.Goji);
         AddSeed(Plant.Type.Mulberry);
-        //AddSeed(Plant.Type.Aquabud);
-        pl = GetComponent<Player>();
     }
 
     public void addItem(CollectableItem temp)
