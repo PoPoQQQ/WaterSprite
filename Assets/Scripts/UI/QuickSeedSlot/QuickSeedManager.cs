@@ -15,8 +15,12 @@ public class QuickSeedManager : MonoBehaviour
 
     int hilightCode=0;
 
+    int HILIGHT{get{return hilightCode;}}
+    public float waterCost = 10F;
+
     void Start()
     {
+        
         quickSlots = GetComponentsInChildren<QuickSeedSlot>();
         Inventory[] inventories = FindObjectsOfType<Inventory>();
         for(int i=0;i<inventories.Length;i++)
@@ -41,6 +45,8 @@ public class QuickSeedManager : MonoBehaviour
             if(currentTime >= slotDelTime)
                 currentTime = 0;
         }
+
+
         if(scrollWheel != 0 && currentTime == 0)
         {
             currentTime += Time.deltaTime;
@@ -51,12 +57,6 @@ public class QuickSeedManager : MonoBehaviour
                 hilightCode = quickSlots.Length -1;
             updateHilight();
         }
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            seeds.tryPlantSeed(hilightCode);
-        }
-
-        //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
     }
 
     void updateHilight()
@@ -73,5 +73,33 @@ public class QuickSeedManager : MonoBehaviour
         {
             quickSlots[i].setSlot(seeds.itemList[i]);
         }
+    }
+
+    public void plantSeed(Plant currentPlant)
+    {
+        Plant.Type hilightType = seeds.GetSeedType(hilightCode);
+        if(currentPlant.type != Plant.Type.None)
+        {
+            if(currentPlant.mature)
+            {
+                if(PlayerFruitEater.Usable(currentPlant.type))
+                {
+                    PlayerFruitEater.Eat(currentPlant.type);
+                    currentPlant.Collect();
+                }
+            }
+            else if(!currentPlant.watered)
+            {
+                currentPlant.Water();
+                FindObjectOfType<Player>().CostHealth(waterCost);
+            }
+        }
+        else if(currentPlant.type == Plant.Type.None && hilightType != Plant.Type.None)
+        {
+            Debug.Log(hilightType);
+            InventoryManager.instance.UseSeed(hilightType);
+            currentPlant.PlantSeed(hilightType);
+        }
+
     }
 }

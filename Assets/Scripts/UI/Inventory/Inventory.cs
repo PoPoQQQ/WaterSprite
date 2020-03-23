@@ -20,6 +20,13 @@ public class Inventory : MonoBehaviour
 
 	public itemSave[] itemList;
 
+    public Plant.Type GetSeedType(int code)
+    {
+        if(itemList[code].cnt <=0)
+            return Plant.Type.None;
+        return itemList[code].item.seedType;
+    }
+
     private void Start() {
     }
 
@@ -91,21 +98,5 @@ public class Inventory : MonoBehaviour
         itemList[b].set(temp);
         if(onItemChangedCallBack != null)
 			onItemChangedCallBack.Invoke();	
-    }
-
-    public void tryPlantSeed(int code)
-    {
-        if(itemList[code].cnt <= 0)
-            return;
-        string name = "ItemAsset/Seeds/" + itemList[code].item.name;
-        CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
-        temp = Resources.Load<CollecableSeed>(name);
-        if(itemList[code].cnt>0)
-        {
-            FindObjectOfType<PlayerPlantOperate>().TryPlant(temp.seedType);
-            RemoveItem(temp);
-        }
-    }
-
-    
+    }    
 }

@@ -107,6 +107,8 @@ public class Plant : MonoBehaviour
         return 3;
     }
 
+    public bool mature{get{return age>=MaxAge();}}
+
     public void Remove()
     {
         age = 0;
@@ -174,15 +176,4 @@ public class Plant : MonoBehaviour
         SetAnimationVariables();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

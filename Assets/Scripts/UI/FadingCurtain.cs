@@ -16,9 +16,11 @@ public class FadingCurtain : MonoBehaviour
     public GameObject open;
     public GameObject dayQuickSlot;
     public GameObject nightQuickSlot;
+    GameObject PlantInteractComponent;
 
     void Awake()
     {
+        PlantInteractComponent = FindObjectOfType<PlantInteract>().gameObject;
         image = gameObject.GetComponent<Image>();
         col = image.color;
         col.a = .0f;
@@ -37,6 +39,7 @@ public class FadingCurtain : MonoBehaviour
         yield return StartCoroutine(fadingReverse(70));
         Camera.main.GetComponent<MonoBehaviour>().enabled = night;
         dayQuickSlot.SetActive(!night);
+        PlantInteractComponent.SetActive(!night);
         dayIcon.SetActive(!night);
         nightQuickSlot.SetActive(night);
         nightIcon.SetActive(night);
@@ -73,20 +76,5 @@ public class FadingCurtain : MonoBehaviour
             //Debug.Log(col.a);
             yield return new WaitForSeconds(0.01f);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        //exchange(0f,false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /* if(Input.GetKeyDown("o"))
-            setFading(false, 70);
-        if(Input.GetKeyDown("p"))
-            setFading(true, 70);*/
-        
     }
 }
