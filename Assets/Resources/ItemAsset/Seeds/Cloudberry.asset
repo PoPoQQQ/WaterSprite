@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Cloudberry
   icon: {fileID: 21300000, guid: 2ee0d97e6bd4e264c93bf9ad0e1d1097, type: 3}
   itemType: 0
-  seedType: 7
+  seedType: 9

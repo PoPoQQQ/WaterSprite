@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Cyanberry
   icon: {fileID: 21300000, guid: a1e8c67560297a84e87b61dbce828a7e, type: 3}
   itemType: 0
-  seedType: 2
+  seedType: 6

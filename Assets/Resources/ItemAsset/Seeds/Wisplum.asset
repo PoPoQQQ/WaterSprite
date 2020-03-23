@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Wisplum
   icon: {fileID: 21300000, guid: 25ce194be0528df40b9bb2a4c7223b26, type: 3}
   itemType: 0
-  seedType: 5
+  seedType: 4

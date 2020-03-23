@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Lime
   icon: {fileID: 21300000, guid: b9b84dba7d4479d4caae18c913508758, type: 3}
   itemType: 0
-  seedType: 6
+  seedType: 8

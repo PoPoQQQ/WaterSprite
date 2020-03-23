@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Mulberry
   icon: {fileID: 21300000, guid: f29c42fd1e97fce4fb04c3855b8ccd21, type: 3}
   itemType: 0
-  seedType: 4
+  seedType: 3

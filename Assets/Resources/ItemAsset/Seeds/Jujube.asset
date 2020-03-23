@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Jujube
   icon: {fileID: 21300000, guid: 4335c34e6b5c04041a1aed27c185721e, type: 3}
   itemType: 0
-  seedType: 9
+  seedType: 11

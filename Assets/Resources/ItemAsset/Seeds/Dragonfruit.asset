@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Dragonfruit
   icon: {fileID: 21300000, guid: b05316fd051fdd145a9151bd32af40b2, type: 3}
   itemType: 0
-  seedType: 8
+  seedType: 10
