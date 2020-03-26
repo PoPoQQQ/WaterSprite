@@ -16,7 +16,7 @@ public class Plant : MonoBehaviour
     public Type type = Type.None;
     public int age = 0; // age == 0 means it's a seed.
     public int curWater = 0;
-    public int maxWater = 0;
+    public int maxWater = 30;
     public int fruit = 0;
     public bool watered = false;
     
@@ -107,7 +107,7 @@ public class Plant : MonoBehaviour
         return 3;
     }
 
-    public bool mature{get{return age>=MaxAge();}}
+    public bool mature{get{return age>=1;}}
 
     public void Remove()
     {

@@ -1064,6 +1064,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rootman
       objectReference: {fileID: 0}
+    - target: {fileID: 8232091193471336670, guid: 1b2fb456185bbd74286c19e603cfa803,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7687857577832925255, guid: 1b2fb456185bbd74286c19e603cfa803,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4386,6 +4391,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BossWisp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389377296566379238, guid: e213a549bc0aa8c4c8a7e40855de2922,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6389377296566379160, guid: e213a549bc0aa8c4c8a7e40855de2922,
         type: 3}

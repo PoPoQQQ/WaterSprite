@@ -80,7 +80,8 @@ public class QuickSeedManager : MonoBehaviour
         Plant.Type hilightType = seeds.GetSeedType(hilightCode);
         if(currentPlant.type != Plant.Type.None)
         {
-            if(currentPlant.mature)
+            if(currentPlant.
+                )
             {
                 if(PlayerFruitEater.Usable(currentPlant.type))
                 {

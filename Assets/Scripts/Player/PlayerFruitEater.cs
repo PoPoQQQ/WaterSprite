@@ -26,6 +26,8 @@ public class PlayerFruitEater : MonoBehaviour
                     return PL.gojiBuffCnt < 5;
                 case Plant.Type.Mulberry:
                     return PL.mulberryBuffCnt < 5;
+                case Plant.Type.Wisplum:
+                    return PL.wisplumBuffCnt < 3;
                 default:
                     return false;
             }
@@ -81,6 +83,9 @@ public class PlayerFruitEater : MonoBehaviour
                 break;
             case Plant.Type.Mulberry:
                 PL.mulberryBuffCnt++;
+                break;
+            case Plant.Type.Wisplum:
+                PL.wisplumBuffCnt++;
                 break;
             case Plant.Type.Lime:
                 PL.limeBuffTime = Player.MaxLimeBuffTime;
