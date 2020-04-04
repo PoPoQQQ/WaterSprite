@@ -122,7 +122,7 @@ public class EnemyController : MonoBehaviour
         }
         health -= damage;
         StartCoroutine(FlashCoroutine());
-        Debug.Log("!");
+        Debug.Log("damage:"+damage.ToString());
         GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
     }
 

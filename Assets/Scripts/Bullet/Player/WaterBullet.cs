@@ -6,7 +6,7 @@ public class WaterBullet : MonoBehaviour
 {
 	public GameObject burstPrefab;
 
-    float damage = 1000F;
+    float damage = 1F;
 
 
     // Start is called before the first frame update
