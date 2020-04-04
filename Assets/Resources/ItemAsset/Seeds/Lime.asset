@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Lime
   m_EditorClassIdentifier: 
   name: Lime
-  icon: {fileID: 21300000, guid: b9b84dba7d4479d4caae18c913508758, type: 3}
+  icon: {fileID: 21300000, guid: 4b9e5a686ce99b9478492c5bda1c70ee, type: 3}
   itemType: 0
   seedType: 8

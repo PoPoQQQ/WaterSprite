@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Aquabud
   m_EditorClassIdentifier: 
   name: Aquabud
-  icon: {fileID: 21300000, guid: 8b38b4dcd45c81a4ab099d672dd0a276, type: 3}
+  icon: {fileID: 21300000, guid: 3b2e96da5846f294ab74e4f6b79633c1, type: 3}
   itemType: 0
   seedType: 1

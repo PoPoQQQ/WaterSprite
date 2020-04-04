@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe56429e7632f84babd636d6b570836, type: 3}
   m_Name: Mango
   m_EditorClassIdentifier: 
-  name: 
-  icon: {fileID: 0}
-  itemType: 0
-  seedType: 0
+  name: Mango
+  icon: {fileID: 21300000, guid: 9b3b33c5a5c86a54bbb301750d009ab6, type: 3}
+  itemType: 1
+  seedType: 7

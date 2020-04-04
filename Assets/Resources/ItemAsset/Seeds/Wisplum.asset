@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Wisplum
   m_EditorClassIdentifier: 
   name: Wisplum
-  icon: {fileID: 21300000, guid: 25ce194be0528df40b9bb2a4c7223b26, type: 3}
+  icon: {fileID: 21300000, guid: b760cea7960388d4bb4111d6357b5490, type: 3}
   itemType: 0
   seedType: 4

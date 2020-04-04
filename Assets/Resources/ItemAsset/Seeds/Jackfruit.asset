@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35efa7b06ff4cda489c113c34ecf2f35, type: 3}
-  m_Name: Seed Item
+  m_Name: Jackfruit
   m_EditorClassIdentifier: 
   name: Jackfruit
   icon: {fileID: 0}
