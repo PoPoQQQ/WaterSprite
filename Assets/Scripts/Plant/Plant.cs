@@ -10,7 +10,7 @@ public class Plant : MonoBehaviour
         Lime, Cloudberry,
         Dragonfruit, Jujube, Persimmon,
         Turret, Bubble,
-        Baobab, Jackfruit, Miracle,
+        Miracle,
         Withered };
 
     public Type type = Type.None;
@@ -127,8 +127,6 @@ public class Plant : MonoBehaviour
             case Type.Jujube:
             case Type.Persimmon:
                 return 3;
-            case Type.Baobab:
-            case Type.Jackfruit:
             case Type.Miracle:
                 return 98765;
         }
