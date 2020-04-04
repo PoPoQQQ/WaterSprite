@@ -24,11 +24,10 @@ public class Trunk : MonoBehaviour
     public bool burning = false;
     public float health = 1F;
     public State state = State.Idle;
-    GameObject EnemyPrefab;
+    GameObject EnemyPrefab, EvokePrefab;
     Animator anim;
     int deathDate = 0;
 
-    ParticleSystem PS;
     float evokeEffectTime = -1F;
     GameObject evokeObj;
     IEnumerator FlashCoroutine()
@@ -52,8 +51,10 @@ public class Trunk : MonoBehaviour
     {
         yield return new WaitForSeconds(0.875F);
         Destroy(GetComponent<CapsuleCollider2D>());
-        GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
-
+        var obj = GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+        obj.GetComponent<EnemyController>().fromTrunk = true;
+        if (obj.GetComponent<TrunkEvoker>())
+            Destroy(obj.GetComponent<TrunkEvoker>());
         Destroy(gameObject);
     }
 
@@ -104,22 +105,24 @@ public class Trunk : MonoBehaviour
     {
         if (FindObjectOfType<GameSystem>().dayCnt == deathDate)
             return;
-        if (evokeEffectTime > 0F)
+        if (evokeEffectTime > -1F)
             return;
 
-        float dmg =  Random.Range(0.4F, 0.8F);
+        float dmg =  Random.Range(0.3F, 0.5F);
         health -= dmg;
-        evokeEffectTime = Mathf.Max(evokeEffectTime, dmg * 2F);
-        var psef = GetComponent<ParticleSystem>().externalForces;
-        psef.RemoveAllInfluences();
-        psef.AddInfluence(obj.GetComponent<ParticleSystemForceField>());
+
+        evokeEffectTime = dmg * 2F;
+
+        var evokeObj = GameObject.Instantiate(EvokePrefab, transform.position,Quaternion.identity,transform);
+        evokeObj.GetComponent<TrunkEvokeEffect>().Set(evokeEffectTime, obj);
+
         if (state == State.Idle && health<=0F)
         {
             SetState(State.End);
         }
         if (state == State.Sprout && health<=1F)
         {
-                SetState(State.Idle);
+            SetState(State.Idle);
         }
     }
 
@@ -157,8 +160,8 @@ public class Trunk : MonoBehaviour
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Treeman");
         else
             EnemyPrefab = Resources.Load<GameObject>("Prefabs/Enemies/Rootman");
+        EvokePrefab = Resources.Load<GameObject>("Prefabs/TrunkEvokeEffect");
         TrunkList.Add(gameObject);
-        PS = GetComponent<ParticleSystem>();
     }
 
     private void OnDestroy()
@@ -170,16 +173,6 @@ public class Trunk : MonoBehaviour
     void Update()
     {
         evokeEffectTime -= Time.deltaTime;
-        if(evokeEffectTime>0)
-        {
-            var em = PS.emission;
-            em.rateOverTimeMultiplier = 15F;
-        }
-        else
-        {
-            var em = PS.emission;
-            em.rateOverTimeMultiplier = 0F;
-        }
     }
 
 }

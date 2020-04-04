@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
     IEnumerator SetWispsCoroutine()
     {
         yield return new WaitForSeconds(0.8F);
-        wisplumBuffCnt++;
+        //wisplumBuffCnt++;
         GameObject wispPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Wisp");
         for (int i = 0; i < wisplumBuffCnt; i++)
         {

@@ -8,10 +8,23 @@ public static class RandomPosGenerator
     const float COLX = 3F, COLY = 2F;
     static LayerMask mask = LayerMask.GetMask("Player", "Enemy", "Obstacle", "Airwall", "FriendlyBorder");    
 
+    static bool CheckPos(Vector2 pos)
+    {
+        if (Physics2D.OverlapCapsule(pos, new Vector2(COLX, COLY), CapsuleDirection2D.Horizontal, 0F, mask))
+            return false;
+        Vector2 playerPos = GameObject.Find("Player").transform.position;
+        if ((pos - playerPos).magnitude < 5F)
+            return false;
+        if ((pos - playerPos).magnitude > 13F)
+            return false;
+        return true;
+    }
+
+
     public static Vector2 GetPos()
     {
         Vector2 pos = new Vector2(Random.Range(MINX, MAXX), Random.Range(MINY, MAXY));
-        while(Physics2D.OverlapCapsule(pos,new Vector2(COLX,COLY),CapsuleDirection2D.Horizontal,0F,mask))
+        while(!CheckPos(pos))
         {
             pos = new Vector2(Random.Range(MINX, MAXX), Random.Range(MINY, MAXY));
         }

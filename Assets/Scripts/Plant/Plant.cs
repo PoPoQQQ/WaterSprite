@@ -22,7 +22,6 @@ public class Plant : MonoBehaviour
     
     public GameObject soil, wateredsoil, sprout, waterfruit, waterpluck, attackfruit, attackpluck, consumefruit, consumepluck, wither;
 
-    // ----- Need To Rewrite!!!! -----
     public void SetAnimationVariables()  
     {
         wateredsoil.SetActive(false);
@@ -57,61 +56,6 @@ public class Plant : MonoBehaviour
         else
             transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         
-        /*
-            soil.SetActive(true);
-            wateredsoil.SetActive(false);
-            sprout.SetActive(false);
-            waterfruit.SetActive(false);
-            waterpluck.SetActive(false);
-            attackfruit.SetActive(false);
-            attackpluck.SetActive(false);
-            consumefruit.SetActive(false);
-            consumepluck.SetActive(false);
-            wither.SetActive(false);
-
-            if(type == Type.None)
-                return;
-            if(age == 0)
-            {
-                sprout.SetActive(true);
-                if(watered)
-                {
-                    soil.SetActive(false);
-                    wateredsoil.SetActive(true);
-                }
-                return;
-            }
-            if(type == Type.Withered)
-            {
-                wither.SetActive(true);
-                return;
-            }
-            if(type == Type.Water)
-            {
-                if(fruit > 0)
-                    waterfruit.SetActive(true);
-                else
-                    waterpluck.SetActive(true);
-            }
-            else if(type == Type.Attack)
-            {
-                if(fruit > 0)
-                    attackfruit.SetActive(true);
-                else
-                    attackpluck.SetActive(true);
-            }
-            else if(type == Type.Consume)
-            {
-                if(fruit > 0)
-                    consumefruit.SetActive(true);
-                else
-                    consumepluck.SetActive(true);
-            }
-            else
-            {
-                wither.SetActive(true);
-            }
-        */
     }
 
     int MaxAge()

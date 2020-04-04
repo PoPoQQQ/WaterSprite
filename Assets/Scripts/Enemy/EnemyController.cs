@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public bool isBoss = false;
     public bool invincible = false;
     public bool stunned = false,startingStun = false;
+    public bool fromTrunk = false;
     public float spawnEmitDist = 1.2F;
     GameObject stunnedObj;
     GameObject spriteObj, shadowObj,maskObj;
@@ -51,7 +52,7 @@ public class EnemyController : MonoBehaviour
         spriteObj = transform.Find("Sprite").gameObject;
         shadowObj = transform.Find("Shadow").gameObject;
         maskObj = transform.Find("SpawnMask").gameObject;
-        if (!GetComponent<Mole>()&& !GetComponent<SplitedGhost>() && !GetComponent<SplitedWisp>())
+        if (!GetComponent<Mole>()&& !GetComponent<SplitedGhost>() && !GetComponent<SplitedWisp>() && !fromTrunk)
         {
             startingStun = true;
             Stun(1F);
