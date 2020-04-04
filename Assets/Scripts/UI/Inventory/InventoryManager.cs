@@ -67,22 +67,30 @@ public class InventoryManager : MonoBehaviour
         InventoryManager.instance.addItem(temp);
     }
 
+    public void UseFruit(Plant.Type seedType)
+    {
+        CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
+        temp = Resources.Load<CollecableSeed>(CollectableFruit.FruitDictionary[seedType]);
+        useItem(temp);
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
-            AddSeed(Plant.Type.Aquabud);
-            AddFruit(Plant.Type.Aquabud);
+            AddSeed(Plant.Type.Bubble);
+            AddFruit(Plant.Type.Bubble);
         }
         if(Input.GetKeyDown(KeyCode.K))
         {
-            AddSeed(Plant.Type.Goji);
-            AddFruit(Plant.Type.Goji);
+            AddSeed(Plant.Type.Cloudberry);
+            AddFruit(Plant.Type.Cloudberry);
         }
         if(Input.GetKeyDown(KeyCode.L))
         {
-            AddSeed(Plant.Type.Mulberry);
-            AddFruit(Plant.Type.Mulberry);
+            AddSeed(Plant.Type.Cyanberry);
+            AddFruit(Plant.Type.Cyanberry);
         }
+
     }
 }

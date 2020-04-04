@@ -39,6 +39,7 @@ public class Inventory : MonoBehaviour
 
 	public void AddItem(CollectableItem newItem)
 	{
+        Debug.Log("add fruit "+ newItem.name + " " + newItem.itemType);
         bool exist = false;
         foreach (itemSave slot in itemList)
         {

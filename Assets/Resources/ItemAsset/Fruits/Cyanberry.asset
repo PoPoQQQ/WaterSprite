@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Cyanberry
   m_EditorClassIdentifier: 
   name: Cyanberry
-  icon: {fileID: 21300000, guid: 712f9f5f7f4240a43808365150f48ba8, type: 3}
+  icon: {fileID: 21300000, guid: 30dc2a76a3d23e349a7b2b4e0082342d, type: 3}
   itemType: 1
-  seedType: 2
+  seedType: 6

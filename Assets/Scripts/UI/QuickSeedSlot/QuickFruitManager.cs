@@ -78,6 +78,9 @@ public class QuickFruitManager : MonoBehaviour
             PlayerFruitEater.Eat(hilightType);
             fruits.RemoveItem(fruits.itemList[hilightCode].item);
         }
+        else{
+            Debug.Log("Unusable!");
+        }
     }
 
     void updateAlpha()
@@ -108,4 +111,5 @@ public class QuickFruitManager : MonoBehaviour
             quickSlots[i].setSlot(fruits.itemList[i]);
         }
     }
+
 }

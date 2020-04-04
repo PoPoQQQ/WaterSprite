@@ -19,6 +19,9 @@ public class CollectableFruit : CollectableItem
         {Plant.Type.Baobab, "ItemAsset/Fruits/Baobab"},
         {Plant.Type.Jackfruit, "ItemAsset/Fruits/Jackfruit"},
         {Plant.Type.Miracle, "ItemAsset/Fruits/Miracle"},
-        {Plant.Type.Withered, "ItemAsset/Fruits/Withered"}
+        {Plant.Type.Bubble, "ItemAsset/Fruits/Bubble"},
+        {Plant.Type.Turret, "ItemAsset/Fruits/Turret"},
+        {Plant.Type.Mango, "ItemAsset/Fruits/Mango"},
+        {Plant.Type.Lychee, "ItemAsset/Fruits/Lychee"}
     };
 }

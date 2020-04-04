@@ -19,6 +19,9 @@ public class CollecableSeed : CollectableItem
         {Plant.Type.Baobab, "ItemAsset/Seeds/Baobab"},
         {Plant.Type.Jackfruit, "ItemAsset/Seeds/Jackfruit"},
         {Plant.Type.Miracle, "ItemAsset/Seeds/Miracle"},
-        {Plant.Type.Withered, "ItemAsset/Seeds/Withered"}
+        {Plant.Type.Bubble, "ItemAsset/Seeds/Bubble"},
+        {Plant.Type.Turret, "ItemAsset/Seeds/Turret"},
+        {Plant.Type.Mango, "ItemAsset/Seeds/Mango"},
+        {Plant.Type.Lychee, "ItemAsset/Seeds/Lychee"}
     };
 }

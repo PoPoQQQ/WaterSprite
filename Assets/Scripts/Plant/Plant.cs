@@ -25,6 +25,34 @@ public class Plant : MonoBehaviour
     // ----- Need To Rewrite!!!! -----
     public void SetAnimationVariables()  
     {
+        wateredsoil.SetActive(false);
+        soil.SetActive(true);
+        sprout.SetActive(false);
+        wither.SetActive(false);
+        if(type == Type.None)
+                return;
+        if(age == 0)
+        {
+            sprout.SetActive(true);
+            if(watered)
+            {
+                soil.SetActive(false);
+                wateredsoil.SetActive(true);
+            }
+            return;
+        }
+        if(type == Type.Withered)
+        {
+            wither.SetActive(true);
+            return;
+        }
+        CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
+        temp = Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[type]);
+        transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().sprite = temp.icon;
+        if(fruit == 0)
+            transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        else
+            transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         /*
             soil.SetActive(true);
             wateredsoil.SetActive(false);
@@ -107,7 +135,7 @@ public class Plant : MonoBehaviour
         return 3;
     }
 
-    public bool mature{get{return age>=1;}}
+    public bool mature{get{return fruit>0;}}
 
     public void Remove()
     {

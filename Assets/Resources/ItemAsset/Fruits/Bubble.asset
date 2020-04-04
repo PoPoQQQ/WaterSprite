@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffe56429e7632f84babd636d6b570836, type: 3}
-  m_Name: Goji
+  m_Name: Bubble
   m_EditorClassIdentifier: 
-  name: Goji
-  icon: {fileID: 21300000, guid: 2a3e106aab89df4409752cb39234c713, type: 3}
+  name: Bubble
+  icon: {fileID: 21300000, guid: dc7ded8be66e0e84dab0f3c88d32dbd0, type: 3}
   itemType: 1
-  seedType: 2
+  seedType: 14

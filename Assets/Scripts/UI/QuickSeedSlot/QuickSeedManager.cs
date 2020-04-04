@@ -80,14 +80,19 @@ public class QuickSeedManager : MonoBehaviour
         Plant.Type hilightType = seeds.GetSeedType(hilightCode);
         if(currentPlant.type != Plant.Type.None)
         {
-            if(currentPlant.
-                )
+            if(currentPlant.mature)
             {
                 if(PlayerFruitEater.Usable(currentPlant.type))
                 {
                     PlayerFruitEater.Eat(currentPlant.type);
                     currentPlant.Collect();
                 }
+                else
+                {
+                    InventoryManager.instance.AddFruit(currentPlant.type);
+                    currentPlant.Collect();
+                }
+                
             }
             else if(!currentPlant.watered)
             {
@@ -97,7 +102,7 @@ public class QuickSeedManager : MonoBehaviour
         }
         else if(currentPlant.type == Plant.Type.None && hilightType != Plant.Type.None)
         {
-            Debug.Log(hilightType);
+            //Debug.Log(hilightType);
             InventoryManager.instance.UseSeed(hilightType);
             currentPlant.PlantSeed(hilightType);
         }
