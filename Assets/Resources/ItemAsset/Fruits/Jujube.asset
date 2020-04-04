@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Jujube
   m_EditorClassIdentifier: 
   name: Jujube
-  icon: {fileID: 21300000, guid: 443758941a5c16d4e927890d56b1e9b7, type: 3}
+  icon: {fileID: 21300000, guid: 7b80888bdd2a96a408500ebf5f0bab3c, type: 3}
   itemType: 1
   seedType: 11

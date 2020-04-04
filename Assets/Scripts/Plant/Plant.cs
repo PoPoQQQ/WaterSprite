@@ -29,6 +29,7 @@ public class Plant : MonoBehaviour
         soil.SetActive(true);
         sprout.SetActive(false);
         wither.SetActive(false);
+        transform.Find("plant").gameObject.SetActive(false);
         if(type == Type.None)
                 return;
         if(age == 0)
@@ -46,13 +47,16 @@ public class Plant : MonoBehaviour
             wither.SetActive(true);
             return;
         }
-        CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
+        /*CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
         temp = Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[type]);
-        transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().sprite = temp.icon;
+        transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().sprite = temp.icon;*/
+        transform.Find("plant").gameObject.SetActive(true);
+        transform.Find("plant").gameObject.GetComponent<PlantAnimateLoader>().loadAnimation(type);
         if(fruit == 0)
             transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
         else
             transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        
         /*
             soil.SetActive(true);
             wateredsoil.SetActive(false);
@@ -199,6 +203,11 @@ public class Plant : MonoBehaviour
         curWater += 10;
         if (curWater >= maxWater)
             watered = true;
+        SetAnimationVariables();
+    }
+
+    void Start()
+    {
         SetAnimationVariables();
     }
 

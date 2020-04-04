@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Persimmon
   m_EditorClassIdentifier: 
   name: Persimmon
-  icon: {fileID: 21300000, guid: 330e4e3605e623646a7bee6d53d795b8, type: 3}
+  icon: {fileID: 21300000, guid: dca939eb50dffbc4b8530a68017f8bba, type: 3}
   itemType: 0
   seedType: 12

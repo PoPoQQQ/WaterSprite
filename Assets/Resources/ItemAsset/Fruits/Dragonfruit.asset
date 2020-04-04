@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dragonfruit
   m_EditorClassIdentifier: 
   name: Dragonfruit
-  icon: {fileID: 21300000, guid: b3919fda7e9cf2947b6ce45692ebd673, type: 3}
+  icon: {fileID: 21300000, guid: 20e058b63576cf540b6d63e25b32bc45, type: 3}
   itemType: 1
   seedType: 10

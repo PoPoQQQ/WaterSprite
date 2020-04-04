@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Lychee
   m_EditorClassIdentifier: 
   name: Lychee
-  icon: {fileID: 21300000, guid: a1e8c67560297a84e87b61dbce828a7e, type: 3}
+  icon: {fileID: 21300000, guid: 314c03c27c0edda41957d2a20408ffa8, type: 3}
   itemType: 0
   seedType: 5
