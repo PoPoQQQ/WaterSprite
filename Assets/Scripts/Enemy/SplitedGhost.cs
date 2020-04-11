@@ -8,7 +8,8 @@ public class SplitedGhost : MonoBehaviour
 {
     Rigidbody2D body;
     GameObject player;
-    float speed = 700F,angVel = 1.5F;
+    public GameObject mother;
+    float speed = 650F,angVel = 1.5F;
     public float movAng = 0F;
     
     Animator animator;
@@ -38,12 +39,19 @@ public class SplitedGhost : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        if (!mother)
+            Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         body = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        Destroy(gameObject, 10F);
     }
 
     private void OnDestroy()

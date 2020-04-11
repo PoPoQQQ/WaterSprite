@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float health = 10F;
+    public float health = 10F,maxHealth;
     public float collideDamage = 5F;
     public float collideKnockBack = 24F;
     public bool isBoss = false;
@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public float spawnEmitDist = 1.2F;
     GameObject stunnedObj;
     GameObject spriteObj, shadowObj,maskObj;
+    GameObject EnemyHealthbarPrefab, Healthbar;
     public float stunTime = 0F;
     public static int enemyCnt = 0;
 
@@ -27,9 +28,11 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator SpawnEmitCoroutine()
     {
-        shadowObj.SetActive(false);
+        if(shadowObj)
+            shadowObj.SetActive(false);
         Vector3 basicPos = spriteObj.transform.localPosition;
-        spriteObj.transform.localPosition = basicPos + spawnEmitDist * Vector3.down;
+        if(spriteObj)
+            spriteObj.transform.localPosition = basicPos + spawnEmitDist * Vector3.down;
         float phase = 1F;
         while (phase >=0F)
         {
@@ -37,8 +40,10 @@ public class EnemyController : MonoBehaviour
             phase -= Time.deltaTime;
             spriteObj.transform.localPosition = basicPos + phase * spawnEmitDist * Vector3.down;
         }
-        shadowObj.SetActive(true);
-        Destroy(maskObj);
+        if (shadowObj)
+            shadowObj.SetActive(true);
+        if(maskObj)
+            Destroy(maskObj);
     }
 
     // Start is called before the first frame update
@@ -47,18 +52,29 @@ public class EnemyController : MonoBehaviour
         GS = FindObjectOfType<GameSystem>();
         player = FindObjectOfType<Player>();
         body = GetComponent<Rigidbody2D>();
-        stunnedObj = transform.Find("Stunned").gameObject;
-        stunnedObj.SetActive(false);
-        spriteObj = transform.Find("Sprite").gameObject;
-        shadowObj = transform.Find("Shadow").gameObject;
-        maskObj = transform.Find("SpawnMask").gameObject;
-        if (!GetComponent<Mole>()&& !GetComponent<SplitedGhost>() && !GetComponent<SplitedWisp>() && !fromTrunk)
+        if (transform.Find("Stunned"))
+        {
+            stunnedObj = transform.Find("Stunned").gameObject;
+            stunnedObj.SetActive(false);
+        }
+        if (transform.Find("Sprite"))
+            spriteObj = transform.Find("Sprite").gameObject;
+        if (transform.Find("Shadow"))
+            shadowObj = transform.Find("Shadow").gameObject;
+        if (transform.Find("SpawnMask"))
+            maskObj = transform.Find("SpawnMask").gameObject;
+        if (!GetComponent<Mole>()&& !GetComponent<SplitedGhost>() && !GetComponent<SplitedWisp>()
+            && !fromTrunk && !isBoss)
         {
             startingStun = true;
             Stun(1F);
             StartCoroutine(SpawnEmitCoroutine());
-            //StartCoroutine(FlashCoroutine(1F));
         }
+
+        EnemyHealthbarPrefab = Resources.Load<GameObject>("Prefabs/Enemies/EnemyHealthbar");
+        Healthbar = GameObject.Instantiate(EnemyHealthbarPrefab, Vector3.zero, Quaternion.identity);
+        Healthbar.GetComponent<EnemyHealthbar>().Init(gameObject, isBoss, spawnEmitDist);
+        maxHealth = health;
         enemyCnt++;
     }
 
@@ -95,7 +111,7 @@ public class EnemyController : MonoBehaviour
     public void Stun(float duration = 1F)
     {
         stunned = true;
-        if(!startingStun)
+        if(!startingStun && stunnedObj)
             stunnedObj.SetActive(true);
         stunTime = Mathf.Max(stunTime, duration);
     }
@@ -104,13 +120,10 @@ public class EnemyController : MonoBehaviour
     {
         stunned = false;
         startingStun = false;
-        stunnedObj.SetActive(false);
+        if(stunnedObj)
+            stunnedObj.SetActive(false);
     }
 
-    void FixedUpdate()
-    {
-        //body.velocity = Vector2.zero;
-    }
 
     public void Damage(float damage, Vector2 knockback, bool isSystemDamage)
     {
@@ -125,6 +138,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(FlashCoroutine());
         Debug.Log("damage:"+damage.ToString());
         GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+        Healthbar.GetComponent<EnemyHealthbar>().Set(health / maxHealth);
     }
 
     public void Damage(float damage, bool isSystemDamage) => Damage(damage, Vector2.zero,isSystemDamage);
@@ -142,5 +156,8 @@ public class EnemyController : MonoBehaviour
     private void OnDestroy()
     {
         enemyCnt--;
+        if (GetComponent<EnemyController>().health > 0)
+            return;
+        FindObjectOfType<LootSystem>().LootSeed(transform.position, lootType, lootRate);
     }
 }

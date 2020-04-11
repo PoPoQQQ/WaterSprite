@@ -16,7 +16,6 @@ public class CollectableFruit : CollectableItem
         {Plant.Type.Dragonfruit, "ItemAsset/Fruits/Dragonfruit"},
         {Plant.Type.Jujube, "ItemAsset/Fruits/Jujube"},
         {Plant.Type.Persimmon, "ItemAsset/Fruits/Persimmon"},
-        {Plant.Type.Miracle, "ItemAsset/Fruits/Miracle"},
         {Plant.Type.Bubble, "ItemAsset/Fruits/Bubble"},
         {Plant.Type.Turret, "ItemAsset/Fruits/Turret"},
         {Plant.Type.Mango, "ItemAsset/Fruits/Mango"},

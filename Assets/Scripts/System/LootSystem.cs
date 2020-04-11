@@ -12,9 +12,9 @@ public class LootSystem : MonoBehaviour
 
         lootChanceMultiplier = new Dictionary<Plant.Type, float>
         {
-            { Plant.Type.Aquabud, 1F },
-            { Plant.Type.Goji, 1F },
-            { Plant.Type.Mulberry, 1F },
+            { Plant.Type.Aquabud, 2F },
+            { Plant.Type.Goji, 2F },
+            { Plant.Type.Mulberry, 2F },
             { Plant.Type.Wisplum, 1F },
             { Plant.Type.Cyanberry, 1F },
             { Plant.Type.Lychee, 1F },
@@ -92,7 +92,7 @@ public class LootSystem : MonoBehaviour
         float p = 0F, r = 0F;
         if (type == Plant.Type.Aquabud)
         {
-            r = 0.015F * (lootCnt[Plant.Type.Aquabud] - 20);
+            r = 0.015F * (lootCnt[Plant.Type.Aquabud] - 15);
             r = Mathf.Clamp(r, 0F, 0.6F);
             if(Random.Range(0F,1F)<=r)
             {
@@ -142,7 +142,7 @@ public class LootSystem : MonoBehaviour
         if(rand <= lootChanceMultiplier[type] * chance)
         {
             SeedItem.Generate(pos, type);
-            lootChanceMultiplier[type] = 0F;
+            lootChanceMultiplier[type] = 0.8F;
             lootCnt[type]++;
         }
     }

@@ -28,11 +28,17 @@ public class GameSystem : MonoBehaviour
     public GameObject nxtEnemy;
     int CalcWaveCnt()
     {
-        if (dayCnt <= 4)
-            return 2;
-        if (dayCnt <= 11)
-            return 3;
-        return 4;
+        int ret;
+        if (dayCnt <= 6)
+            ret = 2;
+        else if (dayCnt <= 30)
+            ret = 3;
+        else
+            ret = 4;
+
+        if (dayCnt % 10 == 0)
+            ret--;
+        return ret;
     }
     int CalcEnmCnt(int wave)
     {
@@ -187,6 +193,7 @@ public class GameSystem : MonoBehaviour
         if(dayCnt%10 == 0)
         {
             GameObject.Instantiate(BossObj(), BossPos(), Quaternion.identity);
+            yield return new WaitForSeconds(5F);
             while (EnemyController.enemyCnt > 0)
                 yield return new WaitForSeconds(3F);
             yield return new WaitForSeconds(1.5F);
@@ -213,14 +220,13 @@ public class GameSystem : MonoBehaviour
 
     void UpdateDifficulty()
     {
-        EnemyAtkRate = 0.9F + 0.1F * dayCnt;
-        if (dayCnt >= 8)
-            EnemyAtkRate += 0.1F * (dayCnt - 8);
+        EnemyAtkRate = 0.9F + 0.03F * dayCnt;
         EnemyAtkRate = Mathf.Clamp(EnemyAtkRate, 1F, 10F);
 
-        EnemyDefRate = Mathf.Clamp(EnemyAtkRate - 0.5F, 1F, 5F);
+        EnemyDefRate = 0.7F + 0.05F * dayCnt;
+        EnemyDefRate = Mathf.Clamp(EnemyDefRate, 1F, 4F);
 
-        EnemySpeedRate = 0.99F + 0.01F * dayCnt;
+        EnemySpeedRate = 0.99F + 0.005F * dayCnt;
         EnemySpeedRate = Mathf.Clamp(EnemySpeedRate, 1F, 1.5F);
     }
 
@@ -230,7 +236,6 @@ public class GameSystem : MonoBehaviour
             return;
         dayCnt++;
         dayNightManager.setDayCnt(dayCnt);
-        dayOrNight = DayOrNight.Day;
         foreach (var i in plants)
             i.Refresh();
         PL.Refresh();
@@ -242,17 +247,35 @@ public class GameSystem : MonoBehaviour
             LS.lootChanceMultiplier[Plant.Type.Mulberry] += 0.1F;
         }
     }
-
+    public void DayCheck()
+    {
+        dayOrNight = DayOrNight.Day;
+        GameObject[] trunks = GameObject.FindGameObjectsWithTag("Trunk");
+        foreach (var i in trunks)
+        {
+            i.GetComponent<Trunk>().DayCheck();
+        }
+        EnemyController[] ecList = FindObjectsOfType<EnemyController>();
+        foreach(var i in ecList)
+        {
+            Destroy(i.gameObject);
+        }
+    }
     public void NightStart()
     {
         //Debug.Log("exchange");
         if (dayOrNight == DayOrNight.Night)
             return;
-        dayOrNight = DayOrNight.Night;
+        UpdateDifficulty();
         SwitchBGM(morning, night);
         dayNightManager.setNightIcon();
-        PL.SetWisps();
         StartCoroutine(NightCoroutine());
+    }
+    public void NightCheck()
+    {
+        dayOrNight = DayOrNight.Night;
+        EnemyController.enemyCnt = 0;
+        PL.SetWisps();
     }
     // Update is called once per frame
     void Update()

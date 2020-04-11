@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -57,6 +58,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -145,6 +147,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -156,6 +159,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -243,6 +247,7 @@ SpriteMask:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -254,6 +259,7 @@ SpriteMask:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -307,41 +313,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Name
-      value: Hog
-      objectReference: {fileID: 0}
-    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 468268165948173544, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,6 +377,51 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnEmitDist
       value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: lootType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: lootRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Name
+      value: Hog
+      objectReference: {fileID: 0}
+    - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498930109575917628, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869674941418089447, guid: 92c2600d5f6f2594694c80fe876ce51f,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92c2600d5f6f2594694c80fe876ce51f, type: 3}

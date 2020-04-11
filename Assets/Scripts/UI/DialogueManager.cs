@@ -67,9 +67,9 @@ public class DialogueManager : MonoBehaviour
     {
         //yield return new WaitForSeconds(2.0f);
         cover.gameObject.SetActive(true);
-        StartCoroutine(cover.fadingReverse(80));
+        StartCoroutine(cover.FadingReverseCoroutine(80));
         startMenu.gameObject.SetActive(true);
-        StartCoroutine(startMenu.fadingReverse(80));
+        StartCoroutine(startMenu.FadingReverseCoroutine(80));
 
     }
 

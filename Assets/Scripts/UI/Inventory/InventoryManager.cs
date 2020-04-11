@@ -23,9 +23,11 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
+        /*
         AddSeed(Plant.Type.Aquabud);
         AddSeed(Plant.Type.Goji);
         AddSeed(Plant.Type.Mulberry);
+        */
     }
 
     public void addItem(CollectableItem temp)

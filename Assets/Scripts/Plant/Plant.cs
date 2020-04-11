@@ -10,7 +10,6 @@ public class Plant : MonoBehaviour
         Lime, Cloudberry,
         Dragonfruit, Jujube, Persimmon,
         Turret, Bubble,
-        Miracle,
         Withered };
 
     public Type type = Type.None;
@@ -46,9 +45,6 @@ public class Plant : MonoBehaviour
             wither.SetActive(true);
             return;
         }
-        /*CollecableSeed temp = ScriptableObject.CreateInstance("CollecableSeed") as CollecableSeed;
-        temp = Resources.Load<CollecableSeed>(CollecableSeed.seedDictionary[type]);
-        transform.Find("plant").gameObject.GetComponent<SpriteRenderer>().sprite = temp.icon;*/
         transform.Find("plant").gameObject.SetActive(true);
         transform.Find("plant").gameObject.GetComponent<PlantAnimateLoader>().loadAnimation(type);
         if(fruit == 0)
@@ -71,12 +67,11 @@ public class Plant : MonoBehaviour
             case Type.Dragonfruit:
             case Type.Cloudberry:
                 return 2;
-            case Type.Aquabud:
             case Type.Jujube:
             case Type.Persimmon:
                 return 3;
-            case Type.Miracle:
-                return 98765;
+            case Type.Aquabud:
+                return 4;
         }
         return 3;
     }
@@ -90,7 +85,7 @@ public class Plant : MonoBehaviour
         type = Type.None;
         age = 0;
         fruit = 0;
-        curWater = maxWater = 0;
+        curWater = 0;
         watered = false;
         SetAnimationVariables();
     }

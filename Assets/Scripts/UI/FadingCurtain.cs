@@ -27,16 +27,16 @@ public class FadingCurtain : MonoBehaviour
         image.color = col;
     }
 
-    public void exchange(float sec, bool night)
+    public void Exchange(float sec, bool night)
     {
-        StartCoroutine(exchangeIe(sec,night));
+        StartCoroutine(ExchangeCoroutine(sec,night));
     }
 
 
 
-    IEnumerator exchangeIe(float sec, bool night)
+    IEnumerator ExchangeCoroutine(float sec, bool night)
     {
-        yield return StartCoroutine(fadingReverse(70));
+        yield return StartCoroutine(FadingReverseCoroutine(70));
         Camera.main.GetComponent<MonoBehaviour>().enabled = night;
         dayQuickSlot.SetActive(!night);
         PlantInteractComponent.SetActive(!night);
@@ -53,11 +53,16 @@ public class FadingCurtain : MonoBehaviour
         open.SetActive(!night);
         close.SetActive(night);
         yield return new WaitForSeconds(sec);
-        yield return StartCoroutine(fading(70));
+        if (night)
+            FindObjectOfType<GameSystem>().NightCheck();
+        else
+            FindObjectOfType<GameSystem>().DayCheck();
+
+        yield return StartCoroutine(FadingCoroutine(70));
     } 
 
 
-    public IEnumerator fading(int step)
+    public IEnumerator FadingCoroutine(int step)
     {
         for(int i=1;i<=step;i++)
         {
@@ -67,7 +72,7 @@ public class FadingCurtain : MonoBehaviour
         }
     }
 
-    public IEnumerator fadingReverse(int step)
+    public IEnumerator FadingReverseCoroutine(int step)
     {
         for(int i=1;i<=step;i++)
         {

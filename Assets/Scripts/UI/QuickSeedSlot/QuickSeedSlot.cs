@@ -32,7 +32,6 @@ public class QuickSeedSlot : MonoBehaviour
             icon.SetNativeSize();
             num.text = item.cnt.ToString();
         }
-        
     }
 
     public void setHilight(bool t)

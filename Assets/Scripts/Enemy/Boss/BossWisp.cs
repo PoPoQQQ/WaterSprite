@@ -5,8 +5,8 @@ using DG.Tweening;
 
 public class BossWisp : MonoBehaviour
 {
-    public enum State { large,mid,small};
-    public State state = State.large;
+    public enum State { Large, Mid, Small };
+    public State state = State.Large;
 
     Vector2 endPos,startPos,basicPos;
     float movePhase = 0F,angle = 0F;
@@ -26,14 +26,14 @@ public class BossWisp : MonoBehaviour
         state = s;
         switch(s)
         {
-            case State.large:
+            case State.Large:
                 StartCoroutine(LargeMoveCoroutine());
                 StartCoroutine(BeamCoroutine());
                 break;
-            case State.mid:
+            case State.Mid:
                 StartCoroutine(MidCoroutine());
                 break;
-            case State.small:
+            case State.Small:
                 StartCoroutine(SmallCoroutine());
                 break;
         }
@@ -61,14 +61,15 @@ public class BossWisp : MonoBehaviour
         }
         stateChangeCnt++;
         if (stateChangeCnt <= 2)
-            SetState(State.mid);
+            SetState(State.Mid);
         else
-            SetState(State.small);
+            SetState(State.Small);
     }
 
 
     void Beam()
     {
+        Debug.Break();
         Vector2 vec = player.transform.position - transform.position;
         float angle = Mathf.Rad2Deg * Mathf.Atan2(vec.y, vec.x);
         float alpha = angle - 0.25F * Mathf.PI;
@@ -86,7 +87,7 @@ public class BossWisp : MonoBehaviour
             yield return 0;
 
         yield return new WaitForSeconds(Random.Range(6F, 7F));
-        while (state == State.large)
+        while (state == State.Large)
         {
             Beam();
             yield return new WaitForSeconds(Random.Range(6F, 7F));
@@ -97,7 +98,7 @@ public class BossWisp : MonoBehaviour
     public void Split(float theta,float alpha,bool outerRing)
     {
         //EC.Damage(2, true);
-        if (state == State.mid && declining)
+        if (state == State.Mid && declining)
             return;
         splitCnt++;
         var obj = GameObject.Instantiate(splitedWisp, transform.position, Quaternion.identity, transform);
@@ -132,7 +133,7 @@ public class BossWisp : MonoBehaviour
         declining = true;
         yield return new WaitForSeconds(4F);
         anim.SetInteger("State", 1);
-        SetState(State.large);
+        SetState(State.Large);
     }
 
 
@@ -166,7 +167,7 @@ public class BossWisp : MonoBehaviour
         anim = transform.Find("Sprite").GetComponent<Animator>();
         splitedWisp = Resources.Load<GameObject>("Prefabs/Enemies/SplitedWisp");
         EC = GetComponent<EnemyController>();
-        SetState(State.large);
+        SetState(State.Large);
     }
 
     // Update is called once per frame

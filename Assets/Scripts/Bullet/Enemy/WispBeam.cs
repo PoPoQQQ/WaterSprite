@@ -15,4 +15,14 @@ public class WispBeam : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            var pl = collision.gameObject.GetComponent<Player>();
+            if (pl)
+                pl.Damage(5F);
+        }
+    }
 }

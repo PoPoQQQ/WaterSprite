@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1315630301243475434}
   - component: {fileID: 1315630301243475439}
   - component: {fileID: 1315630301243475424}
-  - component: {fileID: 1315630301243475425}
   - component: {fileID: 1315630301243475438}
   - component: {fileID: 1315630301243475427}
   - component: {fileID: 1315630301243475426}
@@ -53,6 +52,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -64,6 +64,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -100,14 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  maxHealth: 0
   collideDamage: 5
   collideKnockBack: 24
   isBoss: 0
   invincible: 0
   stunned: 0
+  startingStun: 0
+  fromTrunk: 0
+  spawnEmitDist: 1.2
   stunTime: 0
-  lootType: 1
-  lootRate: 0.04
+  lootType: 4
+  lootRate: 0.1
 --- !u!58 &1315630301243475439
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -145,27 +150,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1315630301243475425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315630301243475435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3dc0973437a2514cadcbf252c0b400b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  collideDamage: 5
-  collideKnockBack: 24
-  isBoss: 0
-  invincible: 0
-  stunned: 0
-  stunTime: 0
-  lootType: 1
-  lootRate: 0.04
 --- !u!114 &1315630301243475438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +240,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -267,6 +252,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

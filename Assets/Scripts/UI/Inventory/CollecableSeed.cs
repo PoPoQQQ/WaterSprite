@@ -16,7 +16,6 @@ public class CollecableSeed : CollectableItem
         {Plant.Type.Dragonfruit, "ItemAsset/Seeds/Dragonfruit"},
         {Plant.Type.Jujube, "ItemAsset/Seeds/Jujube"},
         {Plant.Type.Persimmon, "ItemAsset/Seeds/Persimmon"},
-        {Plant.Type.Miracle, "ItemAsset/Seeds/Miracle"},
         {Plant.Type.Bubble, "ItemAsset/Seeds/Bubble"},
         {Plant.Type.Turret, "ItemAsset/Seeds/Turret"},
         {Plant.Type.Mango, "ItemAsset/Seeds/Mango"},

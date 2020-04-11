@@ -9,7 +9,7 @@ public class Ghost : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     public GameObject sg;
-    float basicSpeed = 750F,speed;
+    float basicSpeed = 700F,speed;
     float phase,angle;
     float gamma, theta;
     bool moving = false;
@@ -66,9 +66,11 @@ public class Ghost : MonoBehaviour
         float ang = ToAng(player.transform.position - transform.position);
         var o = GameObject.Instantiate(sg, transform.position, Quaternion.identity);
         o.GetComponent<SplitedGhost>().movAng = ang + 0.5F * Mathf.PI;
+        o.GetComponent<SplitedGhost>().mother = gameObject;
 
         o = GameObject.Instantiate(sg, transform.position, Quaternion.identity);
         o.GetComponent<SplitedGhost>().movAng = ang - 0.5F * Mathf.PI;
+        o.GetComponent<SplitedGhost>().mother = gameObject;
     }
 
     void ResetVec()

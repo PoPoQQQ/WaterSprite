@@ -32,7 +32,7 @@ public class SplitedWisp : MonoBehaviour
             else if(pb > 0F)
                 pb -= 1.6F * Time.deltaTime;
         }
-        if (wisp.state == BossWisp.State.mid)
+        if (wisp.state == BossWisp.State.Mid)
         {
             b = pb;
             c = pc;
@@ -62,7 +62,7 @@ public class SplitedWisp : MonoBehaviour
         }
         a = Mathf.Sqrt(b * b + c * c);
         alpha += alphaVel * Time.fixedDeltaTime;
-        if(wisp.state == BossWisp.State.mid)
+        if(wisp.state == BossWisp.State.Mid)
             theta += thetaVel * Time.fixedDeltaTime;
 
         Vector2 axisX = new Vector2(Mathf.Cos(theta), Mathf.Sin(theta)),

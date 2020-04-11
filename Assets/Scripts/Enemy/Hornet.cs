@@ -116,7 +116,6 @@ public class Hornet : MonoBehaviour
     {
         if (GetComponent<EnemyController>().health > 0)
             return;
-        FindObjectOfType<LootSystem>().LootSeed(transform.position, Plant.Type.Goji, 0.06F);
     }
     void Update()
     {

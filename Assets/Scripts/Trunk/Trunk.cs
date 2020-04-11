@@ -151,6 +151,19 @@ public class Trunk : MonoBehaviour
     }
     public void Burn() => Burn(1F);
 
+    public void DayCheck()
+    {
+        GameObject[] trunks = GameObject.FindGameObjectsWithTag("Trunk");
+        foreach(var i in trunks)
+        {
+            if (i.transform.position.y <= transform.position.y)
+                continue;
+            float dist = ((Vector2)(i.transform.position - transform.position)).magnitude;
+            if(Random.Range(0F,1F)>dist-1.5F)
+                Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

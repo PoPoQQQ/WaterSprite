@@ -10,8 +10,8 @@ public class CameraShake : MonoBehaviour
 	public int time = 20;
 	public float randomness = 90f;
 
-    public void Shake()
+    public void Shake(float power = 1F)
     {
-    	transform.DOShakePosition(duration, strength, time, randomness);
+    	transform.DOShakePosition(duration * power, strength * power, time, randomness);
     }
 }

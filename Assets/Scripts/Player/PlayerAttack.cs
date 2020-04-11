@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     float lastShootTime = -1123F, lastBombTime = -1234F, lastItemTime = -1345F;
     Player pl;
     GameSystem GS;
+    GameObject RightClickCD, LeftClickCD;
 
     void Start()
     {
@@ -33,6 +34,9 @@ public class PlayerAttack : MonoBehaviour
         BarrierPrefab = Resources.Load<GameObject>("Prefabs/Ammo/Player/Barrier");
         GS = FindObjectOfType<GameSystem>();
         pl = GetComponent<Player>();
+
+        RightClickCD = GameObject.Find("RightClickCD");
+        LeftClickCD = GameObject.Find("LeftClickCD");
     }
 
     public bool CanUseItem()
@@ -97,6 +101,7 @@ public class PlayerAttack : MonoBehaviour
             cd *= 0.5F;
         if (Time.time >= lastShootTime + cd)
         {
+            LeftClickCD.GetComponent<CoolDownUI>().Set(cd);
             switch(e)
             {
                 case Player.Element.Water:
@@ -176,6 +181,8 @@ public class PlayerAttack : MonoBehaviour
         Player.Element e = pl.element;
         if (Time.time >= lastBombTime + bombCD && pl.health >= 5F)
         {
+
+            RightClickCD.GetComponent<CoolDownUI>().Set(bombCD);
             switch (e)
             {
                 case Player.Element.Water:
