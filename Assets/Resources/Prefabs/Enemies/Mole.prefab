@@ -112,7 +112,7 @@ MonoBehaviour:
   spawnEmitDist: 1.2
   stunTime: 0
   lootType: 4
-  lootRate: 0.1
+  lootRate: 0.15
 --- !u!58 &1315630301243475439
 CircleCollider2D:
   m_ObjectHideFlags: 0

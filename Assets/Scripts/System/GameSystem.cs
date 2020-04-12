@@ -223,7 +223,7 @@ public class GameSystem : MonoBehaviour
         EnemyAtkRate = 0.9F + 0.03F * dayCnt;
         EnemyAtkRate = Mathf.Clamp(EnemyAtkRate, 1F, 10F);
 
-        EnemyDefRate = 0.7F + 0.05F * dayCnt;
+        EnemyDefRate = 0.8F + 0.05F * dayCnt;
         EnemyDefRate = Mathf.Clamp(EnemyDefRate, 1F, 4F);
 
         EnemySpeedRate = 0.99F + 0.005F * dayCnt;

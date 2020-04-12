@@ -1142,6 +1142,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 947727029462679945, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 971548545938215551, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1527,6 +1532,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3536306487760985128, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3541734332283692254, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1712,6 +1722,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4466998307125815614, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4596394001775234050, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2252,6 +2267,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7165836231814888846, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7229366774775249989, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2401,6 +2421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635681764348392331, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7804190730401785861, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}
@@ -2471,6 +2496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213480619517290687, guid: 42adc353d89c7854ca3e92258db805f2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8684390769066217919, guid: 42adc353d89c7854ca3e92258db805f2,
         type: 3}

@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 1154252804814384014, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}
       propertyPath: lootRate
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2229595749221082225, guid: 92c2600d5f6f2594694c80fe876ce51f,
         type: 3}

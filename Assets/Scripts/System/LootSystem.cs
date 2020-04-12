@@ -13,19 +13,19 @@ public class LootSystem : MonoBehaviour
         lootChanceMultiplier = new Dictionary<Plant.Type, float>
         {
             { Plant.Type.Aquabud, 2F },
-            { Plant.Type.Goji, 2F },
-            { Plant.Type.Mulberry, 2F },
-            { Plant.Type.Wisplum, 1F },
-            { Plant.Type.Cyanberry, 1F },
-            { Plant.Type.Lychee, 1F },
-            { Plant.Type.Mango, 1F },
-            { Plant.Type.Lime, 1F },
-            { Plant.Type.Cloudberry, 1F },
-            { Plant.Type.Dragonfruit, 1F },
-            { Plant.Type.Jujube, 1F },
-            { Plant.Type.Persimmon, 1F },
-            { Plant.Type.Turret, 1F },
-            { Plant.Type.Bubble, 1F },
+            { Plant.Type.Goji, 3F },
+            { Plant.Type.Mulberry, 3F },
+            { Plant.Type.Wisplum, 3F },
+            { Plant.Type.Cyanberry, 3F },
+            { Plant.Type.Lychee, 3F },
+            { Plant.Type.Mango, 3F },
+            { Plant.Type.Lime, 3F },
+            { Plant.Type.Cloudberry, 3F },
+            { Plant.Type.Dragonfruit, 3F },
+            { Plant.Type.Jujube, 3F },
+            { Plant.Type.Persimmon, 3F },
+            { Plant.Type.Turret, 3F },
+            { Plant.Type.Bubble, 3F },
         };
 
         basicLootChance = new Dictionary<Plant.Type, float>
@@ -101,7 +101,9 @@ public class LootSystem : MonoBehaviour
         }
         if (type == Plant.Type.Goji)
         {
-            r = 0.2F * lootCnt[Plant.Type.Goji];
+            r = 1 - Mathf.Pow(0.7F , lootCnt[Plant.Type.Goji]);
+            if (lootCnt[Plant.Type.Goji] >= 5)
+                r = 1;
             if (Random.Range(0F, 1F) <= r)
             {
                 p = Random.Range(0F, 3F);
@@ -115,7 +117,9 @@ public class LootSystem : MonoBehaviour
         }
         if(type == Plant.Type.Mulberry)
         {
-            r = 0.2F * lootCnt[Plant.Type.Mulberry];
+            r = 1 - Mathf.Pow(0.7F, lootCnt[Plant.Type.Mulberry]);
+            if (lootCnt[Plant.Type.Mulberry] >= 5)
+                r = 1;
             if (Random.Range(0F, 1F) <= r)
             {
                 p = Random.Range(0F, 3F);
@@ -129,7 +133,9 @@ public class LootSystem : MonoBehaviour
         }
         if (type == Plant.Type.Wisplum)
         {
-            r = 0.33334F * lootCnt[Plant.Type.Wisplum];
+            r = 1 - Mathf.Pow(0.6F, lootCnt[Plant.Type.Wisplum]);
+            if (lootCnt[Plant.Type.Wisplum] >= 3)
+                r = 1;
             if (Random.Range(0F, 1F) <= r)
             {
                 type = Random.Range(0F, 2F) < 1F ? Plant.Type.Lime : Plant.Type.Cloudberry;
@@ -142,7 +148,7 @@ public class LootSystem : MonoBehaviour
         if(rand <= lootChanceMultiplier[type] * chance)
         {
             SeedItem.Generate(pos, type);
-            lootChanceMultiplier[type] = 0.8F;
+            lootChanceMultiplier[type] = 1F;
             lootCnt[type]++;
         }
     }
