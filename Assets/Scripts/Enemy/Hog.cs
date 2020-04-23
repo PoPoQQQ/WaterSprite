@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hog : MonoBehaviour
 {
-
     public enum State { Idle, Dash};
     public State state = State.Idle;
     int dashCnt = 0;
@@ -14,6 +13,7 @@ public class Hog : MonoBehaviour
     Rigidbody2D body;
     GameObject player;
     EnemyController ec;
+    Animator anim;
 
     void SetState(State s)
     {
@@ -21,10 +21,14 @@ public class Hog : MonoBehaviour
         switch(s)
         {
             case State.Dash:
+                anim.SetBool("Dash", true);
+                anim.SetBool("Idle", false); 
                 dashCnt = 0;
                 ResetDash();
                 break;
             case State.Idle:
+                anim.SetBool("Dash", false);
+                anim.SetBool("Idle", true);
                 StartCoroutine(IdleCoroutine());
                 break;
         }
@@ -43,14 +47,23 @@ public class Hog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetState(State.Idle);
+        anim = transform.Find("Sprite").GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         ec = GetComponent<EnemyController>();
+        SetAnimDirection();
+        SetState(State.Idle);
+    }
+
+    void SetAnimDirection()
+    {
+        float x = (player.transform.position - transform.position).x > 0 ? 1 : 0;
+        anim.SetFloat("X", x);
     }
 
     void ResetDash()
     {
+        SetAnimDirection();
         if (dashCnt < 3F)
         {
             maxDashTime = Random.Range(1F, 1.5F);
@@ -72,7 +85,11 @@ public class Hog : MonoBehaviour
             if (dashTime <= maxDashTime * 0.8F)
                 body.AddForce(dashVec);
             else
-                body.AddForce(body.velocity * -600F);
+                body.AddForce(body.velocity * -800F);
+        }
+        if(state == State.Idle)
+        {
+            body.AddForce(body.velocity * -300F);
         }
     }
 
