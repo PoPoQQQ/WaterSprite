@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayOrNight: 0
-  dayCnt: 1
+  dayCnt: 2
   score: 0
   MapXUpperbound: 17
   MapXLowerbound: -17
@@ -1016,6 +1016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hog
+      objectReference: {fileID: 0}
+    - target: {fileID: 8232091193471336670, guid: e91096956c1fa2b4aa4e7425f680055d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e91096956c1fa2b4aa4e7425f680055d, type: 3}
