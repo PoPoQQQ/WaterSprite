@@ -11,6 +11,8 @@ public class InventorySlot : MonoBehaviour
     CollectableItem item;
     GameObject parentUI;
     public int code;
+    public QuickFruitManager qfm;
+
 
     void Awake()
     {
@@ -89,5 +91,35 @@ public class InventorySlot : MonoBehaviour
             parentUI.GetComponent<Inventory>().swap(code, parentUI.GetComponent<InventoryUI>().pointerOnSlot);
         }
         Destroy(temp);
+    }
+
+    public void ClickItem()
+    {
+        if(item == null)
+            return;
+        if(item.itemType == CollectableItem.ItemType.item)
+        {
+            qfm.UseFruitOfType(item);
+            StartCoroutine(ClickEffect());
+        }
+    }
+
+    IEnumerator ClickEffect()
+    {
+        Vector3 origincale = icon.transform.localScale;
+        icon.transform.DOScale(origincale*.6f, .08f);
+        yield return new WaitForSeconds(.08f);
+        icon.transform.DOScale(origincale, .08f);
+    }
+
+    public void EvokeInformationBox(bool evoked)
+    {
+        if(item == null)
+            return;
+        //if(item.)
+        if(evoked)
+            InformationReader.instance.GetItemInformation(item.itemType == CollectableItem.ItemType.seed, item.seedType, transform.position);
+        else
+            InformationReader.instance.destoryInfo();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour         //
 {
     Inventory inventory;
     public InventorySlot[] slotList;
@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour
         SlotNum = slotList.Length;
         inventory.initList(SlotNum);
         inventory.onItemChangedCallBack += UpdateUI;
-		UpdateUI();
+		//UpdateUI();
     }
 
     public void setPointer(int num)

@@ -31,6 +31,7 @@ public class QuickSeedManager : MonoBehaviour
             }
         }
         seeds.onItemChangedCallBack += setSlot;
+        setSlot();
         updateHilight();
     }
 
@@ -57,6 +58,38 @@ public class QuickSeedManager : MonoBehaviour
                 hilightCode = quickSlots.Length -1;
             updateHilight();
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            hilightCode = 0;
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            hilightCode = 1;
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            hilightCode = 2;
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            hilightCode = 3;
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            hilightCode = 4;
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            hilightCode = 5;
+            updateHilight();
+        }
+            
     }
 
     void updateHilight()
@@ -82,16 +115,16 @@ public class QuickSeedManager : MonoBehaviour
         {
             if(currentPlant.mature)
             {
-                if(PlayerFruitEater.Usable(currentPlant.type))
+                /*if(PlayerFruitEater.Usable(currentPlant.type))
                 {
                     PlayerFruitEater.Eat(currentPlant.type);
                     currentPlant.Collect();
                 }
                 else
-                {
+                {*/
                     InventoryManager.instance.AddFruit(currentPlant.type);
                     currentPlant.Collect();
-                }
+                //}
                 
             }
             else if(!currentPlant.watered)

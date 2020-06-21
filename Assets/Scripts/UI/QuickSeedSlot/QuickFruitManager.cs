@@ -66,6 +66,25 @@ public class QuickFruitManager : MonoBehaviour
             UseFruit();
         }
 
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            hilightCode = 0;
+            UseFruit();
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            hilightCode = 1;
+            UseFruit();
+            updateHilight();
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            hilightCode = 2;
+            UseFruit();
+            updateHilight();
+        }
+
         //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
     }
 
@@ -73,10 +92,15 @@ public class QuickFruitManager : MonoBehaviour
     {
         if(fruits.itemList[hilightCode].cnt<=0)
             return;
-        if(PlayerFruitEater.Usable(hilightType))
+        UseFruitOfType(fruits.itemList[hilightCode].item);
+    }
+
+    public void UseFruitOfType(CollectableItem item)
+    {
+        if(PlayerFruitEater.Usable(item.seedType))
         {
-            PlayerFruitEater.Eat(hilightType);
-            fruits.RemoveItem(fruits.itemList[hilightCode].item);
+            PlayerFruitEater.Eat(item.seedType);
+            fruits.RemoveItem(item);
         }
         else{
             Debug.Log("Unusable!");

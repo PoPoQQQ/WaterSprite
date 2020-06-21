@@ -1,0 +1,17 @@
+{
+    "seedInformation":[
+        {
+            "id":14,
+            "itemName":"泡泡种子",
+            "itemInfo":"这是一个泡泡种子"
+        }
+    ],
+
+    "itemInformation":[
+        {
+            "id":14,
+            "itemName":"泡泡果实",
+            "itemInfo":"这是一个泡泡果实"
+        }
+    ]
+}
