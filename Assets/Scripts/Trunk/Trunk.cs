@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class TrunkGenerator
 {
-    static GameObject TrunkPrefab;
+    static GameObject TPrefab,RPrefab;
     public static void Generate(Trunk.Type type, Vector3 pos)
     {
-        if (TrunkPrefab == null)
-            TrunkPrefab = Resources.Load<GameObject>("Prefabs/Trunk");
-        var obj = GameObject.Instantiate(TrunkPrefab, pos, Quaternion.identity);
+        if (TPrefab == null)
+            TPrefab = Resources.Load<GameObject>("Prefabs/TrunkT");
+        if (RPrefab == null)
+            RPrefab = Resources.Load<GameObject>("Prefabs/TrunkR");
+        GameObject obj;
+        if(type == Trunk.Type.Tree)
+            obj = GameObject.Instantiate(TPrefab, pos, Quaternion.identity);
+        else
+            obj = GameObject.Instantiate(RPrefab, pos, Quaternion.identity);
         obj.GetComponent<Trunk>().type = type;
     }
 }
